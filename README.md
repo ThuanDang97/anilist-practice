@@ -70,4 +70,4 @@ Official document: https://nextjs.org/
 - Output File Tracing
 - Security Headers
 
-## PRACTICE (2 days)
+## PRACTICE (update)
