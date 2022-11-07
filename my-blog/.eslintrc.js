@@ -38,6 +38,7 @@ module.exports = {
   rules: {
     'import/no-extraneous-dependencies': 'off',
     'no-undef': 'off',
+    'import/no-cycle': 'off',
     '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/no-explicit-any': 'error',
     'react/react-in-jsx-scope': 'off',
@@ -54,6 +55,7 @@ module.exports = {
       },
     ],
     'react/jsx-props-no-spreading': 'off',
+    'react/require-default-props': 'off',
     'import/extensions': [
       'error',
       'ignorePackages',
