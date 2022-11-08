@@ -1,13 +1,17 @@
 import { ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import theme from '@self-types/Themes.types'
-import Button, { IButtonProps } from '@components/Button'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 
+// Types
+import theme from '@self-types/Themes.types'
+
+// Components
+import Button, { IButtonProps } from '@components/Button'
+
 export default {
-  title: 'Example/Button',
+  title: 'Component/Button',
   component: Button,
   decorators: [
     (Story) => {
