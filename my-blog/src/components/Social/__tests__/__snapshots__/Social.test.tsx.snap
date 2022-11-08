@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Social Component Should show match Button DOM Snapshot 1`] = `
+exports[`Social Component Should show match Social DOM Snapshot 1`] = `
 <div>
   <svg
     aria-hidden="true"

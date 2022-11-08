@@ -7,7 +7,7 @@ describe('Social Component', () => {
     link: '#',
   }
 
-  it('Should show match Button DOM Snapshot', () => {
+  it('Should show match Social DOM Snapshot', () => {
     const { container } = render(<Social {...mockProps} />)
 
     expect(container).toMatchSnapshot()
