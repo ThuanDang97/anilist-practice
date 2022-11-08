@@ -6,7 +6,7 @@ import { render } from '@utils/testUtils'
 
 describe('Welcome Component', () => {
   test('Component Welcome matches DOM Snapshot', () => {
-    const { container } = render({ children: <Home />, router: {} })
+    const { container } = render(<Home />)
 
     expect(container).toMatchSnapshot()
   })

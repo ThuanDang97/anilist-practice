@@ -5,13 +5,11 @@ import { IButtonProps } from '@components/Button'
 
 export const ButtonStyled = styled(Button)<IButtonProps>`
   cursor: pointer;
-  border: none;
-  color: ${({ theme }) => theme.palette.grey[500]};
+  color: ${({ theme }) => theme.palette.grey[800]};
+  font-weight: 700;
+  background-color: #eaeaee;
   &:hover {
-    color: ${({ hovercolor, theme }) =>
-      hovercolor || theme.palette.common.white};
+    color: ${({ theme }) => theme.palette.common.white};
+    background-color: ${({ theme }) => theme.palette.grey[600]};
   }
-
-  ${({ mbottom }) => `margin-bottom: ${mbottom}px`};
-  ${({ mtop }) => `margin-top: ${mtop}px`};
 `

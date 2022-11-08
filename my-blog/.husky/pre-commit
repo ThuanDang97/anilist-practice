@@ -3,4 +3,4 @@
 
 cd my-blog
 pnpx lint-staged
-pnpm test
+pnpm run test -u

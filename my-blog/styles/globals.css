@@ -24,3 +24,10 @@ a {
     background: white;
   }
 }
+
+@font-face {
+  font-family: 'JosefinSans Regular';
+  src: local('JosefinSans Regular'), local('JosefinSans-Regular'),
+    url('../public/fonts/JosefinSans-Regular.ttf') format('ttf');
+  font-weight: 300;
+}
