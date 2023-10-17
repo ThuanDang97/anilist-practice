@@ -9,7 +9,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "lint:fix": "pnpx eslint ./src --fix",
-    "prepare": "cd .. && husky install .husky",
+    "prepare": "cd .. && husky install anilist/.husky",
     "test": "jest",
     "test-cover": "jest -u --coverage",
     "server": "json-server-auth src/db.json"

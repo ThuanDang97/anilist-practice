@@ -2,7 +2,9 @@ import "../styles/reset.css";
 import "../styles/global.css";
 
 function App() {
-  return <></>;
+  return <>
+  <p>test</p>
+  </>;
 }
 
 export default App;

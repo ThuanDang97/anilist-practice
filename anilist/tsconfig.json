@@ -5,21 +5,35 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-
-    /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-
-    /* Linting */
+    "esModuleInterop": true,
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": "./",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@assets/*": ["src/assets/*"],
+      "@interfaces/*": ["src/interfaces/*"],
+      "@constants/*": ["src/constants/*"],
+      "@handlers/*": ["src/handlers/*"],
+      "@mockers/*": ["src/mockers/*"],
+      "@utils/*": ["src/utils/*"],
+      "@stores/*": ["src/stores/*"],
+      "@mocks/*": ["src/mocks/*"],
+      "@services/*": ["src/services/*"],
+      "@pages/*": ["src/pages/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@hocs/*": ["src/hocs/*"],
+      "@enums/*": ["src/enums/*"],
+      "@type/*": ["src/types/*"]
+    }
   },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src", "jest.config.ts"],
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "types": ["node", "jest", "@types/testing-library__jest-dom"]
 }
