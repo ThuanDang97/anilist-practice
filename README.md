@@ -1,83 +1,150 @@
-# Practice - AniList
+# React State Management Training
 
-## **Overview**
+## **Sep 07, 2023**
 
-**Building an Anime list web application**
+## **OVERVIEW**
 
-## **Requirements**
+The document provides a training plan for these modules Zustand, React query, MSW.
 
-- **Milestones 1: Homepage**
-    - **User view homepage and search anime**
-    - **User use advance search**
-- **Milestones 2: Login / Sign up**
-    - **User to login**
-    - **User to Sign up**
-- **Milestones 3: Detail page**
-    - **User able to view Header content**
-    - **User able to view Side content**
-    - **User able to view Overview content**
+## TIMELINE
 
-## **Targets**
+### Reading
 
-- **Apply React Hook Form and JSON Sever Auth to authentication**
-- **Understand and apply Zustand in state management**
-- **Apply React Query to interact with data in web applications**
-- **Apply MSW to create mock services during web application development**
-- **Apply unit test cover above 80% line of code**
-- **Understand and apply CI/CD to automation deploy on vercel**
-- **Apply Accessibility and Web performance**
+- [React (Hook)](https://react.dev/reference/react): 2 days
+- [NextJs](https://nextjs.org/): 1 days
+- [Zustand](https://docs.pmnd.rs/zustand/getting-started/introduction): 3 days
+- [React query](https://tanstack.com/query/v4/docs/react/overview): 3.5 days
+- [Mock Service Worker](https://mswjs.io/docs/): 2 days
+- [CI/CD](https://github.blog/2022-02-02-build-ci-cd-pipeline-github-actions-four-steps/): 1 day
+- [Accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility): 1 day
+- [Web performance](https://developer.mozilla.org/en-US/docs/Learn/Performance): 1 day
 
-## **Tech Stacks**
+### Practice: 
 
-- **[TypeScript](https://www.typescriptlang.org/)**
-- **[React ES6](https://react.dev/)**
-- **[Zustand](https://docs.pmnd.rs/zustand/getting-started/introduction)**
-- **[React Query](https://tanstack.com/query/v3/docs/react/overview)**
-- **[Mantine](https://mantine.dev/getting-started/)**
-- **[MSW](https://mswjs.io/)**
-- **[React Hook Form](https://react-hook-form.com/)**
-- **[JSON Server Auth](https://github.com/jeremyben/json-server-auth)**
-- ************[CI/CD](https://resources.github.com/ci-cd/)************
+## TARGET
 
-## **Team size**
+- Understanding React state management libraries (Zustand, React query).
+- Approach and apply MSW in development, and unit tests.
 
-- 1 dev:
-    - Thuan Dang
+## ROADMAP
 
-## ****Suggestion Design****
+### ZUSTAND
 
-[AniList: Track, Discover, Share Anime & Manga](https://anilist.co/)
+- Timeline: 3 days
 
-## **Document**
+#### Introduction and Comparison
 
-[Analyze document](https://www.notion.so/Analyze-document-bf98200680314209bd131509598b1001?pvs=21)
+- Timeline: 1 day
 
-[AniList Document](https://www.notion.so/AniList-Document-81f26de44a8341b98352cd398fc00aaa?pvs=21)
+- References
+  - <https://docs.pmnd.rs/zustand/getting-started/introduction>
+  - <https://docs.pmnd.rs/zustand/getting-started/comparison>
 
-## **Estimation Document**
+#### Guides
 
-[Estimate Document](https://www.notion.so/Estimate-Document-5883057374e14251ba360414771fe442?pvs=21)
+- Timeline: 1 day
 
-## **Component Document**
+- References:
 
-[Component](https://www.notion.so/Component-02514a9344234ffeb60326a0f7cf35b9?pvs=21)
+  - Updating state: <https://docs.pmnd.rs/zustand/guides/updating-state>
+  - Immutable state and merging: <https://docs.pmnd.rs/zustand/guides/immutable-state-and-merging>
+  - Initialize state with props: <https://docs.pmnd.rs/zustand/guides/initialize-state-with-props>
+  - Slices pattern: <https://docs.pmnd.rs/zustand/guides/slices-pattern>
+  - Practice with no store actions: <https://docs.pmnd.rs/zustand/guides/practice-with-no-store-actions>
+  - How to reset store: <https://docs.pmnd.rs/zustand/guides/how-to-reset-state>
 
-## **Component Document**
+#### Recipes
 
-## **How to install and run app**
+- Timeline: 1 day
+- References: <https://docs.pmnd.rs/zustand/recipes/recipes>
+Fetching everything
+Selecting multiple state slices
+Fetching from multiple stores
+Memoizing selectors
+Overwriting state
+Async actions
+Read from state in actions
 
-| Command                                                     | Action                                               |
-| :---------------------------------------------------------- | :--------------------------------------------------- |
-| `git@gitlab.asoft-python.com:thuan.dang/react-training.git` | Clone project from gitlab                            |
-| `git checkout feature/practice-two`                         | Switch to branch feature/practice-two                |
-| `cd react-training/dashboard`                               | Move to `dashboard` folder                           |
-| `pnpm install`                                              | Installs dependencies                                |
-| `pnpm dev`                                                  | Run dev production at `http://localhost:3000`        |
-| `pnpm build`                                                | Run build for production before start production     |
-| `pnpm start`                                                | Run start on production at `http://localhost:3000`   |
-| `pnpm lint`                                                 | run lint-staged check code before commit             |
-| `pnpm prepare`                                              | Install folder .husky                                |
-| `pnpm test`                                                 | Testing application                                  |
-| `pnpm test:coverage`                                        | Testing application and get coverage                 |
-| deployment                                                  | 
-| Account                                                     |              
+### REACT QUERY
+
+- Timeline: 3 days
+
+#### Introduction and Comparison
+
+- Timeline: 0.5 day
+- References:
+  - <https://tanstack.com/query/v4/docs/react/overview>
+  - <https://tanstack.com/query/v4/docs/react/comparison>
+  - <https://tanstack.com/query/v4/docs/react/typescript>
+
+#### Guides and Concepts
+
+- Timeline: 2.5 day
+- References:
+  - <https://tanstack.com/query/v4/docs/react/guides/important-defaults>
+  - <https://tanstack.com/query/v4/docs/react/guides/queries>
+  - <https://tanstack.com/query/v4/docs/react/guides/query-keys>
+  - <https://tanstack.com/query/v4/docs/react/guides/query-functions>
+  - <https://tanstack.com/query/v4/docs/react/guides/paginated-queries>
+  - <https://tanstack.com/query/v4/docs/react/guides/infinite-queries>
+  - <https://tanstack.com/query/v4/docs/react/guides/mutations>
+  - <https://tanstack.com/query/v4/docs/react/guides/query-invalidation>
+  - <https://tanstack.com/query/v4/docs/react/guides/invalidations-from-mutations>
+  - <https://tanstack.com/query/v4/docs/react/guides/testing>
+
+#### API References and further reference
+
+- Timeline: 0.5 day
+- References: <https://tanstack.com/query/v4/docs/react/reference/useQuery>
+  - useQuery
+  - useInfiniteQuery
+  - useMutation
+<https://tkdodo.eu/blog/practical-react-query>
+
+### MSW
+
+- Timeline: 1.5 days
+
+#### Introduction and Comparison
+
+- Timeline: 0.25 day
+- References:
+  - <https://mswjs.io/docs/>
+  - <https://mswjs.io/docs/comparison>
+
+#### Define mocks and Integrate
+
+- Timeline: 0.25 day
+- References:
+  - <https://mswjs.io/docs/getting-started/mocks>
+  - <https://mswjs.io/docs/getting-started/integrate>
+
+#### Basics
+
+- Timeline: 0.5 day
+- References:
+  - Request handler: <https://mswjs.io/docs/basics/request-handler>
+  - Response resolver: <https://mswjs.io/docs/basics/response-resolver>
+  - Response transformer: <https://mswjs.io/docs/basics/response-transformer>
+  - Request matching: <https://mswjs.io/docs/basics/request-matching>
+
+#### Recipes
+
+- Timeline: 0.5 day
+- References: <https://mswjs.io/docs/recipes>
+  - Cookies
+  - Query parameters
+  - Mocking error responses
+  - Request assertions
+
+### CI/CD
+
+- Timeline: 1 day
+
+### Accessibility
+
+- Timeline: 1 day
+
+### Web Performance
+
+- Timeline: 1 day

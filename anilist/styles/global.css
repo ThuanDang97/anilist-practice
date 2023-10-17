@@ -1,0 +1,86 @@
+@font-face {
+  font-family: 'Overpass';
+  src: local('Overpass ExtraLight'), local('Overpass-ExtraLight'),
+    url('../public/fonts/Overpass-ExtraLight.ttf')
+      format('ttf');
+  font-weight: 200;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Overpass';
+  src: local('Overpass Light'), local('Overpass-Light'),
+    url('../public/fonts/Overpass-Light.ttf')
+      format('ttf');
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Overpass';
+  src: local('Overpass Regular'), local('Overpass-Regular'),
+    url('../public/fonts/Overpass-Regular.ttf')
+      format('ttf');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Overpass';
+  src: local('Overpass Medium'), local('Overpass-Medium'),
+    url('../public/fonts/Overpass-Medium.ttf')
+      format('ttf');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Overpass';
+  src: local('Overpass SemiBold'), local('Overpass-SemiBold'),
+    url('../public/fonts/Overpass-SemiBold.ttf')
+      format('ttf');
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Overpass';
+  src: local('Overpass Bold'), local('Overpass-Bold'),
+    url('../public/fonts/Overpass-Bold.ttf')
+      format('ttf');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Overpass';
+  src: local('Overpass ExtraBold'), local('Overpass-ExtraBold'),
+    url('../public/fonts/Overpass-ExtraBold.ttf')
+      format('ttf');
+  font-weight: 800;
+  font-display: swap;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Overpass', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
