@@ -1,4 +1,4 @@
-import { Box, Image, NavLink } from '@mantine/core'
+import { Box, Button, Image, NavLink, Text } from '@mantine/core'
 import { Link } from 'react-router-dom'
 
 // styles
@@ -29,6 +29,17 @@ const Header = ({ isAuthenticated }: IHeader) => {
         </Link>
         <Box className={classes.container}>
           <Navbar listNavbar={isAuthenticated ? mockAuthNavbar : mockNavbar} />
+        </Box>
+        <Box className={classes.link}>
+          <Link
+            to="https://anilist.co/api/v2/oauth/authorize?client_id={client_id}&response_type=token"
+            className={classes.login}
+          >
+            <Text size="md">Login</Text>
+          </Link>
+          <Link to={END_POINTS.SIGNUP}>
+            <Button size="md">Sign Up</Button>
+          </Link>
         </Box>
       </Box>
     </Box>
