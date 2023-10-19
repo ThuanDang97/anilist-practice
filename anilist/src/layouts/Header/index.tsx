@@ -17,7 +17,7 @@ const Header = ({ isAuthenticated }: IHeader) => {
   const { classes } = useStylesHeader()
 
   return (
-    <Box className={classes.header}>
+    <Box className={classes.header} component="header">
       <Box className={classes.container}>
         <Link to={END_POINTS.HOMEPAGE}>
           <Image
