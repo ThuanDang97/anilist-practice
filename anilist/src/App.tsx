@@ -3,8 +3,10 @@ import '../styles/global.css'
 import ThemeProvider from './theme'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import Header from './layouts/Header'
-import Footer from './layouts/Footer'
+import { Route, Routes } from 'react-router-dom'
+import MainLayout from './layouts/MainLayout'
+import HomePage from '@pages/HomePage'
+import { END_POINTS } from './constants'
 
 const queryClient = new QueryClient()
 
@@ -13,8 +15,11 @@ const App = () => {
     <ThemeProvider>
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
-        <Header isAuthenticated={false} />
-        <Footer />
+        <Routes>
+          <Route path={END_POINTS.HOMEPAGE} element={<MainLayout />}>
+            <Route index element={<HomePage />} />
+          </Route>
+        </Routes>
       </QueryClientProvider>
     </ThemeProvider>
   )
