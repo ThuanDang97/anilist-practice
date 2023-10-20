@@ -8,7 +8,14 @@ import MainLayout from './layouts/MainLayout'
 import HomePage from '@pages/HomePage'
 import { END_POINTS } from './constants'
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      staleTime: 60 * 1000,
+    },
+  },
+})
 
 const App = () => {
   return (
