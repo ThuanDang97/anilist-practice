@@ -3,22 +3,22 @@ import {
   ColorScheme,
   ColorSchemeProvider,
   MantineProvider,
-  MantineThemeOverride,
 } from '@mantine/core'
+
+// themes
+import { defaultTheme } from './themes'
 
 const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [colorScheme, setColorScheme] = useState<ColorScheme>('light')
   const toggleColorScheme = () =>
     setColorScheme(colorScheme === 'dark' ? 'light' : 'dark')
 
-  const themeCustom: MantineThemeOverride = {}
-
   return (
     <ColorSchemeProvider
       colorScheme={colorScheme}
       toggleColorScheme={toggleColorScheme}
     >
-      <MantineProvider theme={themeCustom} withGlobalStyles withNormalizeCSS>
+      <MantineProvider theme={defaultTheme} withGlobalStyles withNormalizeCSS>
         {children}
       </MantineProvider>
     </ColorSchemeProvider>
