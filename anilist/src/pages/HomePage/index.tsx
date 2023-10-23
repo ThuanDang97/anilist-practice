@@ -1,4 +1,4 @@
-import { Box, Button, Text } from '@mantine/core'
+import { Box } from '@mantine/core'
 
 // components
 import SmallCard from '@components/Card/SmallCard'
@@ -11,13 +11,7 @@ const HomePage = () => {
   return (
     <Box>
       <LandingSection />
-
       <SmallCard anime={mockAnime} />
-      <Box mt={50}>
-        <Button variant="primary">123</Button>
-        <Button variant="secondary">456</Button>
-        <Text>123123</Text>
-      </Box>
     </Box>
   )
 }
