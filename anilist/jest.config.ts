@@ -17,16 +17,15 @@ const jestConfig: JestConfigWithTsJest = {
   },
   collectCoverageFrom: [
     'src/**/*.{ts,tsx}',
-    '!src/App.tsx',
     '!src/main.tsx',
     '!src/**/*.stories.tsx',
     '!src/vite-env.d.ts',
-    '!src/pages/**',
     '!src/mockers/**',
     '!src/assets/**',
     '!src/constants/**',
     '!src/mocks/**',
     '!src/themes/**',
+    '!src/utils/testUtils.tsx',
   ],
   coverageThreshold: {
     global: {
