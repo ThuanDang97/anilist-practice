@@ -1,6 +1,6 @@
-import { Box, Button, Popover, Text, Title } from '@mantine/core'
+import { Box, Popover, Text } from '@mantine/core'
 import { Link } from 'react-router-dom'
-import { ReactNode, useMemo } from 'react'
+import { ReactNode } from 'react'
 import { useDisclosure } from '@mantine/hooks'
 
 // styles
@@ -31,38 +31,35 @@ const Navbar = ({ listNavbar }: IListNavbar) => {
 
   const [opened, { close, open }] = useDisclosure(false)
 
-  const renderSubMenu = useMemo(
-    () => (item: INavbar) => {
-      const { label, link, subMenu } = item
+  const renderSubMenu = (item: INavbar) => {
+    const { label, link, subMenu } = item
 
-      return (
-        <Popover
-          width={200}
-          position="bottom"
-          withArrow
-          shadow="md"
-          opened={opened}
-          aria-label="Menu"
-        >
-          <Popover.Target>
-            <Link to={link} className={classes.link}>
-              <Text size="md" onMouseEnter={open} onMouseLeave={close}>
-                {label}
-              </Text>
+    return (
+      <Popover
+        width={200}
+        position="bottom"
+        withArrow
+        shadow="md"
+        opened={opened}
+        aria-label="Menu"
+      >
+        <Popover.Target>
+          <Link to={link} className={classes.link}>
+            <Text size="md" onMouseEnter={open} onMouseLeave={close}>
+              {label}
+            </Text>
+          </Link>
+        </Popover.Target>
+        <Popover.Dropdown style={{ pointerEvents: 'none' }}>
+          {subMenu?.map((item) => (
+            <Link to={item.link} key={item.label}>
+              <Text size="md">{item.label}</Text>
             </Link>
-          </Popover.Target>
-          <Popover.Dropdown style={{ pointerEvents: 'none' }}>
-            {subMenu?.map((item) => (
-              <Link to={item.link} key={item.label}>
-                <Text size="md">{item.label}</Text>
-              </Link>
-            ))}
-          </Popover.Dropdown>
-        </Popover>
-      )
-    },
-    [],
-  )
+          ))}
+        </Popover.Dropdown>
+      </Popover>
+    )
+  }
 
   return (
     <Box component="nav" className={classes.nav} role="navigation">
