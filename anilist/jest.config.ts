@@ -23,6 +23,10 @@ const jestConfig: JestConfigWithTsJest = {
     '!src/vite-env.d.ts',
     '!src/pages/**',
     '!src/mockers/**',
+    '!src/assets/**',
+    '!src/constants/**',
+    '!src/mocks/**',
+    '!src/themes/**',
   ],
   coverageThreshold: {
     global: {
