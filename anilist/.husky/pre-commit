@@ -3,3 +3,4 @@
 
 cd anilist
 npx lint-staged
+pnpm run test
