@@ -1,4 +1,4 @@
-import { Box, Button, Image, Text, Title } from '@mantine/core'
+import { Box, Image, Text, Title } from '@mantine/core'
 import { Link } from 'react-router-dom'
 
 // styles
