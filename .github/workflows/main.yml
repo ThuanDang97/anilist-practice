@@ -23,7 +23,7 @@ jobs:
         run: cd anilist && yarn install
 
       - name: Run tests
-        run: yarn run test
+        run: cd anilist && yarn run test
 
       - name: Run build
-        run: yarn run build
+        run: cd anilist && yarn run build
