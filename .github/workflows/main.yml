@@ -20,7 +20,7 @@ jobs:
         run: yarn
 
       - name: Install packages
-        run: cd my-react-app && yarn install
+        run: cd anilist && yarn install
 
       - name: Run tests
         run: pnpm run test
