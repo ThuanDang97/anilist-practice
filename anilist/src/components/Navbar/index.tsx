@@ -1,4 +1,4 @@
-import { Box, Popover, Text } from '@mantine/core'
+import { Box, Popover } from '@mantine/core'
 import { Link } from 'react-router-dom'
 import { ReactNode } from 'react'
 import { useDisclosure } from '@mantine/hooks'
