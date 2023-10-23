@@ -33,3 +33,4 @@ export const wrapper = ({ children }: { children: ReactNode }) => {
 }
 
 export * from '@testing-library/react'
+export { renderWithRouterAndQuery as render }
