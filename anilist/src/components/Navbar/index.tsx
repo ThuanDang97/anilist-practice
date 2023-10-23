@@ -44,16 +44,19 @@ const Navbar = ({ listNavbar }: IListNavbar) => {
         aria-label="Menu"
       >
         <Popover.Target>
-          <Link to={link} className={classes.link}>
-            <Text size="md" onMouseEnter={open} onMouseLeave={close}>
-              {label}
-            </Text>
+          <Link
+            to={link}
+            className={classes.link}
+            onMouseEnter={open}
+            onMouseLeave={close}
+          >
+            {label}
           </Link>
         </Popover.Target>
-        <Popover.Dropdown style={{ pointerEvents: 'none' }}>
+        <Popover.Dropdown style={{ pointerEvents: 'none' }} data-testid="menu">
           {subMenu?.map((item) => (
             <Link to={item.link} key={item.label}>
-              <Text size="md">{item.label}</Text>
+              {item.label}
             </Link>
           ))}
         </Popover.Dropdown>
@@ -71,7 +74,7 @@ const Navbar = ({ listNavbar }: IListNavbar) => {
               renderSubMenu(item)
             ) : (
               <Link to={link} className={classes.link} key={item.label}>
-                <Text size="md">{label}</Text>
+                {label}
               </Link>
             )}
           </Box>
