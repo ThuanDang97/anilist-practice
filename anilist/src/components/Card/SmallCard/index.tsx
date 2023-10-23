@@ -66,7 +66,10 @@ const SmallCard = ({ anime }: IAnimeItem) => {
           </Link>
         </Box>
       </Popover.Target>
-      <Popover.Dropdown style={{ pointerEvents: 'none' }}>
+      <Popover.Dropdown
+        style={{ pointerEvents: 'none' }}
+        data-testid="dropdown-card"
+      >
         <Box className={classes.wrapper}>
           <Box className={classes.header}>
             <Text className={classes.date}>{`${season} ${seasonYear}`}</Text>
