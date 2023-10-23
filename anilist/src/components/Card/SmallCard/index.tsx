@@ -86,7 +86,12 @@ const SmallCard = ({ anime }: IAnimeItem) => {
           </Box>
           <Box className={classes.genres}>
             {genres.map((item) => (
-              <Badge bg={coverImage.color} className={classes.badge} ml={5}>
+              <Badge
+                key={item}
+                bg={coverImage.color}
+                className={classes.badge}
+                ml={5}
+              >
                 {item}
               </Badge>
             ))}

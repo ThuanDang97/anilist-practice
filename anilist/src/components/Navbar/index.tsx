@@ -69,7 +69,7 @@ const Navbar = ({ listNavbar }: IListNavbar) => {
       {listNavbar.map((item) => {
         const { label, link, subMenu } = item
         return (
-          <>
+          <Box key={label}>
             {subMenu ? (
               renderSubMenu(item)
             ) : (
@@ -77,7 +77,7 @@ const Navbar = ({ listNavbar }: IListNavbar) => {
                 <Text size="md">{label}</Text>
               </Link>
             )}
-          </>
+          </Box>
         )
       })}
     </Box>
