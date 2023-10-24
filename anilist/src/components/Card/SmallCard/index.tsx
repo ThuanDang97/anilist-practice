@@ -1,5 +1,5 @@
+import { Badge, Box, Image, Popover, Text } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
-import { Badge, Box, Button, Card, Image, Popover, Text } from '@mantine/core'
 import { Link } from 'react-router-dom'
 
 // types
