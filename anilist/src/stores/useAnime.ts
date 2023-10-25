@@ -1,9 +1,9 @@
 import { create } from 'zustand'
 
 // interfaces
-import { IAnimeActions } from '@interfaces/anime'
+import { AnimeActions } from '@interfaces/anime'
 
-const useAnime = create<IAnimeActions>((set) => ({
+const useAnime = create<AnimeActions>((set) => ({
   anime: [],
   setAnime: (data) => {
     set({ anime: data })

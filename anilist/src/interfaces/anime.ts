@@ -1,7 +1,7 @@
 // types
-import { IAnime } from '@type/Anime.types'
+import { Anime } from '@type/Anime.types'
 
-export interface IAnimeActions {
-  anime: IAnime[]
-  setAnime: (data: IAnime[]) => void
+export interface AnimeActions {
+  anime: Anime[]
+  setAnime: (data: Anime[]) => void
 }

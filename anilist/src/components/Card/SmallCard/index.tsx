@@ -3,7 +3,7 @@ import { useDisclosure } from '@mantine/hooks'
 import { Link } from 'react-router-dom'
 
 // types
-import { IAnime } from '@type/Anime.types'
+import { Anime } from '@type/Anime.types'
 
 // styles
 import { useStylesSmallCard } from './SmallCard.module'
@@ -11,11 +11,11 @@ import { useStylesSmallCard } from './SmallCard.module'
 // constants
 import { END_POINTS } from '@constants/endPoints'
 
-interface IAnimeItem {
-  anime: IAnime
+interface AnimeItem {
+  anime: Anime
 }
 
-const SmallCard = ({ anime }: IAnimeItem) => {
+const SmallCard = ({ anime }: AnimeItem) => {
   const [opened, { close, open }] = useDisclosure(false)
   const { classes } = useStylesSmallCard()
   const {

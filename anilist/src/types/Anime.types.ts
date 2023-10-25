@@ -1,11 +1,16 @@
-type TStudio = {
+type Studio = {
   nodes: {
     id: number
     name: string
   }[]
 }
 
-export interface IAnime {
+export interface Total {
+  Page: PageInformation
+  mediaTrends: AnimeTrends[]
+}
+
+export interface Anime {
   id: number
   title: {
     romaji: string
@@ -22,7 +27,7 @@ export interface IAnime {
     month: number
     day: number
   }
-  studios: TStudio
+  studios: Studio
   format: string
   status: string
   episodes: number
@@ -45,4 +50,23 @@ export interface IAnime {
   }
   bannerImage: string
   description: string
+}
+
+export interface AnimeTrends {
+  mediaId: number
+  date: number
+  trending: number
+  averageScore: number
+  popularity: number
+  episode: number
+  releasing: boolean
+  media: Anime[]
+}
+
+export interface PageInformation {
+  total: number
+  currentPage: number
+  lastPage: number
+  hasNextPage: boolean
+  perPage: number
 }

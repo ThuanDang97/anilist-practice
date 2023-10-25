@@ -4,14 +4,26 @@ import { Box } from '@mantine/core'
 import SmallCard from '@components/Card/SmallCard'
 import LandingSection from '@components/Landing'
 
-// mocks
-import { mockAnime } from '@mocks/mockAnime'
+// hooks
+import useAnimeList from '@hooks/useAnimeList'
 
 const HomePage = () => {
+  const { data: listAnime, isLoading } = useAnimeList()
+
+  console.log('anime', listAnime)
+
+  const renderContent = () => {
+    return listAnime?.map((anime) => (
+      <Box key={anime.id}>
+        <SmallCard anime={anime} />
+      </Box>
+    ))
+  }
+
   return (
     <Box>
       <LandingSection />
-      <SmallCard anime={mockAnime} />
+      {listAnime && !isLoading ? renderContent() : <Box>Loading</Box>}
     </Box>
   )
 }
