@@ -1,5 +1,5 @@
 export const query = `
-  query($page: Int, $perPage: Int, $sort: String) {
+  query($page: Int, $perPage: Int, $sort: [MediaTrendSort]) {
     Page(page: $page, perPage: $perPage) {
       pageInfo {
         total

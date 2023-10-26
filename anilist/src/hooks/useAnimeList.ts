@@ -1,15 +1,17 @@
 import { UseQueryResult, useQuery } from '@tanstack/react-query'
-
 // services
 import { getAnime } from '@services/animeService'
 
 // types
-import { Anime } from '@type/Anime.types'
+import { variables } from '@type/Anime.types'
 
-const useAnimeList = (): UseQueryResult<Anime[]> => {
+// interfaces
+import { Anime, Total } from '@interfaces/anime'
+
+const useAnimeList = (variables: variables): UseQueryResult<Total> => {
   return useQuery({
     queryKey: ['anime'],
-    queryFn: () => getAnime(),
+    queryFn: () => getAnime(variables),
   })
 }
 
