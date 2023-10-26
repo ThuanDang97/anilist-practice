@@ -2,8 +2,8 @@ import { Badge, Box, Image, Popover, Text } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { Link } from 'react-router-dom'
 
-// types
-import { Anime } from '@type/Anime.types'
+// interfaces
+import { Anime } from '@interfaces/anime'
 
 // styles
 import { useStylesSmallCard } from './SmallCard.module'
