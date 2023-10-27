@@ -8,7 +8,7 @@ export interface AnimeActions {
 
 export interface Total {
   Page: PageInformation
-  mediaTrends: AnimeTrends[]
+  media: Anime[]
 }
 
 export interface Anime {
@@ -51,17 +51,6 @@ export interface Anime {
   }
   bannerImage: string
   description: string
-}
-
-export interface AnimeTrends {
-  mediaId: number
-  date: number
-  trending: number
-  averageScore: number
-  popularity: number
-  episode: number
-  releasing: boolean
-  media: Anime[]
 }
 
 export interface PageInformation {
