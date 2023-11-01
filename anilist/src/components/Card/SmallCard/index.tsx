@@ -52,17 +52,17 @@ const SmallCard = ({ anime }: AnimeItem) => {
           }}
         >
           <Link
-            to={`${END_POINTS.SEARCH_PAGE}?search=${title}`}
+            to={`${END_POINTS.SEARCH_PAGE}/${title}`}
             onMouseEnter={open}
             onMouseLeave={close}
           >
             <Image
               src={coverImage.extraLarge}
-              alt={title.english}
+              alt={title.userPreferred}
               width={185}
               height={265}
             />
-            <Text size="md">{title.romaji}</Text>
+            <Text size="md">{title.userPreferred}</Text>
           </Link>
         </Box>
       </Popover.Target>
@@ -72,16 +72,19 @@ const SmallCard = ({ anime }: AnimeItem) => {
       >
         <Box className={classes.wrapper}>
           <Box className={classes.header}>
-            <Text className={classes.date}>{`${season} ${seasonYear}`}</Text>
+            <Text className={classes.date}>{`${season || ''} ${
+              seasonYear || ''
+            }`}</Text>
             <Box>{averageScore}%</Box>
           </Box>
+
           <Text
             className={classes.studios}
             sx={{
               color: coverImage.color,
             }}
           >
-            {studios.edges.nodes.name}
+            {studios.edges[0]?.node.name || ''}
           </Text>
           <Box className={classes.info}>
             <Text>{format}</Text>
@@ -89,8 +92,11 @@ const SmallCard = ({ anime }: AnimeItem) => {
           </Box>
           <Box className={classes.genres}>
             {genres.map((item) => (
-              <Link key={item} to={`${END_POINTS.SEARCH_PAGE}?search=${title}`}>
-                <Badge bg={coverImage.color} className={classes.badge}>
+              <Link key={item} to={`${END_POINTS.SEARCH_PAGE}/${item}`}>
+                <Badge
+                  bg={coverImage.color || '#3577ff'}
+                  className={classes.badge}
+                >
                   {item}
                 </Badge>
               </Link>
