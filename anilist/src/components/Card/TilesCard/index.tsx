@@ -44,6 +44,7 @@ const TilesCard = ({ anime }: AnimeItem) => {
                 <Badge
                   bg={coverImage.color || '#3577ff'}
                   className={classes.badge}
+                  tt="lowercase"
                 >
                   {item}
                 </Badge>

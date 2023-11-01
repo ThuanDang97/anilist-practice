@@ -39,7 +39,9 @@ const ListCardComponent = ({
               <SmallCard anime={anime} />
             ) : (
               <>
-                <Text size="lg"># {index + 1}</Text>
+                <Text size="lg" className={classes.ranks}>
+                  #{index + 1}
+                </Text>
                 <TilesCard anime={anime} />
               </>
             )}

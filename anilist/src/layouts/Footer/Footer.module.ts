@@ -5,7 +5,6 @@ export const useStylesFooter = createStyles(() => ({
     background: '#11161d',
     color: '#a0b1c5',
     fontWeight: 600,
-    marginTop: '20px',
     minHeight: '100px',
     padding: '50px 30px',
     textAlign: 'left',
