@@ -1,6 +1,7 @@
 export const query = `
   query (
     $page: Int = 1
+    $perPage: Int = 6
     $id: Int
     $type: MediaType
     $isAdult: Boolean = false
