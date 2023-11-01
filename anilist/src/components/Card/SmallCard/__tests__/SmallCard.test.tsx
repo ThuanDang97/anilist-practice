@@ -9,7 +9,7 @@ import { mockAnime } from '@mocks/mockAnime'
 
 describe('Small Card component', () => {
   test('renders small card and show content when hover', () => {
-    render(<SmallCard anime={mockAnime} />)
+    render(<SmallCard anime={mockAnime[0]} />)
 
     const coverImage = screen.getByRole('img', {
       name: /witch hunter robin/i,
