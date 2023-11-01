@@ -14,9 +14,12 @@ export interface Total {
 export interface Anime {
   id: number
   title: {
-    romaji: string
-    english: string
-    native: string
+    userPreferred: string
+  }
+  coverImage: {
+    large: string
+    extraLarge: string
+    color: string
   }
   startDate: {
     year: number
@@ -28,29 +31,22 @@ export interface Anime {
     month: number
     day: number
   }
-  studios: Studio
+  bannerImage: string
+  season: string
+  seasonYear: number
+  description: string
+  type: string
   format: string
   status: string
   episodes: number
   duration: number
-  chapters: string | null
-  volumes: string | null
-  isAdult: boolean
+  chapters: string
+  volumes: string
   genres: string[]
+  isAdult: boolean
   averageScore: number
   popularity: number
-  source: string
-  countryOfOrigin: string
-  isLicensed: boolean
-  season: string
-  seasonYear: number
-  coverImage: {
-    medium: string
-    extraLarge: string
-    color: string
-  }
-  bannerImage: string
-  description: string
+  studios: Studio
 }
 
 export interface PageInformation {

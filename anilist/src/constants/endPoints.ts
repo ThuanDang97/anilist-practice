@@ -9,4 +9,9 @@ export const END_POINTS = {
   PROFILE: '/user',
   ANIME_LIST: '/user/:user/animelist',
   MANGA_LIST: '/user/:user/mangalist',
+  TRENDING: '/trending',
+  THIS_SEASON: '/this-season',
+  NEXT_SEASON: '/next-season',
+  POPULAR: '/popular',
+  TOP_100: '/top-100',
 }

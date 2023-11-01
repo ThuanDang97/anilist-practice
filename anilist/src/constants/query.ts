@@ -107,15 +107,6 @@ export const query = `
         isAdult
         averageScore
         popularity
-        nextAiringEpisode {
-          airingAt
-          timeUntilAiring
-          episode
-        }
-        mediaListEntry {
-          id
-          status
-        }
         studios(isMain: true) {
           edges {
             isMain
@@ -128,5 +119,4 @@ export const query = `
       }
     }
   }
-
 `
