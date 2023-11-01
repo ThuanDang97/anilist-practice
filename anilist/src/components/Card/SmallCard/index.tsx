@@ -61,6 +61,7 @@ const SmallCard = ({ anime }: AnimeItem) => {
               alt={title.userPreferred}
               width={185}
               height={265}
+              radius={5}
             />
             <Text size="md">{title.userPreferred}</Text>
           </Link>

@@ -36,4 +36,7 @@ export const useStylesSmallCard = createStyles((theme) => ({
     color: 'white',
     textTransform: 'lowercase',
   },
+  coverImage: {
+    borderRadius: '5px',
+  },
 }))
