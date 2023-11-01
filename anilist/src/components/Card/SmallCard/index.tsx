@@ -81,7 +81,7 @@ const SmallCard = ({ anime }: AnimeItem) => {
               color: coverImage.color,
             }}
           >
-            {studios.nodes[0].name}
+            {studios.edges.nodes.name}
           </Text>
           <Box className={classes.info}>
             <Text>{format}</Text>
@@ -89,9 +89,11 @@ const SmallCard = ({ anime }: AnimeItem) => {
           </Box>
           <Box className={classes.genres}>
             {genres.map((item) => (
-              <Badge key={item} bg={coverImage.color} className={classes.badge}>
-                {item}
-              </Badge>
+              <Link key={item} to={`${END_POINTS.SEARCH_PAGE}?search=${title}`}>
+                <Badge bg={coverImage.color} className={classes.badge}>
+                  {item}
+                </Badge>
+              </Link>
             ))}
           </Box>
         </Box>
