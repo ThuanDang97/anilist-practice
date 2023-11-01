@@ -5,11 +5,11 @@ const trending = {
 }
 
 const popularSeason = {
-  sort: SORT_BY.POPULARITY_DESC,
+  sort: [SORT_BY.POPULARITY_DESC],
 }
 
 const upcoming = {
-  sort: SORT_BY.POPULARITY_DESC,
+  sort: [SORT_BY.POPULARITY_DESC],
 }
 
 const popular = {
@@ -18,7 +18,7 @@ const popular = {
 
 const top100 = {
   perPage: 10,
-  sort: SORT_BY.POPULARITY_DESC,
+  sort: [SORT_BY.POPULARITY_DESC],
 }
 
 enum Media {

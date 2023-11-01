@@ -9,6 +9,7 @@ export const useStylesLanding = createStyles(() => ({
     padding: '60px 80px',
     width: '100%',
     color: '#f0f3f6',
+    marginBottom: '80px',
   },
   heading: {
     fontSize: '32px',

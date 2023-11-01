@@ -10,7 +10,7 @@ import { Total } from '@interfaces/anime'
 
 const useAnimeList = (variables: variables): UseQueryResult<Total> => {
   return useQuery({
-    queryKey: ['anime'],
+    queryKey: ['anime', variables],
     queryFn: () => getAnime(variables),
   })
 }
