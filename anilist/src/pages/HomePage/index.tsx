@@ -1,4 +1,4 @@
-import { Box, Container } from '@mantine/core'
+import { Box } from '@mantine/core'
 
 // components
 import LandingSection from '@components/Landing'
@@ -30,7 +30,7 @@ const HomePage = () => {
   const { data: listTop100, isLoading: isLoadingTop100 } = useAnimeList(top100)
 
   return (
-    <Container size="xl" mt="80px">
+    <Box>
       <LandingSection />
 
       {/* List Anime Trending sections */}
@@ -78,7 +78,7 @@ const HomePage = () => {
           typeCard="tiles"
         />
       </Box>
-    </Container>
+    </Box>
   )
 }
 
