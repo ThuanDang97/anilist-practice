@@ -2,16 +2,16 @@
 import { SORT_BY } from '@constants/sort'
 import { Format, Media, Season, Status } from '@constants/variables'
 
+export interface Edge {
+  isMain: boolean
+  node: {
+    id: number
+    name: string
+  }
+}
+
 export type Studio = {
-  edges: [
-    {
-      isMain: boolean
-      node: {
-        id: number
-        name: string
-      }
-    },
-  ]
+  edges: Edge[]
 }
 
 export type MediaType = Media

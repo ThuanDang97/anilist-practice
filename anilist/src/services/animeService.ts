@@ -15,9 +15,11 @@ export const fetchApi = async (query: string, variables: variables) => {
       variables: variables,
     })
 
+    console.log('response: ', response)
+
     return response.data.data.Page
   } catch (error) {
-    console.error(ERRORS_MESSAGE.ERROR_FETCHING, error)
+    return ERRORS_MESSAGE.ERROR_FETCHING
   }
 }
 

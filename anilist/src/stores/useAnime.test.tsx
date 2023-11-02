@@ -1,6 +1,5 @@
 import { act, renderHook } from '@testing-library/react'
 import useAnime from './useAnime'
-import { mockAnime } from '@mocks/mockAnime'
 
 describe('useAnime', () => {
   test('should initialize anime with an empty array', () => {
