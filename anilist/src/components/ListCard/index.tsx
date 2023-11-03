@@ -1,10 +1,18 @@
 import { Box, Button, Text, Title } from '@mantine/core'
-import { useStylesListCards } from './ListCard.module'
 import { Link } from 'react-router-dom'
-import { Anime } from '@interfaces/anime'
+
+// components
 import SmallCard from '@components/Card/SmallCard'
 import TilesCard from '@components/Card/TilesCard'
+
+// mocks
 import { END_POINTS } from '@constants/endPoints'
+
+// interfaces
+import { Anime } from '@interfaces/anime'
+
+// styles
+import { useStylesListCards } from './ListCard.module'
 
 interface IListCard {
   title: string

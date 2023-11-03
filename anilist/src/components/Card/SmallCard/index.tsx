@@ -41,6 +41,7 @@ const SmallCard = ({ anime }: AnimeItem) => {
       key={id}
       arrowSize={12}
       arrowOffset={50}
+      data-testid="small-card"
     >
       <Popover.Target>
         <Box
