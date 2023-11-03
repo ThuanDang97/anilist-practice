@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 import { render } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
+import ThemeProvider from '../theme'
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
@@ -9,7 +10,11 @@ export const renderWithRouterAndQuery = (children: ReactNode) => {
 
   return render(
     <BrowserRouter>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      <ThemeProvider>
+        <QueryClientProvider client={queryClient}>
+          {children}
+        </QueryClientProvider>
+      </ThemeProvider>
     </BrowserRouter>,
   )
 }
