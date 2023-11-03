@@ -34,50 +34,45 @@ const HomePage = () => {
       <LandingSection />
 
       {/* List Anime Trending sections */}
-      <Box>
-        <ListCardComponent
-          title={TITLE_SECTIONS.TRENDING}
-          listAnime={listTrending?.media || []}
-          href={END_POINTS.TRENDING}
-        />
-      </Box>
+
+      <ListCardComponent
+        title={TITLE_SECTIONS.TRENDING}
+        listAnime={listTrending?.media || []}
+        href={END_POINTS.TRENDING}
+      />
 
       {/* List Anime Popular sections */}
-      <Box>
-        <ListCardComponent
-          title={TITLE_SECTIONS.POPULAR}
-          listAnime={listPopularSeason?.media || []}
-          href={END_POINTS.TRENDING}
-        />
-      </Box>
+
+      <ListCardComponent
+        title={TITLE_SECTIONS.POPULAR}
+        listAnime={listPopularSeason?.media || []}
+        href={END_POINTS.TRENDING}
+      />
 
       {/* List Anime UpComing sections */}
-      <Box>
-        <ListCardComponent
-          title={TITLE_SECTIONS.UPCOMING}
-          listAnime={listUpComing?.media || []}
-          href={END_POINTS.TRENDING}
-        />
-      </Box>
+
+      <ListCardComponent
+        title={TITLE_SECTIONS.UPCOMING}
+        listAnime={listUpComing?.media || []}
+        href={END_POINTS.TRENDING}
+      />
 
       {/* List Anime All Time Popular sections */}
-      <Box>
-        <ListCardComponent
-          title={TITLE_SECTIONS.ALL_TIME}
-          listAnime={listPopular?.media || []}
-          href={END_POINTS.TRENDING}
-        />
-      </Box>
+
+      <ListCardComponent
+        title={TITLE_SECTIONS.ALL_TIME}
+        listAnime={listPopular?.media || []}
+        href={END_POINTS.TRENDING}
+      />
 
       {/* List Anime Trending sections */}
-      <Box>
-        <ListCardComponent
-          title={TITLE_SECTIONS.TOP_100}
-          listAnime={listTop100?.media || []}
-          href={END_POINTS.TRENDING}
-          typeCard="tiles"
-        />
-      </Box>
+
+      <ListCardComponent
+        title={TITLE_SECTIONS.TOP_100}
+        listAnime={listTop100?.media || []}
+        href={END_POINTS.TRENDING}
+        typeCard="tiles"
+      />
     </Box>
   )
 }
