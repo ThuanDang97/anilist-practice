@@ -23,4 +23,7 @@ jobs:
         run: cd anilist && yarn install
 
       - name: Run tests
-        run: pnpm run test
+        run: cd anilist && yarn run test
+
+      - name: Run build
+        run: cd anilist && yarn run build

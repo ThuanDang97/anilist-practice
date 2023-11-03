@@ -1,6 +1,3 @@
-import { pathsToModuleNameMapper } from 'ts-jest'
-
-import { compilerOptions } from './tsconfig.json'
 import type { JestConfigWithTsJest } from 'ts-jest'
 
 const jestConfig: JestConfigWithTsJest = {
@@ -20,12 +17,15 @@ const jestConfig: JestConfigWithTsJest = {
   },
   collectCoverageFrom: [
     'src/**/*.{ts,tsx}',
-    '!src/App.tsx',
     '!src/main.tsx',
     '!src/**/*.stories.tsx',
     '!src/vite-env.d.ts',
-    '!src/pages/**',
     '!src/mockers/**',
+    '!src/assets/**',
+    '!src/constants/**',
+    '!src/mocks/**',
+    '!src/themes/**',
+    '!src/utils/testUtils.tsx',
   ],
   coverageThreshold: {
     global: {
@@ -39,8 +39,23 @@ const jestConfig: JestConfigWithTsJest = {
     '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$',
     '^.+\\.module\\.(css|sass|scss)$',
   ],
-  modulePaths: [compilerOptions.baseUrl],
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
+  moduleNameMapper: {
+    '^@mocks(.*)$': '<rootDir>src/mocks/$1',
+    '^@constants(.*)$': '<rootDir>src/constants/$1',
+    '^@assets(.*)$': '<rootDir>src/assets/$1',
+    '^@components(.*)$': '<rootDir>src/components/$1',
+    '^@helpers(.*)$': '<rootDir>src/helpers/$1',
+    '^@contexts(.*)$': '<rootDir>src/contexts/$1',
+    '^@hooks(.*)$': '<rootDir>src/hooks/$1',
+    '^@services(.*)$': '<rootDir>src/services/$1',
+    '^@pages(.*)$': '<rootDir>src/pages/$1',
+    '^@layouts(.*)$': '<rootDir>src/layouts/$1',
+    '^@routes(.*)$': '<rootDir>src/routes/$1',
+    '^@types(.*)$': '<rootDir>src/types/$1',
+    '^@themes(.*)$': '<rootDir>src/themes/$1',
+    '^@stores(.*)$': '<rootDir>src/stores/$1',
+    '^@utils(.*)$': '<rootDir>src/utils/$1',
+  },
 }
 
 export default jestConfig

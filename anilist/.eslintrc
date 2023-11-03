@@ -50,7 +50,7 @@
         "prettier/prettier": [
           "warn",
           {
-            "semi": true
+            "semi": false
           }
         ]
       },
