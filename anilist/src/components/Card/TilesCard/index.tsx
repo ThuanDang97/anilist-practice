@@ -24,7 +24,7 @@ const TilesCard = ({ anime }: AnimeItem) => {
   } = anime
 
   return (
-    <Box className={classes.productCard}>
+    <Box className={classes.productCard} data-testid="tiles-card">
       <Link to={`${END_POINTS.SEARCH_PAGE}/${title}`}>
         <Image
           src={coverImage.large}
