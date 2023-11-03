@@ -1,4 +1,4 @@
-import { Anime } from '@interfaces/anime'
+import { Anime, ListAnime } from '@interfaces/anime'
 
 export const mockAnime: Anime = {
   id: 5,
@@ -12,16 +12,8 @@ export const mockAnime: Anime = {
       'https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx5-NozHwXWdNLCz.jpg',
     color: '#f13500',
   },
-  startDate: {
-    year: 2001,
-    month: 9,
-    day: 1,
-  },
-  endDate: {
-    year: 2001,
-    month: 9,
-    day: 1,
-  },
+  startDate: '',
+  endDate: '',
   bannerImage:
     'https://s4.anilist.co/file/anilistcdn/media/anime/banner/5-VOcSZFepDDhm.jpg',
   season: 'SUMMER',
@@ -59,7 +51,7 @@ export const mockAnime: Anime = {
   },
 }
 
-export const mockListAnime: Anime[] = [
+export const mockListAnime: ListAnime[] = [
   {
     id: 1,
     title: {

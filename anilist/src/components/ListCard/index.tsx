@@ -9,14 +9,17 @@ import TilesCard from '@components/Card/TilesCard'
 import { END_POINTS } from '@constants/endPoints'
 
 // interfaces
-import { Anime } from '@interfaces/anime'
+import { ListAnime } from '@interfaces/anime'
 
 // styles
 import { useStylesListCards } from './ListCard.module'
 
+// utils
+import { TransformerData } from '@utils/transformData'
+
 interface IListCard {
   title: string
-  listAnime: Anime[]
+  listAnime: ListAnime[]
   typeCard?: 'small' | 'tiles'
   href: string
 }
@@ -28,6 +31,8 @@ const ListCardComponent = ({
   href,
 }: IListCard) => {
   const { classes } = useStylesListCards()
+
+  const listAnimeTransformer = TransformerData(listAnime)
 
   return (
     <Box className={classes.landingSection}>
@@ -41,7 +46,7 @@ const ListCardComponent = ({
       <Box
         className={typeCard === 'small' ? classes.smallCard : classes.tilesCard}
       >
-        {listAnime.map((anime, index) => (
+        {listAnimeTransformer.map((anime, index) => (
           <Box key={anime.id} className={classes.results}>
             {typeCard === 'small' ? (
               <SmallCard anime={anime} />
