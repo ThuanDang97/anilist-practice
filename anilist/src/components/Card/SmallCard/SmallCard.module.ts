@@ -32,10 +32,6 @@ export const useStylesSmallCard = createStyles((theme) => ({
     marginTop: '22px',
     gap: '10px',
   },
-  badge: {
-    color: 'white',
-    textTransform: 'lowercase',
-  },
   coverImage: {
     borderRadius: '5px',
   },

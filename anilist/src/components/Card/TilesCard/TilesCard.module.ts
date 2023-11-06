@@ -15,7 +15,6 @@ export const useStylesTilesCard = createStyles((theme) => ({
     gap: '5px',
     textTransform: 'lowercase',
   },
-  badge: {},
   content: {
     width: '100%',
     display: 'grid',

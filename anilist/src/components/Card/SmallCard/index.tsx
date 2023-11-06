@@ -93,7 +93,7 @@ const SmallCard = ({ anime }: AnimeItem) => {
           <Box className={classes.genres}>
             {genres.map((item) => (
               <Link key={item} to={`${END_POINTS.SEARCH_PAGE}/${item}`}>
-                <Badge bg={coverImage.color} className={classes.badge}>
+                <Badge bg={coverImage.color} tt="lowercase">
                   {item}
                 </Badge>
               </Link>
