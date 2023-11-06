@@ -58,6 +58,10 @@ export const useStylesLanding = createStyles(() => ({
     margin: '0 auto',
     justifyContent: 'space-between',
     marginBottom: '-78px',
+    transition: 'box-shadow .4s ease',
+    ':hover': {
+      boxShadow: `0 2px 43px #3577ff`,
+    },
   },
   circle: {
     background: '#d9e6ff',

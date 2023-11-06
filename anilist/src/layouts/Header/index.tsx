@@ -38,7 +38,9 @@ const Header = ({ isAuthenticated }: IHeader) => {
             <Text size="md">Login</Text>
           </Link>
           <Link to={END_POINTS.SIGNUP}>
-            <Button size="md">Sign Up</Button>
+            <Button size="md" variant="primary">
+              Sign Up
+            </Button>
           </Link>
         </Box>
       </Box>

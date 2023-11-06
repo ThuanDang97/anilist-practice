@@ -5,7 +5,7 @@ export const useStylesTilesCard = createStyles((theme) => ({
     height: '80px',
     display: 'flex',
     width: '100%',
-    background: theme.colors.light[0],
+    background: '#FFF',
     padding: '10px',
   },
   row: {},
