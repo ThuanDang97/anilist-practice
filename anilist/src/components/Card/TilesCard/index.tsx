@@ -42,7 +42,7 @@ const TilesCard = ({ anime }: AnimeItem) => {
             {genres.map((item) => (
               <Link key={item} to={`${END_POINTS.SEARCH_PAGE}/${item}`}>
                 <Badge
-                  bg={coverImage.color || '#3577ff'}
+                  bg={coverImage.color}
                   className={classes.badge}
                   tt="lowercase"
                 >
