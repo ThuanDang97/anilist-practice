@@ -1,6 +1,6 @@
 import { MantineTheme } from '@mantine/core'
 
-const buttonTheme = {
+const ButtonTheme = {
   styles: (theme: MantineTheme) => ({
     root: {
       color: theme.colors.light[0],
@@ -33,4 +33,4 @@ const buttonTheme = {
   },
 }
 
-export default buttonTheme
+export default ButtonTheme
