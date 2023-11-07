@@ -74,9 +74,7 @@ const SmallCard = ({ anime }: AnimeItem) => {
       >
         <Box className={classes.wrapper}>
           <Box className={classes.header}>
-            <Text className={classes.date}>{`${season || ''} ${
-              seasonYear || ''
-            }`}</Text>
+            <Text className={classes.date}>{`${season} ${seasonYear}`}</Text>
             <Box>{averageScore}%</Box>
           </Box>
 
@@ -86,7 +84,7 @@ const SmallCard = ({ anime }: AnimeItem) => {
               color: coverImage.color,
             }}
           >
-            {studios.edges[0]?.node.name || ''}
+            {studios.edges[0]?.node.name}
           </Text>
           <Box className={classes.info}>
             <Text>{format}</Text>
@@ -95,10 +93,7 @@ const SmallCard = ({ anime }: AnimeItem) => {
           <Box className={classes.genres}>
             {genres.map((item) => (
               <Link key={item} to={`${END_POINTS.SEARCH_PAGE}/${item}`}>
-                <Badge
-                  bg={coverImage.color || '#3577ff'}
-                  className={classes.badge}
-                >
+                <Badge bg={coverImage.color} tt="lowercase">
                   {item}
                 </Badge>
               </Link>

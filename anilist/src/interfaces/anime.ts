@@ -2,16 +2,16 @@
 import { Studio } from '@type/Anime.types'
 
 export interface AnimeActions {
-  anime: Anime[]
-  setAnime: (data: Anime[]) => void
+  anime: ListAnime[]
+  setAnime: (data: ListAnime[]) => void
 }
 
 export interface Total {
   Page: PageInformation
-  media: Anime[]
+  media: ListAnime[]
 }
 
-export interface Anime {
+export interface ListAnime {
   id: number
   title: {
     userPreferred: string
@@ -31,6 +31,36 @@ export interface Anime {
     month: number
     day: number
   }
+  bannerImage: string
+  season: string
+  seasonYear: number
+  description: string
+  type: string
+  format: string
+  status: string
+  episodes: number
+  duration: number
+  chapters: string
+  volumes: string
+  genres: string[]
+  isAdult: boolean
+  averageScore: number
+  popularity: number
+  studios: Studio
+}
+
+export interface Anime {
+  id: number
+  title: {
+    userPreferred: string
+  }
+  coverImage: {
+    large: string
+    extraLarge: string
+    color: string
+  }
+  startDate: string
+  endDate: string
   bannerImage: string
   season: string
   seasonYear: number
