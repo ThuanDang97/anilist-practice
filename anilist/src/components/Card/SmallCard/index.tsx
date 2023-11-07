@@ -88,7 +88,7 @@ const SmallCard = ({ anime }: AnimeItem) => {
           </Text>
           <Box className={classes.info}>
             <Text>{format}</Text>
-            <Text>{episodes} episodes</Text>
+            {episodes > 0 && <Text>{episodes} episodes</Text>}
           </Box>
           <Box className={classes.genres}>
             {genres.slice(0, 3).map((item) => (
