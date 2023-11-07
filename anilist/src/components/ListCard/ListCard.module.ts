@@ -13,6 +13,7 @@ export const useStylesListCards = createStyles(() => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    position: 'relative',
   },
   smallCard: {
     display: 'flex',
@@ -29,6 +30,7 @@ export const useStylesListCards = createStyles(() => ({
     fontWeight: 900,
     fontSize: '30px',
     color: '#8ba0b2',
-    marginLeft: '5px',
+    position: 'absolute',
+    left: '15px',
   },
 }))
