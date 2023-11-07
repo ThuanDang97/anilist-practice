@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import SmallCard from '@components/Card/SmallCard'
 import TilesCard from '@components/Card/TilesCard'
 
-// mocks
+// constants
 import { END_POINTS } from '@constants/endPoints'
 
 // interfaces
