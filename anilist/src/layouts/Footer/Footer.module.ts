@@ -21,7 +21,6 @@ export const useStylesFooter = createStyles(() => ({
     display: 'flex',
     gap: '50px',
   },
-  list: {},
   link: {
     listStyleType: 'none',
     color: '#a0b1c5',
@@ -37,5 +36,14 @@ export const useStylesFooter = createStyles(() => ({
     fontWeight: 700,
     paddingBottom: '14px',
     fontSize: '20px',
+  },
+  button: {
+    border: '2px solid #46546b',
+    padding: 0,
+    width: '25px',
+    height: '25px',
+    paddingTop: '5px',
+    paddingLeft: '2px',
+    fontWeight: 500,
   },
 }))

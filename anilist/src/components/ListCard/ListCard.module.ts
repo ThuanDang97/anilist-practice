@@ -1,6 +1,6 @@
-import { createStyles } from '@mantine/core'
+import { MantineTheme, createStyles } from '@mantine/core'
 
-export const useStylesListCards = createStyles(() => ({
+export const useStylesListCards = createStyles((theme: MantineTheme) => ({
   landingSection: {
     paddingBottom: '80px',
   },
@@ -8,6 +8,10 @@ export const useStylesListCards = createStyles(() => ({
     display: 'flex',
     justifyContent: 'space-between',
     marginBottom: '20px',
+    color: '#647380',
+    ':hover': {
+      color: '#516170',
+    },
   },
   results: {
     display: 'flex',
@@ -28,9 +32,19 @@ export const useStylesListCards = createStyles(() => ({
     width: '50px',
     height: '50px',
     fontWeight: 900,
-    fontSize: '30px',
+    fontSize: '24px',
     color: '#8ba0b2',
     position: 'absolute',
-    left: '15px',
+    marginTop: '20px',
+    left: '22px',
+  },
+  button: {
+    background: 'transparent',
+    color: '#8BA0B2',
+    fontSize: theme.fontSizes.xxs,
+    ':hover': {
+      background: 'transparent',
+      color: '#516170',
+    },
   },
 }))
