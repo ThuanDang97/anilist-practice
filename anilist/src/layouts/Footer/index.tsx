@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  ColorScheme,
   Group,
   HoverCard,
   List,
@@ -124,7 +125,7 @@ const Footer = () => {
                       },
                     }}
                     className={classes.button}
-                    onClick={() => toggleColorScheme(theme.type)}
+                    onClick={() => toggleColorScheme(theme.type as ColorScheme)}
                   >
                     A
                   </Button>
