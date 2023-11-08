@@ -1,4 +1,12 @@
-import { Box, Button, Group, HoverCard, List, Text } from '@mantine/core'
+import {
+  Box,
+  Button,
+  Group,
+  HoverCard,
+  List,
+  Text,
+  useMantineColorScheme,
+} from '@mantine/core'
 import { Link } from 'react-router-dom'
 
 // mocks
@@ -17,7 +25,12 @@ type ListLink = {
   link: string
 }
 
-const listSiteTheme = [
+type listSiteTheme = {
+  type: 'light' | 'dark' | 'auto'
+  desc: string
+}
+
+const listSiteTheme: listSiteTheme[] = [
   {
     type: 'light',
     desc: 'Light',
@@ -27,13 +40,15 @@ const listSiteTheme = [
     desc: 'Dark',
   },
   {
-    type: 'default',
+    type: 'auto',
     desc: 'System Theme',
   },
 ]
 
 const Footer = () => {
   const { classes } = useStylesFooter()
+
+  const { toggleColorScheme } = useMantineColorScheme()
 
   const renderList = (listLink: ListLink[]) => {
     return (
@@ -109,6 +124,7 @@ const Footer = () => {
                       },
                     }}
                     className={classes.button}
+                    onClick={() => toggleColorScheme(theme.type)}
                   >
                     A
                   </Button>
