@@ -1,6 +1,6 @@
 import { createStyles } from '@mantine/core'
 
-export const useStylesTilesCard = createStyles((theme) => ({
+export const useStylesTilesCard = createStyles(() => ({
   productCard: {
     height: '80px',
     display: 'flex',
@@ -9,8 +9,17 @@ export const useStylesTilesCard = createStyles((theme) => ({
     padding: '10px',
     marginLeft: '80px',
   },
-  row: {},
-  subRow: {},
+  title: {
+    color: '#516170',
+    fontWeight: 600,
+  },
+  row: {
+    fontWeight: 600,
+    color: '#647380',
+  },
+  subRow: {
+    color: '#8BA0B2',
+  },
   genres: {
     display: 'flex',
     gap: '5px',

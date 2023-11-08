@@ -64,7 +64,15 @@ const SmallCard = ({ anime }: AnimeItem) => {
               height={265}
               radius={5}
             />
-            <Text size="md">{title.userPreferred}</Text>
+            <Text
+              component="p"
+              size="sm"
+              mt={10}
+              fw={600}
+              className={classes.title}
+            >
+              {title.userPreferred}
+            </Text>
           </Link>
         </Box>
       </Popover.Target>
@@ -74,7 +82,10 @@ const SmallCard = ({ anime }: AnimeItem) => {
       >
         <Box className={classes.wrapper}>
           <Box className={classes.header}>
-            <Text className={classes.date}>{`${season} ${seasonYear}`}</Text>
+            <Text
+              tt="capitalize"
+              className={classes.date}
+            >{`${season} ${seasonYear}`}</Text>
             <Box>{averageScore}%</Box>
           </Box>
 

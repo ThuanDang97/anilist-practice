@@ -35,4 +35,9 @@ export const useStylesSmallCard = createStyles((theme) => ({
   coverImage: {
     borderRadius: '5px',
   },
+  title: {
+    overflow: 'hidden',
+    transition: 'color .2s ease',
+    color: '#748899',
+  },
 }))

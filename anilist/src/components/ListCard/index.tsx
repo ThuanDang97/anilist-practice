@@ -38,8 +38,10 @@ const ListCardComponent = ({
     <Box className={classes.landingSection}>
       <Link to={`${END_POINTS.SEARCH_PAGE}${href}`}>
         <Box className={classes.title}>
-          <Title order={3}>{title}</Title>
-          <Button>View All</Button>
+          <Title order={3} size={16}>
+            {title}
+          </Title>
+          <Button className={classes.button}>View All</Button>
         </Box>
       </Link>
 
@@ -52,9 +54,7 @@ const ListCardComponent = ({
               <SmallCard anime={anime} />
             ) : (
               <>
-                <Text size="lg" className={classes.ranks}>
-                  #{index + 1}
-                </Text>
+                <Text className={classes.ranks}>#{index + 1}</Text>
                 <TilesCard anime={anime} />
               </>
             )}
