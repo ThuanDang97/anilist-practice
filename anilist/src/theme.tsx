@@ -16,8 +16,6 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
     getInitialValueInEffect: true,
   })
 
-  console.log('colorScheme', colorScheme)
-
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value as ColorScheme)
 
