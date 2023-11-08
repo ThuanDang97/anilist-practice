@@ -1,8 +1,14 @@
-import { Anime } from '@interfaces/anime'
-import { useStylesTilesCard } from './TilesCard.module'
 import { Badge, Box, Image, Text } from '@mantine/core'
 import { Link } from 'react-router-dom'
+
+// constants
 import { END_POINTS } from '@constants/endPoints'
+
+// interfaces
+import { Anime } from '@interfaces/anime'
+
+// styles
+import { useStylesTilesCard } from './TilesCard.module'
 
 interface AnimeItem {
   anime: Anime
@@ -36,7 +42,16 @@ const TilesCard = ({ anime }: AnimeItem) => {
       <Box className={classes.content}>
         <Box className={classes.row}>
           <Link to={`${END_POINTS.SEARCH_PAGE}/${title}`}>
-            <Text size="md">{title.userPreferred}</Text>
+            <Text
+              sx={{
+                ':hover': {
+                  color: coverImage.color,
+                },
+              }}
+              className={classes.title}
+            >
+              {title.userPreferred}
+            </Text>
           </Link>
           <Box className={classes.genres}>
             {genres.map((item) => (
@@ -49,20 +64,24 @@ const TilesCard = ({ anime }: AnimeItem) => {
           </Box>
         </Box>
         <Box className={classes.row}>
-          <Box>{averageScore}%</Box>
-          <Text size="sm" className={classes.subRow}>
+          <Text size="sm" tt="capitalize">
+            {averageScore}%
+          </Text>
+          <Text size="xxs" className={classes.subRow}>
             {popularity} users
           </Text>
         </Box>
         <Box className={classes.row}>
-          <Text>{format}</Text>
-          <Text size="sm" className={classes.subRow}>
+          <Text size="sm" tt="capitalize">
+            {format}
+          </Text>
+          <Text size="xxs" className={classes.subRow}>
             <Text>{episodes} episodes</Text>
           </Text>
         </Box>
         <Box className={classes.row}>
-          <Text>{`${season} ${seasonYear}`}</Text>
-          <Text size="sm" className={classes.subRow}>
+          <Text size="sm" tt="capitalize">{`${season} ${seasonYear}`}</Text>
+          <Text size="xxs" className={classes.subRow}>
             <Text>{status}</Text>
           </Text>
         </Box>
