@@ -8,10 +8,6 @@ export const useStylesListCards = createStyles((theme: MantineTheme) => ({
     display: 'flex',
     justifyContent: 'space-between',
     marginBottom: '20px',
-    color: '#647380',
-    ':hover': {
-      color: '#516170',
-    },
   },
   results: {
     display: 'flex',
@@ -44,7 +40,6 @@ export const useStylesListCards = createStyles((theme: MantineTheme) => ({
     fontSize: theme.fontSizes.xxs,
     ':hover': {
       background: 'transparent',
-      color: '#516170',
     },
   },
 }))
