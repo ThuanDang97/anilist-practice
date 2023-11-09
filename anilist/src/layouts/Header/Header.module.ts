@@ -9,7 +9,7 @@ export const useStylesHeader = createStyles(() => ({
     height: '100%',
   },
   header: {
-    backgroundColor: '#2b2d42',
+    backgroundColor: '#152232',
     color: '#bcbedc',
     fontWeight: 600,
     height: '75px',
