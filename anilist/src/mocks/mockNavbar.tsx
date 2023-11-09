@@ -1,6 +1,10 @@
 // icons
 import BookIcon from '@assets/icons/BookIcon'
+import CharacterIcon from '@assets/icons/CharacterIcon'
+import LikeIcon from '@assets/icons/LikeIcon'
 import PlayIcon from '@assets/icons/PlayIcon'
+import ReviewIcon from '@assets/icons/ReviewIcon'
+import StaffIcon from '@assets/icons/StaffIcon'
 
 // constants
 import { END_POINTS } from '@constants/endPoints'
@@ -65,6 +69,28 @@ export const mockAuthNavbar = [
         ],
       },
     ],
+    about: [
+      {
+        icon: <StaffIcon />,
+        label: 'Staff',
+        link: END_POINTS.STAFF,
+      },
+      {
+        icon: <CharacterIcon />,
+        label: 'Characters',
+        link: END_POINTS.CHARACTERS,
+      },
+      {
+        icon: <ReviewIcon />,
+        label: 'Reviews',
+        link: END_POINTS.REVIEW,
+      },
+      {
+        icon: <LikeIcon />,
+        label: 'Recommendations',
+        link: END_POINTS.RECOMMENDATIONS,
+      },
+    ],
   },
   {
     label: 'Forum',
@@ -114,6 +140,28 @@ export const mockNavbar = [
             link: `${END_POINTS.SEARCH_MANGA}/top-manhwa`,
           },
         ],
+      },
+    ],
+    about: [
+      {
+        icon: <StaffIcon />,
+        label: 'Staff',
+        link: END_POINTS.STAFF,
+      },
+      {
+        icon: <CharacterIcon />,
+        label: 'Characters',
+        link: END_POINTS.CHARACTERS,
+      },
+      {
+        icon: <ReviewIcon />,
+        label: 'Reviews',
+        link: END_POINTS.REVIEW,
+      },
+      {
+        icon: <LikeIcon />,
+        label: 'Recommendations',
+        link: END_POINTS.RECOMMENDATIONS,
       },
     ],
   },
