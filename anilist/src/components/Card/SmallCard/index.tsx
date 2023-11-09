@@ -68,6 +68,7 @@ const SmallCard = ({ anime }: AnimeItem) => {
         <Box
           className={classes.productCard}
           sx={{
+            color: '#748899',
             ':hover': {
               color: coverImage.color,
             },
