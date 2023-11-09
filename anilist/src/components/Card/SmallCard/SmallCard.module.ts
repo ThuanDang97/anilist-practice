@@ -36,6 +36,5 @@ export const useStylesSmallCard = createStyles((theme) => ({
   title: {
     overflow: 'hidden',
     transition: 'color .2s ease',
-    color: '#748899',
   },
 }))
