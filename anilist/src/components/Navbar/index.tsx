@@ -44,6 +44,7 @@ interface IListNavbar {
 const Navbar = ({ listNavbar }: IListNavbar) => {
   const { classes } = useStylesNavbar()
   const { colorScheme } = useMantineColorScheme()
+
   const renderSubMenu = (item: INavbar) => {
     const { label, link, subMenu, about } = item
 
@@ -56,7 +57,6 @@ const Navbar = ({ listNavbar }: IListNavbar) => {
         aria-label="Menu"
         offset={-10}
         arrowOffset={35}
-        closeDelay={99999999}
         styles={{
           dropdown: {
             background: getColorScheme(colorScheme, '#151F2E', '#FBFBFBFB'),
@@ -132,9 +132,23 @@ const Navbar = ({ listNavbar }: IListNavbar) => {
               </Box>
             </Flex>
           ))}
-          <Grid bg="#0a1625" className={classes.submenu}>
+          <Grid
+            className={classes.submenu}
+            sx={{
+              background: getColorScheme(colorScheme, '#0a1625', '#748899'),
+              margin: 0,
+              rowGap: '10px',
+            }}
+          >
             {about?.map((aboutItem) => (
-              <Grid.Col span={6} key={aboutItem.label}>
+              <Grid.Col
+                span={6}
+                key={aboutItem.label}
+                sx={{
+                  margin: 0,
+                  padding: 0,
+                }}
+              >
                 <Link to={aboutItem.link}>
                   <Flex gap={8} align="start">
                     <Box w={10} h={10}>
