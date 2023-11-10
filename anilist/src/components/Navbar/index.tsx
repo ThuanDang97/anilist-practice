@@ -9,9 +9,11 @@ import {
 import { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 
+// utils
+import { getColorScheme } from '@utils/utils'
+
 // styles
 import { useStylesNavbar } from './Navbar.module'
-import { getColorScheme } from '@utils/utils'
 
 interface ISubMenu {
   label: string
@@ -47,7 +49,7 @@ const Navbar = ({ listNavbar }: IListNavbar) => {
 
     return (
       <HoverCard
-        width={270}
+        width={340}
         position="bottom-start"
         withArrow
         shadow="md"
@@ -59,6 +61,7 @@ const Navbar = ({ listNavbar }: IListNavbar) => {
           dropdown: {
             background: getColorScheme(colorScheme, '#151F2E', '#FBFBFBFB'),
             border: getColorScheme(colorScheme, '#151F2E', '#FBFBFBFB'),
+            padding: 0,
           },
           arrow: {
             border: getColorScheme(colorScheme, '#151F2E', '#FBFBFBFB'),
@@ -72,7 +75,12 @@ const Navbar = ({ listNavbar }: IListNavbar) => {
         </HoverCard.Target>
         <HoverCard.Dropdown data-testid="menu">
           {subMenu?.map((item) => (
-            <Flex key={item.label} align="center" gap={16} mb={16}>
+            <Flex
+              key={item.label}
+              align="center"
+              gap={16}
+              className={classes.submenu}
+            >
               <Link to={item.link}>
                 <Box w={15} h={15}>
                   {item.icon}
@@ -124,25 +132,29 @@ const Navbar = ({ listNavbar }: IListNavbar) => {
               </Box>
             </Flex>
           ))}
-          <Flex wrap="wrap" bg="#0a1625">
+          <Grid bg="#0a1625" className={classes.submenu}>
             {about?.map((aboutItem) => (
-              <Link key={aboutItem.label} to={aboutItem.link}>
-                <Flex gap={8} align="start">
-                  <Box w={10} h={10}>
-                    {aboutItem.icon}
-                  </Box>
-                  <Text size="xs">{aboutItem.label}</Text>
-                </Flex>
-              </Link>
+              <Grid.Col span={6} key={aboutItem.label}>
+                <Link to={aboutItem.link}>
+                  <Flex gap={8} align="start">
+                    <Box w={10} h={10}>
+                      {aboutItem.icon}
+                    </Box>
+                    <Text component="p" size="xs">
+                      {aboutItem.label}
+                    </Text>
+                  </Flex>
+                </Link>
+              </Grid.Col>
             ))}
-          </Flex>
+          </Grid>
         </HoverCard.Dropdown>
       </HoverCard>
     )
   }
 
   return (
-    <Flex role="navigation">
+    <Flex display="grid" role="navigation">
       {listNavbar.map((item) => {
         const { label, link, subMenu } = item
         return (

@@ -7,4 +7,7 @@ export const useStylesNavbar = createStyles(() => ({
       color: '#d3d5f3',
     },
   },
+  submenu: {
+    padding: '21px 27px',
+  },
 }))
