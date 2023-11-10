@@ -57,7 +57,6 @@ const Navbar = ({ listNavbar }: IListNavbar) => {
         aria-label="Menu"
         offset={-10}
         arrowOffset={35}
-        closeDelay={99999999}
         styles={{
           dropdown: {
             background: getColorScheme(colorScheme, '#151F2E', '#FBFBFBFB'),
