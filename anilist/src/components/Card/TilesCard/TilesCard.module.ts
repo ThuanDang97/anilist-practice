@@ -5,20 +5,14 @@ export const useStylesTilesCard = createStyles(() => ({
     height: '80px',
     display: 'flex',
     width: '100%',
-    background: '#FFF',
     padding: '10px',
     marginLeft: '80px',
   },
   title: {
-    color: '#516170',
     fontWeight: 600,
   },
   row: {
     fontWeight: 600,
-    color: '#647380',
-  },
-  subRow: {
-    color: '#8BA0B2',
   },
   genres: {
     display: 'flex',

@@ -1,4 +1,4 @@
-import { Box, Button, Text, Title } from '@mantine/core'
+import { Box, Button, Text, Title, useMantineColorScheme } from '@mantine/core'
 import { Link } from 'react-router-dom'
 
 // components
@@ -16,6 +16,7 @@ import { useStylesListCards } from './ListCard.module'
 
 // utils
 import { TransformerData } from '@utils/transformData'
+import { getColorScheme } from '@utils/utils'
 
 interface IListCard {
   title: string
@@ -32,16 +33,35 @@ const ListCardComponent = ({
 }: IListCard) => {
   const { classes } = useStylesListCards()
 
+  const { colorScheme } = useMantineColorScheme()
   const listAnimeTransformer = TransformerData(listAnime)
 
   return (
     <Box className={classes.landingSection}>
       <Link to={`${END_POINTS.SEARCH_PAGE}${href}`}>
         <Box className={classes.title}>
-          <Title order={3} size={16}>
+          <Title
+            order={3}
+            size={16}
+            sx={{
+              color: getColorScheme(colorScheme, '#ADC0D2', '#647380'),
+              ':hover': {
+                color: getColorScheme(colorScheme, '#C9D7E3', '#516170'),
+              },
+            }}
+          >
             {title}
           </Title>
-          <Button className={classes.button}>View All</Button>
+          <Button
+            sx={{
+              ':hover': {
+                color: getColorScheme(colorScheme, '#C9D7E3', '#516170'),
+              },
+            }}
+            className={classes.button}
+          >
+            View All
+          </Button>
         </Box>
       </Link>
 

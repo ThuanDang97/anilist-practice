@@ -1,4 +1,11 @@
-import { Badge, Box, Image, Popover, Text } from '@mantine/core'
+import {
+  Badge,
+  Box,
+  Image,
+  Popover,
+  Text,
+  useMantineColorScheme,
+} from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { Link } from 'react-router-dom'
 
@@ -11,6 +18,9 @@ import { useStylesSmallCard } from './SmallCard.module'
 // constants
 import { END_POINTS } from '@constants/endPoints'
 
+// utils
+import { getColorScheme } from '@utils/utils'
+
 interface AnimeItem {
   anime: Anime
 }
@@ -18,6 +28,8 @@ interface AnimeItem {
 const SmallCard = ({ anime }: AnimeItem) => {
   const [opened, { close, open }] = useDisclosure(false)
   const { classes } = useStylesSmallCard()
+  const { colorScheme } = useMantineColorScheme()
+
   const {
     id,
     title,
@@ -42,11 +54,21 @@ const SmallCard = ({ anime }: AnimeItem) => {
       arrowSize={12}
       arrowOffset={50}
       data-testid="small-card"
+      styles={{
+        dropdown: {
+          background: getColorScheme(colorScheme, '#152232', '#FBFBFBFB'),
+          border: getColorScheme(colorScheme, '#152232', '#FBFBFBFB'),
+        },
+        arrow: {
+          border: getColorScheme(colorScheme, '#152232', '#FBFBFBFB'),
+        },
+      }}
     >
       <Popover.Target>
         <Box
           className={classes.productCard}
           sx={{
+            color: '#748899',
             ':hover': {
               color: coverImage.color,
             },
@@ -84,9 +106,12 @@ const SmallCard = ({ anime }: AnimeItem) => {
           <Box className={classes.header}>
             <Text
               tt="capitalize"
-              className={classes.date}
+              color={getColorScheme(colorScheme, '#FBFBFBFB', '#152232')}
+              fw={500}
             >{`${season} ${seasonYear}`}</Text>
-            <Box>{averageScore}%</Box>
+            <Text color={getColorScheme(colorScheme, '#FBFBFBFB', '#152232')}>
+              {averageScore}%
+            </Text>
           </Box>
 
           <Text
@@ -98,8 +123,14 @@ const SmallCard = ({ anime }: AnimeItem) => {
             {studios.edges[0]?.node.name}
           </Text>
           <Box className={classes.info}>
-            <Text>{format}</Text>
-            {episodes > 0 && <Text>{episodes} episodes</Text>}
+            <Text color={getColorScheme(colorScheme, '#FBFBFBFB', '#152232')}>
+              {format}
+            </Text>
+            {episodes > 0 && (
+              <Text color={getColorScheme(colorScheme, '#FBFBFBFB', '#152232')}>
+                {episodes} episodes
+              </Text>
+            )}
           </Box>
           <Box className={classes.genres}>
             {genres.slice(0, 3).map((item) => (

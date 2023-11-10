@@ -1,4 +1,4 @@
-import { Badge, Box, Image, Text } from '@mantine/core'
+import { Badge, Box, Image, Text, useMantineColorScheme } from '@mantine/core'
 import { Link } from 'react-router-dom'
 
 // constants
@@ -9,6 +9,9 @@ import { Anime } from '@interfaces/anime'
 
 // styles
 import { useStylesTilesCard } from './TilesCard.module'
+
+// utils
+import { getColorScheme } from '@utils/utils'
 
 interface AnimeItem {
   anime: Anime
@@ -29,8 +32,14 @@ const TilesCard = ({ anime }: AnimeItem) => {
     status,
   } = anime
 
+  const { colorScheme } = useMantineColorScheme()
+
   return (
-    <Box className={classes.productCard} data-testid="tiles-card">
+    <Box
+      bg={getColorScheme(colorScheme, '#151F2E', '#FBFBFBFB')}
+      className={classes.productCard}
+      data-testid="tiles-card"
+    >
       <Link to={`${END_POINTS.SEARCH_PAGE}/${title}`}>
         <Image
           src={coverImage.large}
@@ -49,6 +58,7 @@ const TilesCard = ({ anime }: AnimeItem) => {
                 },
               }}
               className={classes.title}
+              color={getColorScheme(colorScheme, '#C9D7E3', '#516170')}
             >
               {title.userPreferred}
             </Text>
@@ -64,24 +74,45 @@ const TilesCard = ({ anime }: AnimeItem) => {
           </Box>
         </Box>
         <Box className={classes.row}>
-          <Text size="sm" tt="capitalize">
+          <Text
+            size="sm"
+            tt="capitalize"
+            color={getColorScheme(colorScheme, '#8BA0B2', '#647380')}
+          >
             {averageScore}%
           </Text>
-          <Text size="xxs" className={classes.subRow}>
+          <Text
+            size="xxs"
+            color={getColorScheme(colorScheme, '#647380', '#8BA0B2')}
+          >
             {popularity} users
           </Text>
         </Box>
         <Box className={classes.row}>
-          <Text size="sm" tt="capitalize">
+          <Text
+            size="sm"
+            tt="capitalize"
+            color={getColorScheme(colorScheme, '#8BA0B2', '#647380')}
+          >
             {format}
           </Text>
-          <Text size="xxs" className={classes.subRow}>
+          <Text
+            size="xxs"
+            color={getColorScheme(colorScheme, '#647380', '#8BA0B2')}
+          >
             <Text>{episodes} episodes</Text>
           </Text>
         </Box>
         <Box className={classes.row}>
-          <Text size="sm" tt="capitalize">{`${season} ${seasonYear}`}</Text>
-          <Text size="xxs" className={classes.subRow}>
+          <Text
+            size="sm"
+            tt="capitalize"
+            color={getColorScheme(colorScheme, '#8BA0B2', '#647380')}
+          >{`${season} ${seasonYear}`}</Text>
+          <Text
+            size="xxs"
+            color={getColorScheme(colorScheme, '#647380', '#8BA0B2')}
+          >
             <Text>{status}</Text>
           </Text>
         </Box>

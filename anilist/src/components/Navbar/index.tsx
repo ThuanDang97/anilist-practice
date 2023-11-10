@@ -1,7 +1,16 @@
-import { Box, Popover } from '@mantine/core'
-import { Link } from 'react-router-dom'
+import {
+  Box,
+  Flex,
+  Grid,
+  HoverCard,
+  Text,
+  useMantineColorScheme,
+} from '@mantine/core'
 import { ReactNode } from 'react'
-import { useDisclosure } from '@mantine/hooks'
+import { Link } from 'react-router-dom'
+
+// utils
+import { getColorScheme } from '@utils/utils'
 
 // styles
 import { useStylesNavbar } from './Navbar.module'
@@ -16,10 +25,16 @@ interface ISubMenu {
   }[]
 }
 
+interface IAbout {
+  icon: ReactNode
+  label: string
+  link: string
+}
 interface INavbar {
   label: string
   link: string
   subMenu?: ISubMenu[]
+  about?: IAbout[]
 }
 
 interface IListNavbar {
@@ -28,59 +43,133 @@ interface IListNavbar {
 
 const Navbar = ({ listNavbar }: IListNavbar) => {
   const { classes } = useStylesNavbar()
-
-  const [opened, { close, open }] = useDisclosure(false)
-
+  const { colorScheme } = useMantineColorScheme()
   const renderSubMenu = (item: INavbar) => {
-    const { label, link, subMenu } = item
+    const { label, link, subMenu, about } = item
 
     return (
-      <Popover
-        width={200}
-        position="bottom"
+      <HoverCard
+        width={340}
+        position="bottom-start"
         withArrow
         shadow="md"
-        opened={opened}
         aria-label="Menu"
+        offset={-10}
+        arrowOffset={35}
+        closeDelay={99999999}
+        styles={{
+          dropdown: {
+            background: getColorScheme(colorScheme, '#151F2E', '#FBFBFBFB'),
+            border: getColorScheme(colorScheme, '#151F2E', '#FBFBFBFB'),
+            padding: 0,
+          },
+          arrow: {
+            border: getColorScheme(colorScheme, '#151F2E', '#FBFBFBFB'),
+          },
+        }}
       >
-        <Popover.Target>
-          <Link
-            to={link}
-            className={classes.link}
-            onMouseEnter={open}
-            onMouseLeave={close}
-          >
+        <HoverCard.Target>
+          <Link to={link} className={classes.link}>
             {label}
           </Link>
-        </Popover.Target>
-        <Popover.Dropdown style={{ pointerEvents: 'none' }} data-testid="menu">
+        </HoverCard.Target>
+        <HoverCard.Dropdown data-testid="menu">
           {subMenu?.map((item) => (
-            <Link to={item.link} key={item.label}>
-              {item.label}
-            </Link>
+            <Flex
+              key={item.label}
+              align="center"
+              gap={16}
+              className={classes.submenu}
+            >
+              <Link to={item.link}>
+                <Box w={15} h={15}>
+                  {item.icon}
+                </Box>
+              </Link>
+              <Box>
+                <Link to={item.link}>
+                  <Text
+                    size="md"
+                    sx={{
+                      color: getColorScheme(colorScheme, '#ADC0D2', '#647380'),
+                      ':hover': {
+                        color: getColorScheme(
+                          colorScheme,
+                          '#C9D7E3',
+                          '#516170',
+                        ),
+                      },
+                    }}
+                  >
+                    {item.label}
+                  </Text>
+                </Link>
+                <Flex gap={8}>
+                  {item.subMenu.map((itemSubMenu) => (
+                    <Link key={itemSubMenu.label} to={itemSubMenu.link}>
+                      <Text
+                        size="xxs"
+                        sx={{
+                          color: getColorScheme(
+                            colorScheme,
+                            '#647380',
+                            '#8BA0B2',
+                          ),
+                          ':hover': {
+                            color: getColorScheme(
+                              colorScheme,
+                              '#C9D7E3',
+                              '#516170',
+                            ),
+                          },
+                        }}
+                      >
+                        {itemSubMenu.label}
+                      </Text>
+                    </Link>
+                  ))}
+                </Flex>
+              </Box>
+            </Flex>
           ))}
-        </Popover.Dropdown>
-      </Popover>
+          <Grid bg="#0a1625" className={classes.submenu}>
+            {about?.map((aboutItem) => (
+              <Grid.Col span={6} key={aboutItem.label}>
+                <Link to={aboutItem.link}>
+                  <Flex gap={8} align="start">
+                    <Box w={10} h={10}>
+                      {aboutItem.icon}
+                    </Box>
+                    <Text component="p" size="xs">
+                      {aboutItem.label}
+                    </Text>
+                  </Flex>
+                </Link>
+              </Grid.Col>
+            ))}
+          </Grid>
+        </HoverCard.Dropdown>
+      </HoverCard>
     )
   }
 
   return (
-    <Box component="nav" className={classes.nav} role="navigation">
+    <Flex display="grid" role="navigation">
       {listNavbar.map((item) => {
         const { label, link, subMenu } = item
         return (
-          <Box key={label}>
+          <Flex key={label}>
             {subMenu ? (
               renderSubMenu(item)
             ) : (
-              <Link to={link} className={classes.link} key={item.label}>
+              <Link to={link} className={classes.link}>
                 {label}
               </Link>
             )}
-          </Box>
+          </Flex>
         )
       })}
-    </Box>
+    </Flex>
   )
 }
 

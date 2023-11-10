@@ -13,9 +13,7 @@ export const useStylesSmallCard = createStyles((theme) => ({
     justifyContent: 'space-between',
     fontSize: theme.fontSizes.xl,
   },
-  date: {
-    textTransform: 'capitalize',
-  },
+
   studios: {
     marginTop: '10px',
     fontSize: theme.fontSizes.xs,
@@ -38,6 +36,5 @@ export const useStylesSmallCard = createStyles((theme) => ({
   title: {
     overflow: 'hidden',
     transition: 'color .2s ease',
-    color: '#748899',
   },
 }))
