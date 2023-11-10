@@ -14,4 +14,8 @@ export const END_POINTS = {
   NEXT_SEASON: '/next-season',
   POPULAR: '/popular',
   TOP_100: '/top-100',
+  STAFF: '/search/staff',
+  CHARACTERS: '/search/characters',
+  REVIEW: '/reviews',
+  RECOMMENDATIONS: '/recommendations',
 }
