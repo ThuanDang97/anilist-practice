@@ -3,10 +3,8 @@ import { createStyles } from '@mantine/core'
 export const useStylesLanding = createStyles(() => ({
   landing: {
     background: '#0a1625',
-    borderRadius: '20px',
     margin: '0 auto',
     maxWidth: '1100px',
-    padding: '60px 80px',
     width: '100%',
     color: '#f0f3f6',
     marginBottom: '80px',
@@ -23,20 +21,14 @@ export const useStylesLanding = createStyles(() => ({
     textAlign: 'center',
     lineHeight: '142%',
     margin: '0 auto',
+    color: '#acd5f2',
+    fontWeight: 500,
   },
   featureCards: {
-    display: 'grid',
-    gridGap: '70px 60px',
-    gridTemplateColumns: 'repeat(2,minmax(300px,400px))',
-    justifyContent: 'center',
-    margin: '0 auto',
     marginBottom: '90px',
-    marginTop: '85px',
+    marginTop: '81px',
   },
-  featureCard: {
-    display: 'flex',
-    gap: '40px',
-  },
+
   title: {
     fontSize: '18px',
     fontWeight: 600,
@@ -57,7 +49,6 @@ export const useStylesLanding = createStyles(() => ({
     padding: '0 7px 0 20px',
     margin: '0 auto',
     justifyContent: 'space-between',
-    marginBottom: '-78px',
     transition: 'box-shadow .4s ease',
     ':hover': {
       boxShadow: `0 2px 43px #3577ff`,
