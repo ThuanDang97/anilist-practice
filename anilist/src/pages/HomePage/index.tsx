@@ -20,8 +20,8 @@ import {
   upcoming,
 } from '@constants/variables'
 
-// interfaces
-import { ListAnime } from '@interfaces/anime'
+// types
+import { ListAnime } from '@type/anime'
 
 // mocks
 import { mockListRenderSkeleton } from '@mocks/mockAnime'

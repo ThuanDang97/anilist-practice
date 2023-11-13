@@ -4,9 +4,7 @@ import { getAnime } from '@services/animeService'
 
 // types
 import { variables } from '@type/Anime.types'
-
-// interfaces
-import { Total } from '@interfaces/anime'
+import { Total } from '@type/anime'
 
 const useAnimeList = (variables: variables): UseQueryResult<Total> => {
   return useQuery({

@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 // constants
 import { END_POINTS } from '@constants/endPoints'
 
-// interfaces
-import { Anime } from '@interfaces/anime'
+// types
+import { Anime } from '@type/anime'
 
 // styles
 import { useStylesTilesCard } from './TilesCard.module'

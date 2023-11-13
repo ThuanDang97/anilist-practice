@@ -16,8 +16,8 @@ import TilesCard from '@components/Card/TilesCard'
 // constants
 import { END_POINTS } from '@constants/endPoints'
 
-// interfaces
-import { ListAnime } from '@interfaces/anime'
+// types
+import { ListAnime } from '@type/anime'
 
 // styles
 import { useStylesListCards } from './ListCard.module'

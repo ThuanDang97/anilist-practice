@@ -9,8 +9,8 @@ import {
 import { useDisclosure, useMediaQuery } from '@mantine/hooks'
 import { Link } from 'react-router-dom'
 
-// interfaces
-import { Anime } from '@interfaces/anime'
+// types
+import { Anime } from '@type/anime'
 
 // styles
 import { useStylesSmallCard } from './SmallCard.module'
