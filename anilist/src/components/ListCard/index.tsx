@@ -1,4 +1,12 @@
-import { Box, Button, Text, Title, useMantineColorScheme } from '@mantine/core'
+import {
+  Box,
+  Button,
+  Flex,
+  Text,
+  Title,
+  useMantineColorScheme,
+} from '@mantine/core'
+import { useMediaQuery } from '@mantine/hooks'
 import { Link } from 'react-router-dom'
 
 // components
@@ -32,9 +40,10 @@ const ListCardComponent = ({
   href,
 }: IListCard) => {
   const { classes } = useStylesListCards()
-
   const { colorScheme } = useMantineColorScheme()
   const listAnimeTransformer = TransformerData(listAnime)
+  const isMobile = useMediaQuery(`(max-width: 1024px)`)
+  const isCard = typeCard === 'small'
 
   return (
     <Box className={classes.landingSection}>
@@ -65,22 +74,34 @@ const ListCardComponent = ({
         </Box>
       </Link>
 
-      <Box
-        className={typeCard === 'small' ? classes.smallCard : classes.tilesCard}
+      <Flex
+        className={isCard ? classes.smallCard : classes.tilesCard}
+        direction={{ base: 'row', lg: isCard ? 'row' : 'column' }}
+        sx={{
+          flexFlow: 'row wrap',
+        }}
+        gap={isCard || isMobile ? 0 : 25}
+        justify={isCard || isMobile ? 'space-between' : ''}
       >
         {listAnimeTransformer.map((anime, index) => (
           <Box key={anime.id} className={classes.results}>
-            {typeCard === 'small' ? (
+            {isCard ? (
               <SmallCard anime={anime} />
             ) : (
               <>
-                <Text className={classes.ranks}>#{index + 1}</Text>
-                <TilesCard anime={anime} />
+                {isMobile ? (
+                  <SmallCard anime={anime} />
+                ) : (
+                  <>
+                    <Text className={classes.ranks}>#{index + 1}</Text>
+                    <TilesCard anime={anime} />
+                  </>
+                )}
               </>
             )}
           </Box>
         ))}
-      </Box>
+      </Flex>
     </Box>
   )
 }

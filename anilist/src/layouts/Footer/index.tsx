@@ -2,6 +2,7 @@ import {
   Box,
   Button,
   ColorScheme,
+  Flex,
   Group,
   HoverCard,
   List,
@@ -67,8 +68,21 @@ const Footer = () => {
 
   return (
     <Box component="footer" className={classes.footer} role="contentinfo">
-      <Box className={classes.container}>
-        <Box>
+      <Flex
+        align="flex-start"
+        justify="space-between"
+        className={classes.container}
+        direction={{
+          base: 'column',
+          md: 'row',
+        }}
+      >
+        <Box
+          mb={{
+            base: '30px',
+            md: '0',
+          }}
+        >
           <Text className={classes.themeText}>Site Theme</Text>
           <Group>
             {listSiteTheme.map((theme) => (
@@ -137,18 +151,24 @@ const Footer = () => {
             ))}
           </Group>
         </Box>
-        <Box
-          className={classes.nav}
-          component="nav"
+        <Flex
           aria-label="Site Navigation"
+          direction={{
+            base: 'column',
+            sm: 'row',
+          }}
+          gap={{
+            base: '30px',
+            md: '100px',
+          }}
         >
           {/* render navigation section */}
           {renderList(mockAbout)}
           {renderList(mockConnect)}
           {renderList(mockSocial)}
           {renderList(mockSupport)}
-        </Box>
-      </Box>
+        </Flex>
+      </Flex>
     </Box>
   )
 }

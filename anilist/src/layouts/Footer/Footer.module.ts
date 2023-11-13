@@ -10,16 +10,9 @@ export const useStylesFooter = createStyles(() => ({
     textAlign: 'left',
   },
   container: {
-    maxWidth: '1050px',
+    maxWidth: '1200px',
     margin: '0 auto',
-    display: 'flex',
-    alignItems: 'flex-start',
     height: '100%',
-    justifyContent: 'space-between',
-  },
-  nav: {
-    display: 'flex',
-    gap: '50px',
   },
   link: {
     listStyleType: 'none',
@@ -30,7 +23,6 @@ export const useStylesFooter = createStyles(() => ({
       color: '#3db4f2',
     },
   },
-  themes: {},
   themeText: {
     color: '#3db4f2',
     fontWeight: 700,
