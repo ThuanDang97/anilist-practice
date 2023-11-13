@@ -1,6 +1,6 @@
 import { Box, Flex, Image, Text, Title } from '@mantine/core'
-import { Link } from 'react-router-dom'
 import { useMediaQuery } from '@mantine/hooks'
+import { Link } from 'react-router-dom'
 
 // styles
 import { useStylesLanding } from './Landing.module'
