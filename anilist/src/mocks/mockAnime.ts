@@ -1,4 +1,4 @@
-import { Anime, ListAnime } from '@interfaces/anime'
+import { Anime, ListAnime } from '@type/anime'
 
 export const mockAnime: Anime = {
   id: 5,

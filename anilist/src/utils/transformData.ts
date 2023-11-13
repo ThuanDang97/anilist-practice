@@ -1,5 +1,5 @@
-// interfaces
-import { ListAnime } from '@interfaces/anime'
+// types
+import { ListAnime } from '@type/anime'
 
 // utils
 import { ConvertDateTime } from './convertDate'

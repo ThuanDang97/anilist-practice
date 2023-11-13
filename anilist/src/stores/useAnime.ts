@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 
-// interfaces
-import { AnimeActions } from '@interfaces/anime'
+// types
+import { AnimeActions } from '@type/anime'
 
 const useAnime = create<AnimeActions>((set) => ({
   anime: [],
