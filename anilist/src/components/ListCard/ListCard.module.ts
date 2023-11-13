@@ -16,14 +16,9 @@ export const useStylesListCards = createStyles((theme: MantineTheme) => ({
     position: 'relative',
   },
   smallCard: {
-    display: 'flex',
     justifyContent: 'space-between',
   },
-  tilesCard: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '25px',
-  },
+  tilesCard: {},
   ranks: {
     width: '50px',
     height: '50px',

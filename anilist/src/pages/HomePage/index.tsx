@@ -125,19 +125,25 @@ const HomePage = () => {
   ]
 
   return (
-    <Box>
+    <>
       <LandingSection />
-
-      {listSectionsAnime.map((anime) =>
-        renderSectionListAnime({
-          title: anime.title,
-          listAnime: anime.listAnime,
-          href: anime.href,
-          typeCard: anime.typeCard,
-          loading: anime.loading,
-        }),
-      )}
-    </Box>
+      <Box
+        p={{
+          base: 10,
+          md: 0,
+        }}
+      >
+        {listSectionsAnime.map((anime) =>
+          renderSectionListAnime({
+            title: anime.title,
+            listAnime: anime.listAnime,
+            href: anime.href,
+            typeCard: anime.typeCard,
+            loading: anime.loading,
+          }),
+        )}
+      </Box>
+    </>
   )
 }
 
