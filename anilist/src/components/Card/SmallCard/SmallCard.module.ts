@@ -34,7 +34,9 @@ export const useStylesSmallCard = createStyles((theme) => ({
     borderRadius: '5px',
   },
   title: {
-    overflow: 'hidden',
     transition: 'color .2s ease',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
   },
 }))

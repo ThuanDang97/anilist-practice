@@ -6,7 +6,7 @@ import {
   Text,
   useMantineColorScheme,
 } from '@mantine/core'
-import { useDisclosure } from '@mantine/hooks'
+import { useDisclosure, useMediaQuery } from '@mantine/hooks'
 import { Link } from 'react-router-dom'
 
 // interfaces
@@ -29,6 +29,7 @@ const SmallCard = ({ anime }: AnimeItem) => {
   const [opened, { close, open }] = useDisclosure(false)
   const { classes } = useStylesSmallCard()
   const { colorScheme } = useMantineColorScheme()
+  const isMobile = useMediaQuery(`(max-width: 1024px)`)
 
   const {
     id,
@@ -66,7 +67,6 @@ const SmallCard = ({ anime }: AnimeItem) => {
     >
       <Popover.Target>
         <Box
-          className={classes.productCard}
           sx={{
             color: '#748899',
             ':hover': {
@@ -82,8 +82,8 @@ const SmallCard = ({ anime }: AnimeItem) => {
             <Image
               src={coverImage.extraLarge}
               alt={title.userPreferred}
-              width={185}
-              height={265}
+              width={isMobile ? 115 : 185}
+              height={isMobile ? 165 : 265}
               radius={5}
             />
             <Text
@@ -91,6 +91,7 @@ const SmallCard = ({ anime }: AnimeItem) => {
               size="sm"
               mt={10}
               fw={600}
+              maw={isMobile ? 115 : 185}
               className={classes.title}
             >
               {title.userPreferred}
