@@ -25,7 +25,15 @@ const LandingSection = () => {
   const isMobile = useMediaQuery(`(max-width: 1024px)`)
 
   const renderFeatureCard = (item: FeatureCard) => (
-    <Flex direction="row" gap={40} maw={400} mah={300}>
+    <Flex
+      direction="row"
+      gap={40}
+      maw={{
+        base: 300,
+        md: 400,
+      }}
+      mah={300}
+    >
       <Image src={item.icon} alt={item.title} maw={85} mah={85} />
       <Box>
         <Title order={3} className={classes.title}>
