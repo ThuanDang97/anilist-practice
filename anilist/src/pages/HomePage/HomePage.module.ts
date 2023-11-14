@@ -1,6 +1,6 @@
-import { createStyles } from '@mantine/core'
+import { MantineTheme, createStyles } from '@mantine/core'
 
-export const useStylesHomePage = createStyles(() => ({
+export const useStylesHomePage = createStyles((theme: MantineTheme) => ({
   landingSection: {
     paddingBottom: '80px',
   },
@@ -17,5 +17,10 @@ export const useStylesHomePage = createStyles(() => ({
     display: 'flex',
     flexDirection: 'column',
     gap: '25px',
+  },
+  button: {
+    background: 'transparent',
+    color: theme.colors.light[1],
+    fontSize: theme.fontSizes.xxs,
   },
 }))
