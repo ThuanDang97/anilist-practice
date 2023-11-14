@@ -1,9 +1,9 @@
-import { createStyles } from '@mantine/core'
+import { MantineTheme, createStyles } from '@mantine/core'
 
-export const useStylesFooter = createStyles(() => ({
+export const useStylesFooter = createStyles((theme: MantineTheme) => ({
   footer: {
-    background: '#11161d',
-    color: '#a0b1c5',
+    background: theme.colors.dark[0],
+    color: theme.colors.light[3],
     fontWeight: 600,
     minHeight: '100px',
     padding: '50px 30px',
@@ -16,21 +16,21 @@ export const useStylesFooter = createStyles(() => ({
   },
   link: {
     listStyleType: 'none',
-    color: '#a0b1c5',
+    color: theme.colors.light[3],
     fontWeight: 600,
     marginBottom: '5px',
     '& :hover': {
-      color: '#3db4f2',
+      color: theme.colors.blue[2],
     },
   },
   themeText: {
-    color: '#3db4f2',
+    color: theme.colors.blue[2],
     fontWeight: 700,
     paddingBottom: '14px',
     fontSize: '20px',
   },
   button: {
-    border: '2px solid #46546b',
+    border: `2px solid ${theme.colors.light[4]}`,
     padding: 0,
     width: '25px',
     height: '25px',
