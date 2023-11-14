@@ -24,14 +24,14 @@ export const useStylesListCards = createStyles((theme: MantineTheme) => ({
     height: '50px',
     fontWeight: 900,
     fontSize: '24px',
-    color: '#8ba0b2',
+    color: theme.colors.light[1],
     position: 'absolute',
     marginTop: '20px',
     left: '22px',
   },
   button: {
     background: 'transparent',
-    color: '#8BA0B2',
+    color: theme.colors.light[1],
     fontSize: theme.fontSizes.xxs,
     ':hover': {
       background: 'transparent',
