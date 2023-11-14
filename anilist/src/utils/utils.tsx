@@ -1,4 +1,5 @@
 // icons
+import FrownIcon from '@assets/icons/FrownIcon'
 import MehIcon from '@assets/icons/MehIcon'
 import SmileIcon from '@assets/icons/SmileIcon'
 
@@ -8,5 +9,11 @@ import SmileIcon from '@assets/icons/SmileIcon'
  * @returns icon of Score
  */
 export const getIconOfScore = (score: number) => {
-  return score > 75 ? <SmileIcon /> : <MehIcon />
+  if (score > 75) {
+    return <SmileIcon />
+  } else if (score > 60) {
+    return <MehIcon />
+  } else {
+    return <FrownIcon />
+  }
 }
