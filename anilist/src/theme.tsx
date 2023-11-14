@@ -8,6 +8,7 @@ import { ReactNode } from 'react'
 
 // themes
 import { defaultTheme } from './themes'
+import { dark, light } from './themes/color'
 
 const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
@@ -24,7 +25,14 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
       colorScheme={colorScheme}
       toggleColorScheme={toggleColorScheme}
     >
-      <MantineProvider theme={defaultTheme} withGlobalStyles withNormalizeCSS>
+      <MantineProvider
+        theme={{
+          ...defaultTheme,
+          colors: colorScheme === 'dark' ? dark : light,
+        }}
+        withGlobalStyles
+        withNormalizeCSS
+      >
         {children}
       </MantineProvider>
     </ColorSchemeProvider>

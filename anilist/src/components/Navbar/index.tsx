@@ -4,13 +4,12 @@ import {
   Grid,
   HoverCard,
   Text,
-  useMantineColorScheme,
+  useMantineTheme,
 } from '@mantine/core'
 import { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 
 // utils
-import { getColorScheme } from '@utils/utils'
 
 // styles
 import { useStylesNavbar } from './Navbar.module'
@@ -43,7 +42,7 @@ interface IListNavbar {
 
 const Navbar = ({ listNavbar }: IListNavbar) => {
   const { classes } = useStylesNavbar()
-  const { colorScheme } = useMantineColorScheme()
+  const theme = useMantineTheme()
 
   const renderSubMenu = (item: INavbar) => {
     const { label, link, subMenu, about } = item
@@ -59,12 +58,12 @@ const Navbar = ({ listNavbar }: IListNavbar) => {
         arrowOffset={35}
         styles={{
           dropdown: {
-            background: getColorScheme(colorScheme, '#151F2E', '#FBFBFBFB'),
-            border: getColorScheme(colorScheme, '#151F2E', '#FBFBFBFB'),
+            background: theme.colors.background[0],
+            border: theme.colors.background[0],
             padding: 0,
           },
           arrow: {
-            border: getColorScheme(colorScheme, '#151F2E', '#FBFBFBFB'),
+            border: theme.colors.background[0],
           },
         }}
       >
@@ -91,13 +90,9 @@ const Navbar = ({ listNavbar }: IListNavbar) => {
                   <Text
                     size="md"
                     sx={{
-                      color: getColorScheme(colorScheme, '#ADC0D2', '#647380'),
+                      color: theme.colors.title[2],
                       ':hover': {
-                        color: getColorScheme(
-                          colorScheme,
-                          '#C9D7E3',
-                          '#516170',
-                        ),
+                        color: theme.colors.title[1],
                       },
                     }}
                   >
@@ -110,17 +105,9 @@ const Navbar = ({ listNavbar }: IListNavbar) => {
                       <Text
                         size="xxs"
                         sx={{
-                          color: getColorScheme(
-                            colorScheme,
-                            '#647380',
-                            '#8BA0B2',
-                          ),
+                          color: theme.colors.subtitle[1],
                           ':hover': {
-                            color: getColorScheme(
-                              colorScheme,
-                              '#C9D7E3',
-                              '#516170',
-                            ),
+                            color: theme.colors.title[1],
                           },
                         }}
                       >
@@ -135,7 +122,7 @@ const Navbar = ({ listNavbar }: IListNavbar) => {
           <Grid
             className={classes.submenu}
             sx={{
-              background: getColorScheme(colorScheme, '#0a1625', '#748899'),
+              background: theme.colors.background[1],
               margin: 0,
               rowGap: '10px',
             }}

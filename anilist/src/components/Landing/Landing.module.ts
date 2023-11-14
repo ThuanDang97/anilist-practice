@@ -1,12 +1,12 @@
-import { createStyles } from '@mantine/core'
+import { MantineTheme, createStyles } from '@mantine/core'
 
-export const useStylesLanding = createStyles(() => ({
+export const useStylesLanding = createStyles((theme: MantineTheme) => ({
   landing: {
-    background: '#0a1625',
+    background: theme.colors.dark[0],
     margin: '0 auto',
     maxWidth: '1100px',
     width: '100%',
-    color: '#f0f3f6',
+    color: theme.colors.light[0],
     marginBottom: '80px',
   },
   heading: {
@@ -21,7 +21,7 @@ export const useStylesLanding = createStyles(() => ({
     textAlign: 'center',
     lineHeight: '142%',
     margin: '0 auto',
-    color: '#acd5f2',
+    color: theme.colors.blue[0],
     fontWeight: 500,
   },
   featureCards: {
@@ -35,14 +35,14 @@ export const useStylesLanding = createStyles(() => ({
     marginBottom: '8px',
   },
   desc: {
-    color: '#acd5f2',
+    color: theme.colors.blue[0],
     fontSize: '13px',
   },
   joinBtn: {
     alignItems: 'center',
-    background: '#3577ff',
+    background: theme.colors.blue[1],
     borderRadius: '30px',
-    boxShadow: '0 2px 40px rgba(0,0,0,.4)',
+    boxShadow: `0 2px 40px ${theme.colors.dark[1]}`,
     display: 'flex',
     width: '200px',
     height: '49px',
@@ -51,12 +51,12 @@ export const useStylesLanding = createStyles(() => ({
     justifyContent: 'space-between',
     transition: 'box-shadow .4s ease',
     ':hover': {
-      boxShadow: `0 2px 43px #3577ff`,
+      boxShadow: `0 2px 43px ${theme.colors.blue[1]}`,
     },
   },
   circle: {
     background: '#d9e6ff',
-    color: '#3577ff',
+    color: theme.colors.blue[1],
     width: '37px',
     height: '37px',
     borderRadius: '50%',

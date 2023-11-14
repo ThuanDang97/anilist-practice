@@ -4,22 +4,19 @@ import {
   Image,
   Popover,
   Text,
-  useMantineColorScheme,
+  useMantineTheme,
 } from '@mantine/core'
 import { useDisclosure, useMediaQuery } from '@mantine/hooks'
 import { Link } from 'react-router-dom'
 
-// interfaces
-import { Anime } from '@interfaces/anime'
+// types
+import { Anime } from '@type/anime'
 
 // styles
 import { useStylesSmallCard } from './SmallCard.module'
 
 // constants
 import { END_POINTS } from '@constants/endPoints'
-
-// utils
-import { getColorScheme } from '@utils/utils'
 
 interface AnimeItem {
   anime: Anime
@@ -28,7 +25,7 @@ interface AnimeItem {
 const SmallCard = ({ anime }: AnimeItem) => {
   const [opened, { close, open }] = useDisclosure(false)
   const { classes } = useStylesSmallCard()
-  const { colorScheme } = useMantineColorScheme()
+  const theme = useMantineTheme()
   const isMobile = useMediaQuery(`(max-width: 1024px)`)
 
   const {
@@ -57,18 +54,18 @@ const SmallCard = ({ anime }: AnimeItem) => {
       data-testid="small-card"
       styles={{
         dropdown: {
-          background: getColorScheme(colorScheme, '#152232', '#FBFBFBFB'),
-          border: getColorScheme(colorScheme, '#152232', '#FBFBFBFB'),
+          background: theme.colors.background[0],
+          border: theme.colors.background[0],
         },
         arrow: {
-          border: getColorScheme(colorScheme, '#152232', '#FBFBFBFB'),
+          border: theme.colors.background[0],
         },
       }}
     >
       <Popover.Target>
         <Box
           sx={{
-            color: '#748899',
+            color: theme.colors.title[0],
             ':hover': {
               color: coverImage.color,
             },
@@ -107,12 +104,10 @@ const SmallCard = ({ anime }: AnimeItem) => {
           <Box className={classes.header}>
             <Text
               tt="capitalize"
-              color={getColorScheme(colorScheme, '#FBFBFBFB', '#152232')}
+              color={theme.colors.description[0]}
               fw={500}
             >{`${season} ${seasonYear}`}</Text>
-            <Text color={getColorScheme(colorScheme, '#FBFBFBFB', '#152232')}>
-              {averageScore}%
-            </Text>
+            <Text color={theme.colors.description[0]}>{averageScore}%</Text>
           </Box>
 
           <Text
@@ -124,11 +119,9 @@ const SmallCard = ({ anime }: AnimeItem) => {
             {studios.edges[0]?.node.name}
           </Text>
           <Box className={classes.info}>
-            <Text color={getColorScheme(colorScheme, '#FBFBFBFB', '#152232')}>
-              {format}
-            </Text>
+            <Text color={theme.colors.description[0]}>{format}</Text>
             {episodes > 0 && (
-              <Text color={getColorScheme(colorScheme, '#FBFBFBFB', '#152232')}>
+              <Text color={theme.colors.description[0]}>
                 {episodes} episodes
               </Text>
             )}

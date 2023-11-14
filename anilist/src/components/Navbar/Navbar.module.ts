@@ -1,10 +1,10 @@
-import { createStyles } from '@mantine/core'
+import { MantineTheme, createStyles } from '@mantine/core'
 
-export const useStylesNavbar = createStyles(() => ({
+export const useStylesNavbar = createStyles((theme: MantineTheme) => ({
   link: {
     padding: '18px 16px',
     '& :hover': {
-      color: '#d3d5f3',
+      color: theme.colors.light[2],
     },
   },
   submenu: {

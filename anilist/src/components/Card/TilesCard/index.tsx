@@ -1,17 +1,14 @@
-import { Badge, Box, Image, Text, useMantineColorScheme } from '@mantine/core'
+import { Badge, Box, Image, Text, useMantineTheme } from '@mantine/core'
 import { Link } from 'react-router-dom'
 
 // constants
 import { END_POINTS } from '@constants/endPoints'
 
-// interfaces
-import { Anime } from '@interfaces/anime'
+// types
+import { Anime } from '@type/anime'
 
 // styles
 import { useStylesTilesCard } from './TilesCard.module'
-
-// utils
-import { getColorScheme } from '@utils/utils'
 
 interface AnimeItem {
   anime: Anime
@@ -32,11 +29,10 @@ const TilesCard = ({ anime }: AnimeItem) => {
     status,
   } = anime
 
-  const { colorScheme } = useMantineColorScheme()
-
+  const theme = useMantineTheme()
   return (
     <Box
-      bg={getColorScheme(colorScheme, '#151F2E', '#FBFBFBFB')}
+      bg={theme.colors.background[0]}
       className={classes.productCard}
       data-testid="tiles-card"
     >
@@ -49,7 +45,7 @@ const TilesCard = ({ anime }: AnimeItem) => {
         />
       </Link>
       <Box className={classes.content}>
-        <Box className={classes.row}>
+        <Box fw={600}>
           <Link to={`${END_POINTS.SEARCH_PAGE}/${title}`}>
             <Text
               sx={{
@@ -57,8 +53,7 @@ const TilesCard = ({ anime }: AnimeItem) => {
                   color: coverImage.color,
                 },
               }}
-              className={classes.title}
-              color={getColorScheme(colorScheme, '#C9D7E3', '#516170')}
+              color={theme.colors.title[1]}
             >
               {title.userPreferred}
             </Text>
@@ -73,46 +68,29 @@ const TilesCard = ({ anime }: AnimeItem) => {
             ))}
           </Box>
         </Box>
-        <Box className={classes.row}>
-          <Text
-            size="sm"
-            tt="capitalize"
-            color={getColorScheme(colorScheme, '#8BA0B2', '#647380')}
-          >
+        <Box fw={600}>
+          <Text size="sm" tt="capitalize" color={theme.colors.subtitle[0]}>
             {averageScore}%
           </Text>
-          <Text
-            size="xxs"
-            color={getColorScheme(colorScheme, '#647380', '#8BA0B2')}
-          >
+          <Text size="xxs" color={theme.colors.subtitle[1]}>
             {popularity} users
           </Text>
         </Box>
-        <Box className={classes.row}>
-          <Text
-            size="sm"
-            tt="capitalize"
-            color={getColorScheme(colorScheme, '#8BA0B2', '#647380')}
-          >
+        <Box fw={600}>
+          <Text size="sm" tt="capitalize" color={theme.colors.subtitle[0]}>
             {format}
           </Text>
-          <Text
-            size="xxs"
-            color={getColorScheme(colorScheme, '#647380', '#8BA0B2')}
-          >
+          <Text size="xxs" color={theme.colors.subtitle[1]}>
             <Text>{episodes} episodes</Text>
           </Text>
         </Box>
-        <Box className={classes.row}>
+        <Box>
           <Text
             size="sm"
             tt="capitalize"
-            color={getColorScheme(colorScheme, '#8BA0B2', '#647380')}
+            color={theme.colors.subtitle[0]}
           >{`${season} ${seasonYear}`}</Text>
-          <Text
-            size="xxs"
-            color={getColorScheme(colorScheme, '#647380', '#8BA0B2')}
-          >
+          <Text size="xxs" color={theme.colors.subtitle[1]}>
             <Text>{status}</Text>
           </Text>
         </Box>
