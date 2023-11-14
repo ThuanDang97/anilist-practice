@@ -9,7 +9,7 @@ const jestConfig: JestConfigWithTsJest = {
   moduleDirectories: ['node_modules', 'src'],
   moduleFileExtensions: ['js', 'jsx', 'json', 'ts', 'tsx'],
   setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
-  collectCoverage: false,
+  collectCoverage: true,
   transform: {
     '^.+\\.js$': 'babel-jest',
     '.+\\.(svg|css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$':
