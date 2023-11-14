@@ -1,6 +1,7 @@
 import {
   Badge,
   Box,
+  Flex,
   Image,
   Popover,
   Text,
@@ -17,6 +18,7 @@ import { useStylesSmallCard } from './SmallCard.module'
 
 // constants
 import { END_POINTS } from '@constants/endPoints'
+import { getIconOfScore } from '@utils/utils'
 
 interface AnimeItem {
   anime: Anime
@@ -107,7 +109,12 @@ const SmallCard = ({ anime }: AnimeItem) => {
               color={theme.colors.description[0]}
               fw={500}
             >{`${season} ${seasonYear}`}</Text>
-            <Text color={theme.colors.description[0]}>{averageScore}%</Text>
+            <Flex align="center" gap={5}>
+              <Box w={19} h={19}>
+                {getIconOfScore(averageScore)}
+              </Box>
+              <Text color={theme.colors.description[0]}>{averageScore}%</Text>
+            </Flex>
           </Box>
 
           <Text
@@ -121,9 +128,12 @@ const SmallCard = ({ anime }: AnimeItem) => {
           <Box className={classes.info}>
             <Text color={theme.colors.description[0]}>{format}</Text>
             {episodes > 0 && (
-              <Text color={theme.colors.description[0]}>
-                {episodes} episodes
-              </Text>
+              <>
+                <Box>•</Box>
+                <Text color={theme.colors.description[0]}>
+                  {episodes} episodes
+                </Text>
+              </>
             )}
           </Box>
           <Box className={classes.genres}>
