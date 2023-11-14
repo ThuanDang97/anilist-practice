@@ -1,6 +1,6 @@
-import { createStyles } from '@mantine/core'
+import { MantineTheme, createStyles } from '@mantine/core'
 
-export const useStylesHeader = createStyles(() => ({
+export const useStylesHeader = createStyles((theme: MantineTheme) => ({
   container: {
     maxWidth: '1050px',
     margin: '0 auto',
@@ -10,7 +10,7 @@ export const useStylesHeader = createStyles(() => ({
   },
   header: {
     backgroundColor: '#152232',
-    color: '#bcbedc',
+    color: theme.colors.light[6],
     fontWeight: 600,
     height: '75px',
   },
@@ -22,7 +22,7 @@ export const useStylesHeader = createStyles(() => ({
   login: {
     padding: '18px 16px',
     '& :hover': {
-      color: '#d3d5f3',
+      color: theme.colors.light[2],
     },
   },
 }))

@@ -1,27 +1,19 @@
+import { Box, Container, useMantineTheme } from '@mantine/core'
+import { useMediaQuery } from '@mantine/hooks'
 import { Outlet } from 'react-router-dom'
-import { Box, Container, useMantineColorScheme } from '@mantine/core'
 
 // layouts
 import Footer from '../Footer'
 import Header from '../Header'
 
-// styles
-import { useStylesMainLayout } from './MainLayout.module'
-import { getColorScheme } from '@utils/utils'
-import { useMediaQuery } from '@mantine/hooks'
-
 const MainLayout = () => {
-  const { classes } = useStylesMainLayout()
-  const { colorScheme } = useMantineColorScheme()
+  const theme = useMantineTheme()
   const isMobile = useMediaQuery(`(max-width: 1024px)`)
 
   return (
     <>
       {!isMobile && <Header isAuthenticated={false} />}
-      <Box
-        bg={getColorScheme(colorScheme, '#0B1622', '#edf1f5')}
-        className={classes.background}
-      >
+      <Box bg={theme.colors.background[2]}>
         <Container
           size="xl"
           pt={{

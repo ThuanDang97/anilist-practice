@@ -8,6 +8,7 @@ import {
   List,
   Text,
   useMantineColorScheme,
+  useMantineTheme,
 } from '@mantine/core'
 import { Link } from 'react-router-dom'
 
@@ -51,6 +52,7 @@ const Footer = () => {
   const { classes } = useStylesFooter()
 
   const { toggleColorScheme } = useMantineColorScheme()
+  const theme = useMantineTheme()
 
   const renderList = (listLink: ListLink[]) => {
     return (
@@ -85,13 +87,13 @@ const Footer = () => {
         >
           <Text className={classes.themeText}>Site Theme</Text>
           <Group>
-            {listSiteTheme.map((theme) => (
+            {listSiteTheme.map((themeItem) => (
               <HoverCard
                 position="top-start"
                 withArrow
                 shadow="xs"
                 aria-label="Select Site Theme"
-                key={theme.type}
+                key={themeItem.type}
                 variant="dark"
                 closeDelay={100}
                 styles={{
@@ -112,40 +114,42 @@ const Footer = () => {
                   <Button
                     sx={{
                       background:
-                        theme.type === 'dark'
-                          ? '#11161d'
-                          : theme.type === 'light'
-                          ? '#edf1f5'
-                          : 'linear-gradient(45deg,#11161d 55%,#edf1f5 0)',
+                        themeItem.type === 'dark'
+                          ? theme.colors.dark[2]
+                          : themeItem.type === 'light'
+                          ? theme.colors.light[5]
+                          : `linear-gradient(45deg,${theme.colors.dark[2]} 55%,${theme.colors.light[5]} 0)`,
                       color:
-                        theme.type === 'dark'
-                          ? '#edf1f5'
-                          : theme.type === 'light'
-                          ? '#11161d'
-                          : 'linear-gradient(45deg,#11161d 55%,#edf1f5 0)',
+                        themeItem.type === 'dark'
+                          ? theme.colors.light[5]
+                          : themeItem.type === 'light'
+                          ? theme.colors.dark[2]
+                          : `linear-gradient(45deg,${theme.colors.dark[2]} 55%,${theme.colors.light[5]} 0)`,
                       ':hover': {
                         background:
-                          theme.type === 'dark'
-                            ? '#11161d'
-                            : theme.type === 'light'
-                            ? '#edf1f5'
-                            : 'linear-gradient(45deg,#11161d 55%,#edf1f5 0)',
+                          themeItem.type === 'dark'
+                            ? theme.colors.dark[2]
+                            : themeItem.type === 'light'
+                            ? theme.colors.light[5]
+                            : `linear-gradient(45deg,${theme.colors.dark[2]} 55%,${theme.colors.light[5]} 0)`,
                         color:
-                          theme.type === 'dark'
-                            ? '#edf1f5'
-                            : theme.type === 'light'
-                            ? '#11161d'
-                            : 'linear-gradient(45deg,#11161d 55%,#edf1f5 0)',
+                          themeItem.type === 'dark'
+                            ? theme.colors.light[5]
+                            : themeItem.type === 'light'
+                            ? theme.colors.dark[2]
+                            : `linear-gradient(45deg,${theme.colors.dark[2]} 55%,${theme.colors.light[5]} 0)`,
                       },
                     }}
                     className={classes.button}
-                    onClick={() => toggleColorScheme(theme.type as ColorScheme)}
+                    onClick={() =>
+                      toggleColorScheme(themeItem.type as ColorScheme)
+                    }
                   >
                     A
                   </Button>
                 </HoverCard.Target>
                 <HoverCard.Dropdown>
-                  <Text size={'xs'}>{theme.desc}</Text>
+                  <Text size={'xs'}>{themeItem.desc}</Text>
                 </HoverCard.Dropdown>
               </HoverCard>
             ))}

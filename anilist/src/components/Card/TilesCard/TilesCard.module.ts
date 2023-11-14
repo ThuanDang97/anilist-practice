@@ -8,12 +8,6 @@ export const useStylesTilesCard = createStyles(() => ({
     padding: '10px',
     marginLeft: '80px',
   },
-  title: {
-    fontWeight: 600,
-  },
-  row: {
-    fontWeight: 600,
-  },
   genres: {
     display: 'flex',
     gap: '5px',

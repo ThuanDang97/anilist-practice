@@ -1,11 +1,4 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Text,
-  Title,
-  useMantineColorScheme,
-} from '@mantine/core'
+import { Box, Button, Flex, Text, Title, useMantineTheme } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
 import { Link } from 'react-router-dom'
 
@@ -24,7 +17,6 @@ import { useStylesListCards } from './ListCard.module'
 
 // utils
 import { TransformerData } from '@utils/transformData'
-import { getColorScheme } from '@utils/utils'
 
 interface IListCard {
   title: string
@@ -40,7 +32,7 @@ const ListCardComponent = ({
   href,
 }: IListCard) => {
   const { classes } = useStylesListCards()
-  const { colorScheme } = useMantineColorScheme()
+  const theme = useMantineTheme()
   const listAnimeTransformer = TransformerData(listAnime)
   const isMobile = useMediaQuery(`(max-width: 1024px)`)
   const isCard = typeCard === 'small'
@@ -53,9 +45,9 @@ const ListCardComponent = ({
             order={3}
             size={16}
             sx={{
-              color: getColorScheme(colorScheme, '#ADC0D2', '#647380'),
+              color: theme.colors.title[2],
               ':hover': {
-                color: getColorScheme(colorScheme, '#C9D7E3', '#516170'),
+                color: theme.colors.title[1],
               },
             }}
           >
@@ -64,7 +56,7 @@ const ListCardComponent = ({
           <Button
             sx={{
               ':hover': {
-                color: getColorScheme(colorScheme, '#C9D7E3', '#516170'),
+                color: theme.colors.title[1],
               },
             }}
             className={classes.button}

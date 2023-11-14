@@ -1,10 +1,12 @@
-import { createStyles } from '@mantine/core'
+import { MantineTheme, createStyles } from '@mantine/core'
 
-export const useStylesTilesCardSkeleton = createStyles(() => ({
-  productCard: {
-    height: '80px',
-    width: '80%',
-    background: '#FFF',
-    padding: '10px',
-  },
-}))
+export const useStylesTilesCardSkeleton = createStyles(
+  (theme: MantineTheme) => ({
+    productCard: {
+      height: '80px',
+      width: '80%',
+      background: theme.colors.background[0],
+      padding: '10px',
+    },
+  }),
+)
