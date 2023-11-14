@@ -1,4 +1,5 @@
-import { Box, Button, Title } from '@mantine/core'
+import { Box, Button, Flex, Title, useMantineTheme } from '@mantine/core'
+import { useMediaQuery } from '@mantine/hooks'
 
 // components
 import LandingSection from '@components/Landing'
@@ -36,6 +37,7 @@ type TRenderSectionListAnime = {
   typeCard?: 'small' | 'tiles'
   loading: boolean
 }
+
 const HomePage = () => {
   const { data: listTrending, isLoading: isLoadingTrending } =
     useAnimeList(trending)
@@ -48,6 +50,8 @@ const HomePage = () => {
   const { data: listTop100, isLoading: isLoadingTop100 } = useAnimeList(top100)
 
   const { classes } = useStylesHomePage()
+  const theme = useMantineTheme()
+  const isMobile = useMediaQuery(`(max-width: 1024px)`)
 
   const renderSectionListAnime = ({
     title,
@@ -56,17 +60,43 @@ const HomePage = () => {
     typeCard = 'small',
     loading,
   }: TRenderSectionListAnime) => {
+    const isCard = typeCard === 'small'
+
     if (loading) {
       return (
         <Box className={classes.landingSection}>
           <Box className={classes.title}>
-            <Title order={3}>{title}</Title>
-            <Button>View All</Button>
+            <Title
+              order={3}
+              size={16}
+              sx={{
+                color: theme.colors.title[2],
+                ':hover': {
+                  color: theme.colors.title[1],
+                },
+              }}
+            >
+              {title}
+            </Title>
+            <Button
+              sx={{
+                ':hover': {
+                  color: theme.colors.title[1],
+                },
+              }}
+              className={classes.button}
+            >
+              View All
+            </Button>
           </Box>
-          <Box
-            className={
-              typeCard === 'small' ? classes.smallCard : classes.tilesCard
-            }
+          <Flex
+            className={isCard ? classes.smallCard : classes.tilesCard}
+            direction={{ base: 'row', lg: isCard ? 'row' : 'column' }}
+            sx={{
+              flexFlow: 'row wrap',
+            }}
+            gap={isCard || isMobile ? 10 : 25}
+            justify={isCard || isMobile ? 'space-between' : ''}
           >
             {mockListRenderSkeleton.map((index) =>
               typeCard === 'small' ? (
@@ -75,7 +105,7 @@ const HomePage = () => {
                 <TilesCardSkeleton key={index} />
               ),
             )}
-          </Box>
+          </Flex>
         </Box>
       )
     }
