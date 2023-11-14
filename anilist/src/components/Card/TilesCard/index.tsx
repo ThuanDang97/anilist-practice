@@ -1,4 +1,4 @@
-import { Badge, Box, Image, Text, useMantineTheme } from '@mantine/core'
+import { Badge, Box, Flex, Image, Text, useMantineTheme } from '@mantine/core'
 import { Link } from 'react-router-dom'
 
 // constants
@@ -9,6 +9,7 @@ import { Anime } from '@type/anime'
 
 // styles
 import { useStylesTilesCard } from './TilesCard.module'
+import { getIconOfScore } from '@utils/utils'
 
 interface AnimeItem {
   anime: Anime
@@ -68,14 +69,19 @@ const TilesCard = ({ anime }: AnimeItem) => {
             ))}
           </Box>
         </Box>
-        <Box fw={600}>
-          <Text size="sm" tt="capitalize" color={theme.colors.subtitle[0]}>
-            {averageScore}%
-          </Text>
-          <Text size="xxs" color={theme.colors.subtitle[1]}>
-            {popularity} users
-          </Text>
-        </Box>
+        <Flex fw={600} direction="row" gap={6}>
+          <Box w={19} h={19} mt={3}>
+            {getIconOfScore(averageScore)}
+          </Box>
+          <Box>
+            <Text size="sm" tt="capitalize" color={theme.colors.subtitle[0]}>
+              {averageScore}%
+            </Text>
+            <Text size="xxs" color={theme.colors.subtitle[1]}>
+              {popularity} users
+            </Text>
+          </Box>
+        </Flex>
         <Box fw={600}>
           <Text size="sm" tt="capitalize" color={theme.colors.subtitle[0]}>
             {format}
