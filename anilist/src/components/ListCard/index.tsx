@@ -72,7 +72,7 @@ const ListCardComponent = ({
         sx={{
           flexFlow: 'row wrap',
         }}
-        gap={isCard || isMobile ? 0 : 25}
+        rowGap={20}
         justify={isCard || isMobile ? 'space-between' : ''}
       >
         {listAnimeTransformer.map((anime, index) => (
@@ -82,7 +82,31 @@ const ListCardComponent = ({
             ) : (
               <>
                 {isMobile ? (
-                  <SmallCard anime={anime} />
+                  <Box
+                    sx={{
+                      position: 'relative',
+                    }}
+                  >
+                    <Flex
+                      className={classes.ranksCircle}
+                      align="center"
+                      gap={1}
+                      bg={anime.coverImage.color}
+                      justify="center"
+                      left="-5px"
+                      top="-7px"
+                    >
+                      <Text
+                        sx={{
+                          fontSize: 10,
+                        }}
+                      >
+                        #
+                      </Text>
+                      {index + 1}
+                    </Flex>
+                    <SmallCard anime={anime} />
+                  </Box>
                 ) : (
                   <>
                     <Text className={classes.ranks}>#{index + 1}</Text>
