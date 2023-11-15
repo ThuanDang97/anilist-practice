@@ -1,8 +1,8 @@
 import { SORT_BY } from '.'
 
 enum Media {
-  ANIME,
-  MANGA,
+  ANIME = 'ANIME',
+  MANGA = 'MANGA',
 }
 
 enum Format {
@@ -33,11 +33,24 @@ enum Season {
   FALL = 'FALL',
 }
 
+enum ListStatus {
+  CURRENT = 'CURRENT',
+  PLANNING = 'PLANNING',
+  COMPLETED = 'COMPLETED',
+  DROPPED = 'DROPPED',
+  PAUSED = 'PAUSED',
+  REPEATING = 'REPEATING',
+}
+
 const trending = {
+  page: 1,
+  type: Media.ANIME,
   sort: [SORT_BY.TRENDING_DESC, SORT_BY.POPULARITY_DESC],
 }
 
 const popularSeason = {
+  page: 1,
+  type: Media.ANIME,
   season: Season.FALL,
   seasonYear: 2023,
 }
@@ -55,6 +68,7 @@ const popular = {
 const top100 = {
   perPage: 10,
   sort: [SORT_BY.SCORE_DESC],
+  status: Status.FINISHED,
 }
 
 export {
@@ -67,4 +81,5 @@ export {
   Format,
   Status,
   Season,
+  ListStatus,
 }

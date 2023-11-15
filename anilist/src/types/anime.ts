@@ -1,5 +1,5 @@
 // types
-import { Studio } from '@type/Anime.types'
+import { MediaListStatus, Studio } from '@type/Anime.types'
 
 export interface AnimeActions {
   anime: ListAnime[]
@@ -46,6 +46,15 @@ export interface ListAnime {
   isAdult: boolean
   averageScore: number
   popularity: number
+  nextAiringEpisode: {
+    airingAt: number
+    timeUntilAiring: number
+    episode: number
+  }
+  mediaListEntry: {
+    id: number
+    status: MediaListStatus
+  }
   studios: Studio
 }
 
@@ -76,6 +85,15 @@ export interface Anime {
   isAdult: boolean
   averageScore: number
   popularity: number
+  nextAiringEpisode: {
+    airingAt: number
+    timeUntilAiring: number
+    episode: number
+  }
+  mediaListEntry: {
+    id: number
+    status: MediaListStatus
+  }
   studios: Studio
 }
 
