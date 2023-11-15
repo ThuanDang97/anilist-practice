@@ -27,6 +27,8 @@ export const TransformerData = (listAnime: ListAnime[]) => {
       isAdult,
       averageScore,
       popularity,
+      nextAiringEpisode,
+      mediaListEntry,
       studios,
     } = anime
     return {
@@ -56,6 +58,15 @@ export const TransformerData = (listAnime: ListAnime[]) => {
       isAdult: isAdult || false,
       averageScore: averageScore || 0,
       popularity: popularity || 0,
+      nextAiringEpisode: {
+        airingAt: nextAiringEpisode?.airingAt || 0,
+        timeUntilAiring: nextAiringEpisode?.timeUntilAiring || 0,
+        episode: nextAiringEpisode?.episode || 0,
+      },
+      mediaListEntry: {
+        id: mediaListEntry?.id || 0,
+        status: mediaListEntry?.status || '',
+      },
       studios: studios || [],
     }
   })

@@ -1,3 +1,7 @@
+// constants
+import { ListStatus } from '@constants/variables'
+
+// types
 import { Anime, ListAnime } from '@type/anime'
 
 export const mockAnime: Anime = {
@@ -48,6 +52,15 @@ export const mockAnime: Anime = {
         },
       },
     ],
+  },
+  nextAiringEpisode: {
+    airingAt: 0,
+    timeUntilAiring: 0,
+    episode: 0,
+  },
+  mediaListEntry: {
+    id: 0,
+    status: ListStatus.CURRENT,
   },
 }
 
@@ -101,6 +114,15 @@ export const mockListAnime: ListAnime[] = [
           },
         },
       ],
+    },
+    nextAiringEpisode: {
+      airingAt: 0,
+      timeUntilAiring: 0,
+      episode: 0,
+    },
+    mediaListEntry: {
+      id: 0,
+      status: ListStatus.CURRENT,
     },
   },
   {
@@ -160,6 +182,15 @@ export const mockListAnime: ListAnime[] = [
         },
       ],
     },
+    nextAiringEpisode: {
+      airingAt: 0,
+      timeUntilAiring: 0,
+      episode: 0,
+    },
+    mediaListEntry: {
+      id: 0,
+      status: ListStatus.CURRENT,
+    },
   },
   {
     id: 6,
@@ -210,6 +241,15 @@ export const mockListAnime: ListAnime[] = [
           },
         },
       ],
+    },
+    nextAiringEpisode: {
+      airingAt: 0,
+      timeUntilAiring: 0,
+      episode: 0,
+    },
+    mediaListEntry: {
+      id: 0,
+      status: ListStatus.CURRENT,
     },
   },
   {
@@ -262,6 +302,15 @@ export const mockListAnime: ListAnime[] = [
         },
       ],
     },
+    nextAiringEpisode: {
+      airingAt: 0,
+      timeUntilAiring: 0,
+      episode: 0,
+    },
+    mediaListEntry: {
+      id: 0,
+      status: ListStatus.CURRENT,
+    },
   },
   {
     id: 8,
@@ -311,6 +360,15 @@ export const mockListAnime: ListAnime[] = [
           },
         },
       ],
+    },
+    nextAiringEpisode: {
+      airingAt: 0,
+      timeUntilAiring: 0,
+      episode: 0,
+    },
+    mediaListEntry: {
+      id: 0,
+      status: ListStatus.CURRENT,
     },
   },
   {
@@ -362,6 +420,15 @@ export const mockListAnime: ListAnime[] = [
           },
         },
       ],
+    },
+    nextAiringEpisode: {
+      airingAt: 0,
+      timeUntilAiring: 0,
+      episode: 0,
+    },
+    mediaListEntry: {
+      id: 0,
+      status: ListStatus.CURRENT,
     },
   },
 ]
