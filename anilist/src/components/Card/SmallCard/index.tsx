@@ -105,9 +105,14 @@ const SmallCard = ({ anime }: AnimeItem) => {
         <Box className={classes.wrapper}>
           <Box className={classes.header}>
             <Text
-              tt="capitalize"
               color={theme.colors.description[0]}
               fw={500}
+              sx={{
+                textTransform: 'lowercase',
+                '::first-letter': {
+                  textTransform: 'uppercase',
+                },
+              }}
             >{`${season} ${seasonYear}`}</Text>
             <Flex align="center" gap={5}>
               <Box w={19} h={19}>
