@@ -72,7 +72,7 @@ const ListCardComponent = ({
         sx={{
           flexFlow: 'row wrap',
         }}
-        gap={isCard || isMobile ? 0 : 25}
+        rowGap={20}
         justify={isCard || isMobile ? 'space-between' : ''}
       >
         {listAnimeTransformer.map((anime, index) => (
