@@ -37,4 +37,14 @@ export const useStylesListCards = createStyles((theme: MantineTheme) => ({
       background: 'transparent',
     },
   },
+  ranksCircle: {
+    color: theme.colors.light[0],
+    fontSize: theme.fontSizes.md,
+    fontWeight: 600,
+    width: '30px',
+    height: '30px',
+    position: 'absolute',
+    borderRadius: '50%',
+    zIndex: 1,
+  },
 }))

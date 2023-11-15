@@ -82,7 +82,31 @@ const ListCardComponent = ({
             ) : (
               <>
                 {isMobile ? (
-                  <SmallCard anime={anime} />
+                  <Box
+                    sx={{
+                      position: 'relative',
+                    }}
+                  >
+                    <Flex
+                      className={classes.ranksCircle}
+                      align="center"
+                      gap={1}
+                      bg={anime.coverImage.color}
+                      justify="center"
+                      left="-5px"
+                      top="-7px"
+                    >
+                      <Text
+                        sx={{
+                          fontSize: 10,
+                        }}
+                      >
+                        #
+                      </Text>
+                      {index + 1}
+                    </Flex>
+                    <SmallCard anime={anime} />
+                  </Box>
                 ) : (
                   <>
                     <Text className={classes.ranks}>#{index + 1}</Text>
