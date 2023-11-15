@@ -1,6 +1,6 @@
 // constants
 import { SORT_BY } from '@constants/sort'
-import { Format, Media, Season, Status } from '@constants/variables'
+import { Format, ListStatus, Media, Season, Status } from '@constants/variables'
 
 export interface Edge {
   isMain: boolean
@@ -14,6 +14,7 @@ export type Studio = {
   edges: Edge[]
 }
 
+export type MediaListStatus = ListStatus
 export type MediaType = Media
 export type MediaFormat = Format
 export type MediaStatus = Status

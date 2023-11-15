@@ -18,7 +18,10 @@ import { useStylesSmallCard } from './SmallCard.module'
 
 // constants
 import { END_POINTS } from '@constants/endPoints'
-import { getIconOfScore } from '@utils/utils'
+import { Status } from '@constants/variables'
+
+// utils
+import { formatAiringDetails, getIconOfScore } from '@utils/utils'
 
 interface AnimeItem {
   anime: Anime
@@ -41,7 +44,18 @@ const SmallCard = ({ anime }: AnimeItem) => {
     episodes,
     genres,
     coverImage,
+    status,
+    nextAiringEpisode,
   } = anime
+
+  const renderSeason = () => {
+    return status === Status.RELEASING
+      ? formatAiringDetails({
+          episode: nextAiringEpisode.episode,
+          timeUntilAiring: nextAiringEpisode.timeUntilAiring,
+        })
+      : `${season} ${seasonYear}`
+  }
 
   return (
     <Popover
@@ -106,14 +120,16 @@ const SmallCard = ({ anime }: AnimeItem) => {
           <Box className={classes.header}>
             <Text
               color={theme.colors.description[0]}
-              fw={500}
+              fw={600}
               sx={{
                 textTransform: 'lowercase',
                 '::first-letter': {
                   textTransform: 'uppercase',
                 },
               }}
-            >{`${season} ${seasonYear}`}</Text>
+            >
+              {renderSeason()}
+            </Text>
             <Flex align="center" gap={5}>
               <Box w={19} h={19}>
                 {getIconOfScore(averageScore)}
