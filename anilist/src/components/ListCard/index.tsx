@@ -1,4 +1,12 @@
-import { Box, Button, Flex, Text, Title, useMantineTheme } from '@mantine/core'
+import {
+  Box,
+  Button,
+  Flex,
+  Grid,
+  Text,
+  Title,
+  useMantineTheme,
+} from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
 import { Link } from 'react-router-dom'
 
@@ -66,14 +74,19 @@ const ListCardComponent = ({
         </Box>
       </Link>
 
-      <Flex
-        className={isCard ? classes.smallCard : classes.tilesCard}
-        direction={{ base: 'row', lg: isCard ? 'row' : 'column' }}
+      <Grid
         sx={{
-          flexFlow: 'row wrap',
+          display: 'grid',
+          gridTemplateColumns:
+            !isCard && !isMobile
+              ? '1fr'
+              : isMobile
+              ? 'repeat(auto-fill,minmax(110px,1fr))'
+              : 'repeat(auto-fill,185px)',
+          gap: isCard ? '25px 5px' : '25px 20px',
+          justifyContent: 'space-between',
         }}
-        rowGap={20}
-        justify={isCard || isMobile ? 'space-between' : ''}
+        columns={2}
       >
         {listAnimeTransformer.map((anime, index) => (
           <Box key={anime.id} className={classes.results}>
@@ -117,7 +130,7 @@ const ListCardComponent = ({
             )}
           </Box>
         ))}
-      </Flex>
+      </Grid>
     </Box>
   )
 }

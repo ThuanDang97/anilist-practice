@@ -159,7 +159,7 @@ const HomePage = () => {
       <LandingSection />
       <Box
         p={{
-          base: 10,
+          base: 16,
           md: 0,
         }}
       >
