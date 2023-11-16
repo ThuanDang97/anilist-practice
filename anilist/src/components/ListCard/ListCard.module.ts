@@ -15,10 +15,6 @@ export const useStylesListCards = createStyles((theme: MantineTheme) => ({
     alignItems: 'center',
     position: 'relative',
   },
-  smallCard: {
-    justifyContent: 'space-between',
-  },
-  tilesCard: {},
   ranks: {
     width: '50px',
     height: '50px',
