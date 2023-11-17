@@ -9,8 +9,6 @@ export const useStylesSmallCard = createStyles((theme) => ({
     width: '100%',
   },
   header: {
-    display: 'flex',
-    justifyContent: 'space-between',
     fontSize: theme.fontSizes.xl,
   },
 
