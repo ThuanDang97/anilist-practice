@@ -146,17 +146,22 @@ const SmallCard = ({ anime }: AnimeItem) => {
           >
             {studios.edges[0]?.node.name}
           </Text>
-          <Box className={classes.info}>
+          <Flex gap="8px" align="center" className={classes.info}>
             <Text color={theme.colors.description[0]}>{format}</Text>
             {episodes > 0 && (
               <>
-                <Box>•</Box>
+                <Text
+                  size={theme.fontSizes.xxl}
+                  color={theme.colors.description[0]}
+                >
+                  •
+                </Text>
                 <Text color={theme.colors.description[0]}>
                   {episodes} episodes
                 </Text>
               </>
             )}
-          </Box>
+          </Flex>
           <Flex wrap="wrap" gap="10x" className={classes.genres}>
             {genres.slice(0, 3).map((item) => (
               <Link key={item} to={`${END_POINTS.SEARCH_PAGE}/${item}`}>
