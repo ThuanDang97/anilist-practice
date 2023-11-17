@@ -3,15 +3,9 @@ import { createStyles } from '@mantine/core'
 export const useStylesTilesCard = createStyles(() => ({
   productCard: {
     height: '80px',
-    display: 'flex',
     width: '100%',
     padding: '10px',
     marginLeft: '80px',
-  },
-  genres: {
-    display: 'flex',
-    gap: '5px',
-    textTransform: 'lowercase',
   },
   content: {
     width: '100%',
