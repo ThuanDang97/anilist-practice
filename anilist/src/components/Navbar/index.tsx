@@ -81,7 +81,7 @@ const Navbar = ({ listNavbar }: IListNavbar) => {
               className={classes.submenu}
             >
               <Link to={item.link}>
-                <Box w={15} h={15}>
+                <Box w="15px" h="15px">
                   {item.icon}
                 </Box>
               </Link>
@@ -99,7 +99,7 @@ const Navbar = ({ listNavbar }: IListNavbar) => {
                     {item.label}
                   </Text>
                 </Link>
-                <Flex gap={8}>
+                <Flex gap="8px">
                   {item.subMenu.map((itemSubMenu) => (
                     <Link key={itemSubMenu.label} to={itemSubMenu.link}>
                       <Text
@@ -137,8 +137,8 @@ const Navbar = ({ listNavbar }: IListNavbar) => {
                 }}
               >
                 <Link to={aboutItem.link}>
-                  <Flex gap={8} align="start">
-                    <Box w={10} h={10}>
+                  <Flex gap="8px" align="start">
+                    <Box w="10px" h="10px">
                       {aboutItem.icon}
                     </Box>
                     <Text component="p" size="xs">
@@ -155,7 +155,7 @@ const Navbar = ({ listNavbar }: IListNavbar) => {
   }
 
   return (
-    <Flex display="grid" role="navigation">
+    <Flex role="navigation">
       {listNavbar.map((item) => {
         const { label, link, subMenu } = item
         return (

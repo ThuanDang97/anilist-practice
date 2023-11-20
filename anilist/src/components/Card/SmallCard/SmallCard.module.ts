@@ -9,8 +9,6 @@ export const useStylesSmallCard = createStyles((theme) => ({
     width: '100%',
   },
   header: {
-    display: 'flex',
-    justifyContent: 'space-between',
     fontSize: theme.fontSizes.xl,
   },
 
@@ -19,8 +17,6 @@ export const useStylesSmallCard = createStyles((theme) => ({
     fontSize: theme.fontSizes.xs,
   },
   info: {
-    display: 'flex',
-    gap: '10px',
     fontSize: theme.fontSizes.xs,
   },
   genres: {

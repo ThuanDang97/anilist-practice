@@ -32,7 +32,7 @@ const TilesCard = ({ anime }: AnimeItem) => {
 
   const theme = useMantineTheme()
   return (
-    <Box
+    <Flex
       bg={theme.colors.background[0]}
       className={classes.productCard}
       data-testid="tiles-card"
@@ -41,8 +41,8 @@ const TilesCard = ({ anime }: AnimeItem) => {
         <Image
           src={coverImage.large}
           alt={title.userPreferred}
-          width={48}
-          height={60}
+          width="48px"
+          height="60px"
         />
       </Link>
       <Box className={classes.content}>
@@ -59,7 +59,7 @@ const TilesCard = ({ anime }: AnimeItem) => {
               {title.userPreferred}
             </Text>
           </Link>
-          <Box className={classes.genres}>
+          <Flex gap="5px">
             {genres.map((item) => (
               <Link key={item} to={`${END_POINTS.SEARCH_PAGE}/${item}`}>
                 <Badge bg={coverImage.color} tt="lowercase">
@@ -67,10 +67,10 @@ const TilesCard = ({ anime }: AnimeItem) => {
                 </Badge>
               </Link>
             ))}
-          </Box>
+          </Flex>
         </Box>
-        <Flex fw={600} direction="row" gap={6}>
-          <Box w={19} h={19} mt={3}>
+        <Flex fw={600} direction="row" gap="6px">
+          <Box w="19px" h="19px" mt="3px">
             {getIconOfScore(averageScore)}
           </Box>
           <Box>
@@ -101,7 +101,7 @@ const TilesCard = ({ anime }: AnimeItem) => {
           </Text>
         </Box>
       </Box>
-    </Box>
+    </Flex>
   )
 }
 

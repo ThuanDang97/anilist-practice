@@ -48,10 +48,10 @@ const ListCardComponent = ({
   return (
     <Box className={classes.landingSection}>
       <Link to={`${END_POINTS.SEARCH_PAGE}${href}`}>
-        <Box className={classes.title}>
+        <Flex justify="space-between" align="center" pos="relative" mb="10px">
           <Title
             order={3}
-            size={16}
+            size="16px"
             sx={{
               color: theme.colors.title[2],
               ':hover': {
@@ -71,7 +71,7 @@ const ListCardComponent = ({
           >
             View All
           </Button>
-        </Box>
+        </Flex>
       </Link>
 
       <Grid
@@ -89,7 +89,7 @@ const ListCardComponent = ({
         columns={2}
       >
         {listAnimeTransformer.map((anime, index) => (
-          <Box key={anime.id} className={classes.results}>
+          <Flex justify="center" align="center" pos="relative" key={anime.id}>
             {isCard ? (
               <SmallCard anime={anime} />
             ) : (
@@ -103,7 +103,7 @@ const ListCardComponent = ({
                     <Flex
                       className={classes.ranksCircle}
                       align="center"
-                      gap={1}
+                      gap="1px"
                       bg={anime.coverImage.color}
                       justify="center"
                       left="-5px"
@@ -111,7 +111,7 @@ const ListCardComponent = ({
                     >
                       <Text
                         sx={{
-                          fontSize: 10,
+                          fontSize: '10px',
                         }}
                       >
                         #
@@ -128,7 +128,7 @@ const ListCardComponent = ({
                 )}
               </>
             )}
-          </Box>
+          </Flex>
         ))}
       </Grid>
     </Box>

@@ -55,13 +55,10 @@ export const useStylesLanding = createStyles((theme: MantineTheme) => ({
     },
   },
   circle: {
-    background: '#d9e6ff',
+    background: theme.colors.light[7],
     color: theme.colors.blue[1],
     width: '37px',
     height: '37px',
     borderRadius: '50%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 }))
