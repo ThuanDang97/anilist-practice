@@ -48,7 +48,7 @@ const ListCardComponent = ({
   return (
     <Box className={classes.landingSection}>
       <Link to={`${END_POINTS.SEARCH_PAGE}${href}`}>
-        <Flex justify="center" align="center" pos="relative">
+        <Flex justify="space-between" align="center" pos="relative" mb="10px">
           <Title
             order={3}
             size="16px"

@@ -8,8 +8,8 @@ const SmallCardSkeleton = () => {
   return (
     <Flex direction="column">
       <Skeleton
-        width={isMobile ? 115 : 185}
-        height={isMobile ? 165 : 265}
+        width={isMobile ? '115px' : '185px'}
+        height={isMobile ? '165px' : '265px'}
         sx={{
           ':before': {
             background: theme.colors.background[1],
@@ -21,7 +21,7 @@ const SmallCardSkeleton = () => {
       />
       <Skeleton
         height={20}
-        width={isMobile ? 110 : 150}
+        width={isMobile ? '110px' : '150px'}
         mt={5}
         sx={{
           ':before': {
