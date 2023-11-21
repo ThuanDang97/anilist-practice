@@ -82,7 +82,7 @@ const ListCardComponent = ({
               ? '1fr'
               : isMobile
               ? 'repeat(auto-fill,minmax(110px,1fr))'
-              : 'repeat(auto-fill,185px)',
+              : 'repeat(auto-fill,200px)',
           gap: isCard ? '25px 5px' : '25px 20px',
           justifyContent: 'space-between',
         }}

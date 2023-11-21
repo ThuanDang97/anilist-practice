@@ -129,3 +129,15 @@ export const query = `
     }
   }
 `
+
+export const genresQuery = `
+query {
+  genres: GenreCollection
+  tags: MediaTagCollection {
+    name
+    description
+    category
+    isAdult
+  }
+}
+`

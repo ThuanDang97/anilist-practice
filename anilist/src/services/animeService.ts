@@ -6,7 +6,7 @@ import { query } from '@constants/query'
 import { ERRORS_MESSAGE } from '@constants/errorsMsg'
 
 // types
-import { variables } from '@type/Anime.types'
+import { variables } from '@type/variable'
 
 export const fetchApi = async (query: string, variables: variables) => {
   try {

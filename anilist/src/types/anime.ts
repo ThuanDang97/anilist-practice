@@ -1,5 +1,5 @@
 // types
-import { MediaListStatus, Studio } from '@type/Anime.types'
+import { MediaListStatus, Studio } from '@type/variable'
 
 export interface AnimeActions {
   anime: ListAnime[]

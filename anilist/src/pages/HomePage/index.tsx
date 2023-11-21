@@ -1,4 +1,15 @@
-import { Box, Button, Flex, Title, useMantineTheme } from '@mantine/core'
+import {
+  Box,
+  Button,
+  ChevronIcon,
+  Flex,
+  Input,
+  MultiSelect,
+  Select,
+  Text,
+  Title,
+  useMantineTheme,
+} from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
 
 // components
@@ -29,6 +40,9 @@ import { mockListRenderSkeleton } from '@mocks/mockAnime'
 
 // styles
 import { useStylesHomePage } from './HomePage.module'
+import SearchComponent from '@components/Search'
+import useGenresList from '@hooks/useGenresList'
+import { TransformListGenres } from '@utils/transformListGenres'
 
 type TRenderSectionListAnime = {
   title: string
@@ -48,6 +62,12 @@ const HomePage = () => {
   const { data: listPopular, isLoading: isLoadingPopular } =
     useAnimeList(popular)
   const { data: listTop100, isLoading: isLoadingTop100 } = useAnimeList(top100)
+
+  const { data: listGenres } = useGenresList()
+
+  const newDate = TransformListGenres(listGenres?.genres, listGenres?.tags)
+
+  console.log('listGenres', newDate)
 
   const { classes } = useStylesHomePage()
   const theme = useMantineTheme()
@@ -157,6 +177,84 @@ const HomePage = () => {
   return (
     <>
       <LandingSection />
+      <Flex gap="15px">
+        <SearchComponent />
+        <Box>
+          <Text color={theme.colors.title[2]} fw={600}>
+            Genres
+          </Text>
+          <MultiSelect
+            aria-label="My select"
+            searchable
+            clearable
+            disableSelectedItemFiltering
+            data={[]}
+            size="xs"
+            placeholder="any"
+            maxDropdownHeight={280}
+          />
+        </Box>
+        <Box>
+          <Text color={theme.colors.title[2]} fw={600}>
+            Genres
+          </Text>
+          <MultiSelect
+            aria-label="My select"
+            searchable
+            clearable
+            disableSelectedItemFiltering
+            data={[]}
+            size="xs"
+            placeholder="any"
+            maxDropdownHeight={280}
+          />
+        </Box>
+        <Box>
+          <Text color={theme.colors.title[2]} fw={600}>
+            Genres
+          </Text>
+          <MultiSelect
+            aria-label="My select"
+            searchable
+            clearable
+            disableSelectedItemFiltering
+            data={[]}
+            size="xs"
+            placeholder="any"
+            maxDropdownHeight={280}
+          />
+        </Box>
+        <Box>
+          <Text color={theme.colors.title[2]} fw={600}>
+            Genres
+          </Text>
+          <MultiSelect
+            aria-label="My select"
+            searchable
+            clearable
+            disableSelectedItemFiltering
+            data={[]}
+            size="xs"
+            placeholder="any"
+            maxDropdownHeight={280}
+          />
+        </Box>
+        <Box>
+          <Text color={theme.colors.title[2]} fw={600}>
+            Genres
+          </Text>
+          <MultiSelect
+            aria-label="My select"
+            searchable
+            clearable
+            disableSelectedItemFiltering
+            data={[]}
+            size="xs"
+            placeholder="any"
+            maxDropdownHeight={280}
+          />
+        </Box>
+      </Flex>
       <Box
         p={{
           base: 16,
