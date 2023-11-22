@@ -1,5 +1,7 @@
-import SearchIcon from '@assets/icons/SearchIcon'
 import { Box, Input, Text, useMantineTheme } from '@mantine/core'
+
+// assets
+import SearchIcon from '@assets/icons/SearchIcon'
 
 const SearchComponent = () => {
   const theme = useMantineTheme()
@@ -15,7 +17,15 @@ const SearchComponent = () => {
             <SearchIcon />
           </Box>
         }
-        size="xs"
+        size="md"
+        bg={theme.colors.background[0]}
+        sx={{
+          '.mantine-Input-input': {
+            border: theme.colors.background[0],
+            background: theme.colors.background[0],
+            borderRadius: '6px',
+          },
+        }}
       />
     </Box>
   )

@@ -14,5 +14,11 @@ export type Genres = {
 
 export type ListGenres = {
   value: string
+  label: string
+}
+
+export type ListGenresGroup = {
+  value: string
+  label: string
   group: string
 }

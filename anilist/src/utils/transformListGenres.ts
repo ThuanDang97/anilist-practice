@@ -1,6 +1,6 @@
 import { Genre, Tag } from '@type/genres'
 
-type TransformedObject = { value: string; group: string }
+type TransformedObject = { value: string; label: string; group: string }
 
 export const TransformListGenres = (
   genres: Genre[] | undefined,
@@ -10,12 +10,20 @@ export const TransformListGenres = (
 
   // Transform genres
   genres?.forEach((genre) => {
-    transformedArray.push({ value: genre.toLowerCase(), group: 'genres' })
+    transformedArray.push({
+      value: genre.toLowerCase(),
+      label: genre,
+      group: 'genres',
+    })
   })
 
   // Transform tags
   tags?.forEach((tag) => {
-    transformedArray.push({ value: tag.name.toLowerCase(), group: 'tags' })
+    transformedArray.push({
+      value: tag.name.toLowerCase(),
+      label: tag.name,
+      group: 'tags',
+    })
   })
 
   return transformedArray
