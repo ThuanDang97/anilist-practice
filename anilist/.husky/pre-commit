@@ -2,5 +2,5 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 cd anilist
-npx lint-staged
+pnpx lint-staged
 pnpm run test
