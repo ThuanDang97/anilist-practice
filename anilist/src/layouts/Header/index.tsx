@@ -19,7 +19,7 @@ import { useStylesHeader } from './Header.module'
 import Navbar from '@components/Navbar'
 
 // constants
-import { END_POINTS } from '@constants/endPoints'
+import { AUTHENTICATION, END_POINTS } from '@constants/endPoints'
 
 // mocks
 import { mockAuthNavbar, mockNavbar } from '@mocks/mockNavbar'
@@ -32,6 +32,8 @@ import HeartIcon from '@assets/icons/HeartIcon'
 import SettingIcon from '@assets/icons/SettingIcon'
 import SignOutIcon from '@assets/icons/SignOutIcon'
 import UserIcon from '@assets/icons/UserIcon'
+import { useEffect } from 'react'
+import { query } from '@constants/query'
 
 const listPrimaryLinks = [
   {
@@ -79,6 +81,41 @@ const Header = () => {
   const theme = useMantineTheme()
 
   const isAuthenticated = false
+
+  function handleResponse(response: any) {
+    console.log(response)
+  }
+
+  useEffect(() => {
+    // Get the full hash from the URL
+    const hash = window.location.hash
+
+    // Check if the hash contains an access token
+    if (hash.includes('access_token')) {
+      // Parse the hash to extract the access token
+      const accessToken = new URLSearchParams(hash.substring(1)).get(
+        'access_token',
+      )
+
+      const url = 'https://graphql.anilist.co'
+      const options = {
+        method: 'POST',
+        headers: {
+          Authorization: 'Bearer ' + accessToken,
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          query: query,
+        }),
+      }
+
+      fetch(url, options).then(handleResponse)
+
+      // Now you can use the access token as needed (e.g., store it in state, localStorage, etc.)
+      console.log('Access Token:', accessToken)
+    }
+  }, [])
 
   return (
     <Box className={classes.header} component="header">
@@ -190,10 +227,7 @@ const Header = () => {
           </HoverCard>
         ) : (
           <Box className={classes.link}>
-            <Link
-              to="https://anilist.co/api/v2/oauth/authorize?client_id={client_id}&response_type=token"
-              className={classes.login}
-            >
+            <Link to={AUTHENTICATION} className={classes.login}>
               <Text size="md">Login</Text>
             </Link>
             <Link to={END_POINTS.SIGNUP}>
