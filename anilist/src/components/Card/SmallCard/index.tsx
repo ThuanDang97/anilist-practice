@@ -95,16 +95,16 @@ const SmallCard = ({ anime }: AnimeItem) => {
             <Image
               src={coverImage.extraLarge}
               alt={title.userPreferred}
-              width={isMobile ? 115 : 185}
-              height={isMobile ? 165 : 265}
+              width={isMobile ? '115px' : '185px'}
+              height={isMobile ? '165px' : '265px'}
               radius={5}
             />
             <Text
               component="p"
               size="sm"
-              mt={10}
+              mt="10px"
               fw={600}
-              maw={isMobile ? 115 : 185}
+              maw={isMobile ? '115px' : '185px'}
               className={classes.title}
             >
               {title.userPreferred}
@@ -117,7 +117,7 @@ const SmallCard = ({ anime }: AnimeItem) => {
         data-testid="dropdown-card"
       >
         <Box className={classes.wrapper}>
-          <Box className={classes.header}>
+          <Flex justify="space-between" className={classes.header}>
             <Text
               color={theme.colors.description[0]}
               fw={600}
@@ -131,12 +131,12 @@ const SmallCard = ({ anime }: AnimeItem) => {
               {renderSeason()}
             </Text>
             <Flex align="center" gap={5}>
-              <Box w={19} h={19}>
+              <Box w="19x" h="19x">
                 {getIconOfScore(averageScore)}
               </Box>
               <Text color={theme.colors.description[0]}>{averageScore}%</Text>
             </Flex>
-          </Box>
+          </Flex>
 
           <Text
             className={classes.studios}
@@ -146,18 +146,23 @@ const SmallCard = ({ anime }: AnimeItem) => {
           >
             {studios.edges[0]?.node.name}
           </Text>
-          <Box className={classes.info}>
+          <Flex gap="8px" align="center" className={classes.info}>
             <Text color={theme.colors.description[0]}>{format}</Text>
             {episodes > 0 && (
               <>
-                <Box>•</Box>
+                <Text
+                  size={theme.fontSizes.xxl}
+                  color={theme.colors.description[0]}
+                >
+                  •
+                </Text>
                 <Text color={theme.colors.description[0]}>
                   {episodes} episodes
                 </Text>
               </>
             )}
-          </Box>
-          <Box className={classes.genres}>
+          </Flex>
+          <Flex wrap="wrap" gap="10x" className={classes.genres}>
             {genres.slice(0, 3).map((item) => (
               <Link key={item} to={`${END_POINTS.SEARCH_PAGE}/${item}`}>
                 <Badge bg={coverImage.color} tt="lowercase">
@@ -165,7 +170,7 @@ const SmallCard = ({ anime }: AnimeItem) => {
                 </Badge>
               </Link>
             ))}
-          </Box>
+          </Flex>
         </Box>
       </Popover.Dropdown>
     </Popover>

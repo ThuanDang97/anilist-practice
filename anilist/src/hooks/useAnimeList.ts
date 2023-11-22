@@ -3,7 +3,7 @@ import { UseQueryResult, useQuery } from '@tanstack/react-query'
 import { getAnime } from '@services/animeService'
 
 // types
-import { variables } from '@type/Anime.types'
+import { variables } from '@type/variable'
 import { Total } from '@type/anime'
 
 const useAnimeList = (variables: variables): UseQueryResult<Total> => {

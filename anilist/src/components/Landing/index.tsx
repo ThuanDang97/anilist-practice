@@ -27,12 +27,12 @@ const LandingSection = () => {
   const renderFeatureCard = (item: FeatureCard) => (
     <Flex
       direction="row"
-      gap={40}
       maw={{
-        base: 300,
-        md: 400,
+        base: '300px',
+        md: '400px',
       }}
-      mah={300}
+      mah="300px"
+      gap="40px"
     >
       <Image src={item.icon} alt={item.title} maw={85} mah={85} />
       <Box>
@@ -52,7 +52,7 @@ const LandingSection = () => {
         md: '60px 80px',
       }}
       sx={{
-        borderRadius: isMobile ? 0 : 20,
+        borderRadius: isMobile ? 0 : '20px',
       }}
     >
       <Title className={classes.heading} order={1}>
@@ -63,8 +63,8 @@ const LandingSection = () => {
       </Title>
       <Flex
         wrap="wrap"
-        rowGap={60}
-        columnGap={70}
+        rowGap="60px"
+        columnGap="70px"
         justify="center"
         className={classes.featureCards}
       >
@@ -83,7 +83,7 @@ const LandingSection = () => {
         <Text size="lg" fw={600}>
           Join Now
         </Text>
-        <Box className={classes.circle}>
+        <Flex justify="center" align="center" className={classes.circle}>
           <Box
             sx={{
               '& svg': {
@@ -96,7 +96,7 @@ const LandingSection = () => {
           >
             <ChevronRightIcon />
           </Box>
-        </Box>
+        </Flex>
       </Link>
     </Box>
   )

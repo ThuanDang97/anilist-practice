@@ -4,21 +4,6 @@ export const useStylesListCards = createStyles((theme: MantineTheme) => ({
   landingSection: {
     paddingBottom: '80px',
   },
-  title: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    marginBottom: '20px',
-  },
-  results: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'relative',
-  },
-  smallCard: {
-    justifyContent: 'space-between',
-  },
-  tilesCard: {},
   ranks: {
     width: '50px',
     height: '50px',

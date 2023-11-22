@@ -56,11 +56,13 @@ const popularSeason = {
 }
 
 const upcoming = {
+  type: Media.ANIME,
   season: Season.WINTER,
   seasonYear: 2024,
 }
 
 const popular = {
+  type: Media.ANIME,
   season: Season.WINTER,
   seasonYear: 2004,
 }
@@ -69,6 +71,7 @@ const top100 = {
   perPage: 10,
   sort: [SORT_BY.SCORE_DESC],
   status: Status.FINISHED,
+  type: Media.ANIME,
 }
 
 export {

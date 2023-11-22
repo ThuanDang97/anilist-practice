@@ -4,16 +4,22 @@ import { useMediaQuery } from '@mantine/hooks'
 // components
 import LandingSection from '@components/Landing'
 import ListCardComponent from '@components/ListCard'
+import SearchComponent from '@components/Search'
+import Select from '@components/Select'
 import SmallCardSkeleton from '@components/Skeleton/SmallCardSkeleton'
 import TilesCardSkeleton from '@components/Skeleton/TilesCardSkeleton'
 
 // hooks
 import useAnimeList from '@hooks/useAnimeList'
+import useGenresList from '@hooks/useGenresList'
 
 // constants
 import { TITLE_SECTIONS } from '@constants/defaultValue'
 import { END_POINTS } from '@constants/endPoints'
 import {
+  Format,
+  Season,
+  Status,
   popular,
   popularSeason,
   top100,
@@ -29,6 +35,11 @@ import { mockListRenderSkeleton } from '@mocks/mockAnime'
 
 // styles
 import { useStylesHomePage } from './HomePage.module'
+
+// utils
+import GenerateYearList from '@utils/generateYearList'
+import { transformEnumToList } from '@utils/transformEnum'
+import { TransformListGenres } from '@utils/transformListGenres'
 
 type TRenderSectionListAnime = {
   title: string
@@ -48,6 +59,7 @@ const HomePage = () => {
   const { data: listPopular, isLoading: isLoadingPopular } =
     useAnimeList(popular)
   const { data: listTop100, isLoading: isLoadingTop100 } = useAnimeList(top100)
+  const { data: listGenres } = useGenresList()
 
   const { classes } = useStylesHomePage()
   const theme = useMantineTheme()
@@ -154,12 +166,43 @@ const HomePage = () => {
     },
   ]
 
+  const listYear: string[] = GenerateYearList()
+  const listFilter = [
+    {
+      title: 'Genres',
+      listSelect: TransformListGenres(listGenres?.genres, listGenres?.tags),
+    },
+    {
+      title: 'Year',
+      listSelect: listYear,
+    },
+    {
+      title: 'Season',
+      listSelect: transformEnumToList(Season),
+    },
+    {
+      title: 'Format',
+      listSelect: transformEnumToList(Format),
+    },
+    {
+      title: 'Airing Status',
+      listSelect: transformEnumToList(Status),
+    },
+  ]
   return (
     <>
       <LandingSection />
+      <Flex gap="15px" mb="80px">
+        <SearchComponent />
+        {listFilter.map((item) => (
+          <Box key={item.title}>
+            <Select title={item.title} listSelect={item.listSelect} />
+          </Box>
+        ))}
+      </Flex>
       <Box
         p={{
-          base: 10,
+          base: 16,
           md: 0,
         }}
       >

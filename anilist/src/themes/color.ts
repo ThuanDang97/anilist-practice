@@ -14,6 +14,7 @@ const dark: Partial<MantineThemeOverride['colors']> = {
     '#46546B',
     '#EDF1F5',
     '#BCBEDC',
+    '#D9E6FF',
   ],
   blue: ['#ACD5F2', '#3577FF', '#3DB4F2'],
 }
@@ -32,6 +33,7 @@ const light: Partial<MantineThemeOverride['colors']> = {
     '#46546B',
     '#EDF1F5',
     '#BCBEDC',
+    '#D9E6FF',
   ],
   blue: ['#ACD5F2', '#3577FF'],
 }

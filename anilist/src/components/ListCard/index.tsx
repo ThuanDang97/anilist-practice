@@ -1,4 +1,12 @@
-import { Box, Button, Flex, Text, Title, useMantineTheme } from '@mantine/core'
+import {
+  Box,
+  Button,
+  Flex,
+  Grid,
+  Text,
+  Title,
+  useMantineTheme,
+} from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
 import { Link } from 'react-router-dom'
 
@@ -40,10 +48,10 @@ const ListCardComponent = ({
   return (
     <Box className={classes.landingSection}>
       <Link to={`${END_POINTS.SEARCH_PAGE}${href}`}>
-        <Box className={classes.title}>
+        <Flex justify="space-between" align="center" pos="relative" mb="10px">
           <Title
             order={3}
-            size={16}
+            size="16px"
             sx={{
               color: theme.colors.title[2],
               ':hover': {
@@ -63,20 +71,25 @@ const ListCardComponent = ({
           >
             View All
           </Button>
-        </Box>
+        </Flex>
       </Link>
 
-      <Flex
-        className={isCard ? classes.smallCard : classes.tilesCard}
-        direction={{ base: 'row', lg: isCard ? 'row' : 'column' }}
+      <Grid
         sx={{
-          flexFlow: 'row wrap',
+          display: 'grid',
+          gridTemplateColumns:
+            !isCard && !isMobile
+              ? '1fr'
+              : isMobile
+              ? 'repeat(auto-fill,minmax(110px,1fr))'
+              : 'repeat(auto-fill,200px)',
+          gap: isCard ? '25px 5px' : '25px 20px',
+          justifyContent: 'space-between',
         }}
-        rowGap={20}
-        justify={isCard || isMobile ? 'space-between' : ''}
+        columns={2}
       >
         {listAnimeTransformer.map((anime, index) => (
-          <Box key={anime.id} className={classes.results}>
+          <Flex justify="center" align="center" pos="relative" key={anime.id}>
             {isCard ? (
               <SmallCard anime={anime} />
             ) : (
@@ -90,7 +103,7 @@ const ListCardComponent = ({
                     <Flex
                       className={classes.ranksCircle}
                       align="center"
-                      gap={1}
+                      gap="1px"
                       bg={anime.coverImage.color}
                       justify="center"
                       left="-5px"
@@ -98,7 +111,7 @@ const ListCardComponent = ({
                     >
                       <Text
                         sx={{
-                          fontSize: 10,
+                          fontSize: '10px',
                         }}
                       >
                         #
@@ -115,9 +128,9 @@ const ListCardComponent = ({
                 )}
               </>
             )}
-          </Box>
+          </Flex>
         ))}
-      </Flex>
+      </Grid>
     </Box>
   )
 }
