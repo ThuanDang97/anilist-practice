@@ -32,8 +32,9 @@ import HeartIcon from '@assets/icons/HeartIcon'
 import SettingIcon from '@assets/icons/SettingIcon'
 import SignOutIcon from '@assets/icons/SignOutIcon'
 import UserIcon from '@assets/icons/UserIcon'
-import { useEffect } from 'react'
-import { query } from '@constants/query'
+
+// hooks
+import useUser from '@hooks/useUser'
 
 const listPrimaryLinks = [
   {
@@ -79,43 +80,33 @@ const listSecondaryLinks = [
 const Header = () => {
   const { classes } = useStylesHeader()
   const theme = useMantineTheme()
-
   const isAuthenticated = false
+  const { data } = useUser(localStorage.getItem('access_token') as string)
 
-  function handleResponse(response: any) {
-    console.log(response)
-  }
+  console.log('data', data)
 
-  useEffect(() => {
-    // Get the full hash from the URL
-    const hash = window.location.hash
+  const handleRequestLogin = () => {
+    const myWindow = window.open(
+      AUTHENTICATION,
+      'MyWindow',
+      'width=600,height=300',
+    ) as Window
 
-    // Check if the hash contains an access token
-    if (hash.includes('access_token')) {
-      // Parse the hash to extract the access token
-      const accessToken = new URLSearchParams(hash.substring(1)).get(
-        'access_token',
-      )
+    myWindow.onload = async () => {
+      const hash = myWindow.location.hash as string
 
-      const url = 'https://graphql.anilist.co'
-      const options = {
-        method: 'POST',
-        headers: {
-          Authorization: 'Bearer ' + accessToken,
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify({
-          query: query,
-        }),
+      if (hash.includes('access_token')) {
+        // Parse the hash to extract the access token
+        const accessToken = new URLSearchParams(hash.substring(1)).get(
+          'access_token',
+        )
+
+        localStorage.setItem('access_token', JSON.stringify(accessToken))
+
+        return myWindow.close()
       }
-
-      fetch(url, options).then(handleResponse)
-
-      // Now you can use the access token as needed (e.g., store it in state, localStorage, etc.)
-      console.log('Access Token:', accessToken)
     }
-  }, [])
+  }
 
   return (
     <Box className={classes.header} component="header">
@@ -227,14 +218,9 @@ const Header = () => {
           </HoverCard>
         ) : (
           <Box className={classes.link}>
-            <Link to={AUTHENTICATION} className={classes.login}>
-              <Text size="md">Login</Text>
-            </Link>
-            <Link to={END_POINTS.SIGNUP}>
-              <Button size="md" variant="primary">
-                Sign Up
-              </Button>
-            </Link>
+            <Button onClick={handleRequestLogin} size="md" variant="primary">
+              Login with AniList
+            </Button>
           </Box>
         )}
       </Box>
