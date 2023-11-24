@@ -8,7 +8,7 @@ import { baseURL } from '@constants/urls'
 export const fetchApi = async (accessToken: string) => {
   try {
     const headers = {
-      Authorization: 'Bearer ' + JSON.parse(accessToken),
+      Authorization: 'Bearer ' + accessToken,
       'Content-Type': 'application/json',
       Accept: 'application/json',
     }
