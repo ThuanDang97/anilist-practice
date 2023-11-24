@@ -34,7 +34,7 @@ import SignOutIcon from '@assets/icons/SignOutIcon'
 import UserIcon from '@assets/icons/UserIcon'
 
 // hooks
-import useUser from '@hooks/useUser'
+import useAuth from '@stores/useAuth'
 
 const listPrimaryLinks = [
   {
@@ -80,10 +80,11 @@ const listSecondaryLinks = [
 const Header = () => {
   const { classes } = useStylesHeader()
   const theme = useMantineTheme()
-  const isAuthenticated = false
-  const { data } = useUser(localStorage.getItem('access_token') as string)
 
-  console.log('data', data)
+  const [userAuthentication, login] = useAuth((state) => [
+    state.userAuthentication,
+    state.login,
+  ])
 
   const handleRequestLogin = () => {
     const myWindow = window.open(
@@ -101,10 +102,11 @@ const Header = () => {
           'access_token',
         )
 
-        localStorage.setItem('access_token', JSON.stringify(accessToken))
-
-        return myWindow.close()
+        if (accessToken) {
+          await login(accessToken)
+        }
       }
+      return myWindow.close()
     }
   }
 
@@ -120,9 +122,11 @@ const Header = () => {
           />
         </Link>
         <Box className={classes.container}>
-          <Navbar listNavbar={isAuthenticated ? mockAuthNavbar : mockNavbar} />
+          <Navbar
+            listNavbar={userAuthentication ? mockAuthNavbar : mockNavbar}
+          />
         </Box>
-        {isAuthenticated ? (
+        {userAuthentication ? (
           <HoverCard
             width="250px"
             position="bottom"
