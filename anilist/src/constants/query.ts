@@ -141,3 +141,15 @@ query {
   }
 }
 `
+
+export const getUserQuery = `
+query getUser {
+  Viewer {
+    id
+    name
+    avatar {
+      medium
+    }
+  }
+}
+`

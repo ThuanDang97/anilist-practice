@@ -19,7 +19,7 @@ import { useStylesHeader } from './Header.module'
 import Navbar from '@components/Navbar'
 
 // constants
-import { END_POINTS } from '@constants/endPoints'
+import { AUTHENTICATION, END_POINTS } from '@constants/endPoints'
 
 // mocks
 import { mockAuthNavbar, mockNavbar } from '@mocks/mockNavbar'
@@ -32,6 +32,9 @@ import HeartIcon from '@assets/icons/HeartIcon'
 import SettingIcon from '@assets/icons/SettingIcon'
 import SignOutIcon from '@assets/icons/SignOutIcon'
 import UserIcon from '@assets/icons/UserIcon'
+
+// hooks
+import useAuth from '@stores/useAuth'
 
 const listPrimaryLinks = [
   {
@@ -78,7 +81,34 @@ const Header = () => {
   const { classes } = useStylesHeader()
   const theme = useMantineTheme()
 
-  const isAuthenticated = false
+  const [userAuthentication, login] = useAuth((state) => [
+    state.userAuthentication,
+    state.login,
+  ])
+
+  const handleRequestLogin = () => {
+    const myWindow = window.open(
+      AUTHENTICATION,
+      'MyWindow',
+      'width=600,height=300',
+    ) as Window
+
+    myWindow.onload = async () => {
+      const hash = myWindow.location.hash as string
+
+      if (hash.includes('access_token')) {
+        // Parse the hash to extract the access token
+        const accessToken = new URLSearchParams(hash.substring(1)).get(
+          'access_token',
+        )
+
+        if (accessToken) {
+          await login(accessToken)
+        }
+      }
+      return myWindow.close()
+    }
+  }
 
   return (
     <Box className={classes.header} component="header">
@@ -92,9 +122,11 @@ const Header = () => {
           />
         </Link>
         <Box className={classes.container}>
-          <Navbar listNavbar={isAuthenticated ? mockAuthNavbar : mockNavbar} />
+          <Navbar
+            listNavbar={userAuthentication ? mockAuthNavbar : mockNavbar}
+          />
         </Box>
-        {isAuthenticated ? (
+        {userAuthentication ? (
           <HoverCard
             width="250px"
             position="bottom"
@@ -190,17 +222,9 @@ const Header = () => {
           </HoverCard>
         ) : (
           <Box className={classes.link}>
-            <Link
-              to="https://anilist.co/api/v2/oauth/authorize?client_id={client_id}&response_type=token"
-              className={classes.login}
-            >
-              <Text size="md">Login</Text>
-            </Link>
-            <Link to={END_POINTS.SIGNUP}>
-              <Button size="md" variant="primary">
-                Sign Up
-              </Button>
-            </Link>
+            <Button onClick={handleRequestLogin} size="md" variant="primary">
+              Login with AniList
+            </Button>
           </Box>
         )}
       </Box>

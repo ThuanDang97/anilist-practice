@@ -1,8 +1,9 @@
+import axios from 'axios'
+
+// constants
 import { ERRORS_MESSAGE } from '@constants/errorsMsg'
 import { genresQuery } from '@constants/query'
 import { baseURL } from '@constants/urls'
-import { Genres } from '@type/genres'
-import axios from 'axios'
 
 export const fetchApi = async (query: string) => {
   try {

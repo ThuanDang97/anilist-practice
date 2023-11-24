@@ -19,3 +19,5 @@ export const END_POINTS = {
   REVIEW: '/reviews',
   RECOMMENDATIONS: '/recommendations',
 }
+
+export const AUTHENTICATION = `https://anilist.co/api/v2/oauth/authorize?client_id=${process.env.CLIENT_ID}&response_type=token`
