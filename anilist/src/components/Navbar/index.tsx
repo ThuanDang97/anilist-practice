@@ -68,8 +68,18 @@ const Navbar = ({ listNavbar }: IListNavbar) => {
         }}
       >
         <HoverCard.Target>
-          <Link to={link} className={classes.link}>
-            {label}
+          <Link to={link}>
+            <Text
+              p="18px 16px"
+              sx={{
+                color: theme.colors.title[2],
+                ':hover': {
+                  color: theme.colors.title[1],
+                },
+              }}
+            >
+              {label}
+            </Text>
           </Link>
         </HoverCard.Target>
         <HoverCard.Dropdown data-testid="menu">
@@ -138,7 +148,7 @@ const Navbar = ({ listNavbar }: IListNavbar) => {
               >
                 <Link to={aboutItem.link}>
                   <Flex gap="8px" align="start">
-                    <Box w="10px" h="10px">
+                    <Box w="10px" h="10px" mt={-2}>
                       {aboutItem.icon}
                     </Box>
                     <Text component="p" size="xs">
@@ -159,12 +169,22 @@ const Navbar = ({ listNavbar }: IListNavbar) => {
       {listNavbar.map((item) => {
         const { label, link, subMenu } = item
         return (
-          <Flex key={label}>
+          <Flex key={label} align="center">
             {subMenu ? (
               renderSubMenu(item)
             ) : (
-              <Link to={link} className={classes.link}>
-                {label}
+              <Link to={link}>
+                <Text
+                  p="18px 16px"
+                  sx={{
+                    color: theme.colors.title[2],
+                    ':hover': {
+                      color: theme.colors.title[1],
+                    },
+                  }}
+                >
+                  {label}
+                </Text>
               </Link>
             )}
           </Flex>

@@ -12,7 +12,7 @@ const MainLayout = () => {
 
   return (
     <>
-      {!isMobile && <Header isAuthenticated={false} />}
+      {!isMobile && <Header />}
       <Box bg={theme.colors.background[2]}>
         <Container
           size="xl"
