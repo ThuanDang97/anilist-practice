@@ -40,6 +40,7 @@ import { useStylesHomePage } from './HomePage.module'
 import GenerateYearList from '@utils/generateYearList'
 import { transformEnumToList } from '@utils/transformEnum'
 import { TransformListGenres } from '@utils/transformListGenres'
+import useAuth from '@stores/useAuth'
 
 type TRenderSectionListAnime = {
   title: string
@@ -64,6 +65,7 @@ const HomePage = () => {
   const { classes } = useStylesHomePage()
   const theme = useMantineTheme()
   const isMobile = useMediaQuery(`(max-width: 1024px)`)
+  const userAuthentication = useAuth((state) => state.userAuthentication)
 
   const renderSectionListAnime = ({
     title,
@@ -191,7 +193,7 @@ const HomePage = () => {
   ]
   return (
     <>
-      <LandingSection />
+      {!userAuthentication && <LandingSection />}
       <Flex gap="15px" mb="80px">
         <SearchComponent />
         {listFilter.map((item) => (
