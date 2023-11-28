@@ -28,7 +28,9 @@ interface AnimeItem {
 }
 
 const SmallCard = ({ anime }: AnimeItem) => {
-  const [opened, { close, open }] = useDisclosure(false)
+  const [isOpenPopover, { close: onClosePopover, open: onOpenPopover }] =
+    useDisclosure(false)
+
   const { classes } = useStylesSmallCard()
   const theme = useMantineTheme()
   const isMobile = useMediaQuery(`(max-width: 1024px)`)
@@ -63,7 +65,7 @@ const SmallCard = ({ anime }: AnimeItem) => {
       position="right-start"
       withArrow
       shadow="md"
-      opened={opened}
+      opened={isOpenPopover}
       key={id}
       arrowSize={12}
       arrowOffset={50}
@@ -89,8 +91,8 @@ const SmallCard = ({ anime }: AnimeItem) => {
         >
           <Link
             to={`${END_POINTS.SEARCH_PAGE}/${title}`}
-            onMouseEnter={open}
-            onMouseLeave={close}
+            onMouseEnter={onOpenPopover}
+            onMouseLeave={onClosePopover}
           >
             <Image
               src={coverImage.extraLarge}

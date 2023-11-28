@@ -2,7 +2,7 @@ import { MantineThemeOverride } from '@mantine/core'
 
 const dark: Partial<MantineThemeOverride['colors']> = {
   title: ['#748899', '#C9D7E3', '#ADC0D2'],
-  background: ['#152232', '#0A1625', '#0B1622'],
+  background: ['#152232', '#0A1625', '#0B1622', '#152232'],
   description: ['#FBFBFBFB'],
   subtitle: ['#8BA0B2', '#647380'],
   dark: ['#0A1625', 'RGBA(0,0,0,.4)', '#11161D'],
@@ -21,7 +21,7 @@ const dark: Partial<MantineThemeOverride['colors']> = {
 
 const light: Partial<MantineThemeOverride['colors']> = {
   title: ['#748899', '#516170', '#647380'],
-  background: ['#FBFBFBFB', '#748899', '#EDF1F5'],
+  background: ['#FBFBFBFB', '#748899', '#EDF1F5', '#FFF'],
   description: ['#152232'],
   subtitle: ['#647380', '#8BA0B2'],
   dark: ['#0A1625', 'RGBA(0,0,0,.4)', '#11161D'],
@@ -35,7 +35,7 @@ const light: Partial<MantineThemeOverride['colors']> = {
     '#BCBEDC',
     '#D9E6FF',
   ],
-  blue: ['#ACD5F2', '#3577FF'],
+  blue: ['#ACD5F2', '#3577FF', '#3DB4F2'],
 }
 
 export { dark, light }
