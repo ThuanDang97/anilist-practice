@@ -5,11 +5,14 @@ import {
   ChevronIcon,
   Flex,
   Grid,
+  Group,
   HoverCard,
   Image,
+  Modal,
   Text,
   useMantineTheme,
 } from '@mantine/core'
+import { useDisclosure } from '@mantine/hooks'
 import { Link } from 'react-router-dom'
 
 // styles
@@ -25,13 +28,15 @@ import { AUTHENTICATION, END_POINTS } from '@constants/endPoints'
 import { mockAuthNavbar, mockNavbar } from '@mocks/mockNavbar'
 
 // assets
-import AppStoreIcon from '@assets/icons/AppStoreIcon'
-import DiscordIcon from '@assets/icons/DiscordIcon'
-import EmailIcon from '@assets/icons/EmailIcon'
-import HeartIcon from '@assets/icons/HeartIcon'
-import SettingIcon from '@assets/icons/SettingIcon'
-import SignOutIcon from '@assets/icons/SignOutIcon'
-import UserIcon from '@assets/icons/UserIcon'
+import {
+  AppStoreIcon,
+  DiscordIcon,
+  EmailIcon,
+  HeartIcon,
+  SettingIcon,
+  SignOutIcon,
+  UserIcon,
+} from '@assets/icons'
 
 // hooks
 import useAuth from '@stores/useAuth'
@@ -80,6 +85,7 @@ const listSecondaryLinks = [
 const Header = () => {
   const { classes } = useStylesHeader()
   const theme = useMantineTheme()
+  const [isOpenModal, { close, open }] = useDisclosure(false)
 
   const [userAuthentication, login] = useAuth((state) => [
     state.userAuthentication,
@@ -111,98 +117,61 @@ const Header = () => {
   }
 
   return (
-    <Box className={classes.header} component="header">
-      <Box className={classes.container}>
-        <Link to={END_POINTS.HOMEPAGE}>
-          <Image
-            src="https://anilist.co/img/icons/icon.svg"
-            alt="logo"
-            width="50"
-            height="50"
-          />
-        </Link>
+    <>
+      <Box className={classes.header} component="header">
         <Box className={classes.container}>
-          <Navbar
-            listNavbar={userAuthentication ? mockAuthNavbar : mockNavbar}
-          />
-        </Box>
-        {userAuthentication ? (
-          <HoverCard
-            width="250px"
-            position="bottom"
-            withArrow
-            shadow="md"
-            aria-label="avatar"
-            styles={{
-              dropdown: {
-                background: theme.colors.background[0],
-                border: theme.colors.background[0],
-                padding: 0,
-              },
-              arrow: {
-                border: theme.colors.background[0],
-              },
-            }}
-          >
-            <HoverCard.Target>
-              <Flex align="center" gap="5px">
-                <Avatar
-                  src="https://s4.anilist.co/file/anilistcdn/user/avatar/large/default.png"
-                  alt="avatar"
-                />
-                <ChevronIcon />
-              </Flex>
-            </HoverCard.Target>
-            <HoverCard.Dropdown>
-              <>
-                <Flex direction="column" p="21px 27px" gap="10px">
-                  {listPrimaryLinks.map((item) => (
-                    <Link key={item.label} to={item.href}>
-                      <Flex gap="8px" align="start">
-                        <Box w="12px" h="12px">
-                          {item.icon}
-                        </Box>
-                        <Text
-                          component="p"
-                          size="sm"
-                          sx={{
-                            color: theme.colors.title[2],
-                            ':hover': {
-                              color: theme.colors.title[1],
-                            },
-                          }}
-                        >
-                          {item.label}
-                        </Text>
-                      </Flex>
-                    </Link>
-                  ))}
+          <Link to={END_POINTS.HOMEPAGE}>
+            <Image
+              src="https://anilist.co/img/icons/icon.svg"
+              alt="logo"
+              width="50"
+              height="50"
+            />
+          </Link>
+          <Box className={classes.container}>
+            <Navbar
+              listNavbar={userAuthentication ? mockAuthNavbar : mockNavbar}
+            />
+          </Box>
+          {userAuthentication ? (
+            <HoverCard
+              width="250px"
+              position="bottom"
+              withArrow
+              shadow="md"
+              aria-label="avatar"
+              styles={{
+                dropdown: {
+                  background: theme.colors.background[0],
+                  border: theme.colors.background[0],
+                  padding: 0,
+                },
+                arrow: {
+                  border: theme.colors.background[0],
+                },
+              }}
+            >
+              <HoverCard.Target>
+                <Flex align="center" gap="5px">
+                  <Avatar
+                    src="https://s4.anilist.co/file/anilistcdn/user/avatar/large/default.png"
+                    alt="avatar"
+                  />
+                  <ChevronIcon />
                 </Flex>
-                <Grid
-                  sx={{
-                    background: theme.colors.background[1],
-                    margin: 0,
-                    rowGap: '10px',
-                    padding: '21px 27px',
-                  }}
-                >
-                  {listSecondaryLinks.map((item) => (
-                    <Grid.Col
-                      span={6}
-                      key={item.label}
-                      sx={{
-                        margin: 0,
-                        padding: 0,
-                      }}
-                    >
+              </HoverCard.Target>
+              <HoverCard.Dropdown>
+                <>
+                  <Flex direction="column" p="21px 27px" gap="10px">
+                    {listPrimaryLinks.map((item) => (
                       <Link key={item.label} to={item.href}>
-                        <Flex gap="5px" align="start">
-                          <Box w="10px" h="10px" mt={-2}>
+                        <Flex gap="8px" align="start">
+                          <Box w="12px" h="12px">
                             {item.icon}
                           </Box>
                           <Text
                             component="p"
-                            size="xs"
+                            size="sm"
                             sx={{
                               color: theme.colors.title[2],
                               ':hover': {
@@ -214,21 +183,136 @@ const Header = () => {
                           </Text>
                         </Flex>
                       </Link>
-                    </Grid.Col>
-                  ))}
-                </Grid>
-              </>
-            </HoverCard.Dropdown>
-          </HoverCard>
-        ) : (
-          <Box className={classes.link}>
-            <Button onClick={handleRequestLogin} size="md" variant="primary">
-              Login with AniList
-            </Button>
-          </Box>
-        )}
+                    ))}
+                  </Flex>
+                  <Grid
+                    sx={{
+                      background: theme.colors.background[2],
+                      margin: 0,
+                      rowGap: '10px',
+                      padding: '21px 27px',
+                    }}
+                  >
+                    {listSecondaryLinks.map((item) => {
+                      const { label, href, icon } = item
+
+                      return (
+                        <Grid.Col
+                          span={6}
+                          key={label}
+                          sx={{
+                            margin: 0,
+                            padding: 0,
+                          }}
+                        >
+                          {label === 'Logout' ? (
+                            <Button
+                              onClick={open}
+                              leftIcon={
+                                <Box w="10px" h="10px" mt={-2}>
+                                  {icon}
+                                </Box>
+                              }
+                              sx={{
+                                padding: 0,
+                                margin: 0,
+                                color: theme.colors.title[2],
+                                ':hover': {
+                                  color: theme.colors.title[1],
+                                },
+                                fontSize: theme.fontSizes.xs,
+                                background: 'transparent',
+                                height: 'fit-content',
+                              }}
+                            >
+                              {label}
+                            </Button>
+                          ) : (
+                            <Link to={href}>
+                              <Flex gap="5px" align="start">
+                                <Box w="10px" h="10px" mt={-2}>
+                                  {icon}
+                                </Box>
+                                <Text
+                                  component="p"
+                                  size="xs"
+                                  sx={{
+                                    color: theme.colors.title[2],
+                                    ':hover': {
+                                      color: theme.colors.title[1],
+                                    },
+                                  }}
+                                >
+                                  {label}
+                                </Text>
+                              </Flex>
+                            </Link>
+                          )}
+                        </Grid.Col>
+                      )
+                    })}
+                  </Grid>
+                </>
+              </HoverCard.Dropdown>
+            </HoverCard>
+          ) : (
+            <Box className={classes.link}>
+              <Button onClick={handleRequestLogin} size="md" variant="primary">
+                Login with AniList
+              </Button>
+            </Box>
+          )}
+        </Box>
       </Box>
-    </Box>
+      <Modal
+        opened={isOpenModal}
+        onClose={close}
+        title="Confirm Logout"
+        centered
+        styles={{
+          content: {
+            backgroundColor: theme.colors.background[3],
+          },
+          header: {
+            backgroundColor: theme.colors.background[3],
+          },
+          title: {
+            color: theme.colors.title[2],
+            fontSize: theme.fontSizes.xl,
+          },
+        }}
+      >
+        <Text color={theme.colors.title[2]} fs={theme.fontSizes.sm}>
+          Are you sure you want to logout?
+        </Text>
+        <Flex justify="flex-end" align="center" gap="15px" mt="25px">
+          <Button
+            size="xs"
+            onClick={close}
+            sx={{
+              fontSize: theme.fontSizes.xxs,
+              background: theme.colors.dark[0],
+              fontWeight: 500,
+              padding: '9px 15px',
+            }}
+          >
+            Cancel
+          </Button>
+          <Button
+            size="xs"
+            onClick={close}
+            sx={{
+              fontSize: theme.fontSizes.xxs,
+              background: theme.colors.blue[2],
+              fontWeight: 500,
+              padding: '9px 15px',
+            }}
+          >
+            Yes, Logout
+          </Button>
+        </Flex>
+      </Modal>
+    </>
   )
 }
 
