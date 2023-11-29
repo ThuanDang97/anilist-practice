@@ -5,7 +5,6 @@ import {
   ChevronIcon,
   Flex,
   Grid,
-  Group,
   HoverCard,
   Image,
   Modal,
@@ -87,16 +86,17 @@ const Header = () => {
   const theme = useMantineTheme()
   const [isOpenModal, { close, open }] = useDisclosure(false)
 
-  const [userAuthentication, login] = useAuth((state) => [
+  const [userAuthentication, login, logout] = useAuth((state) => [
     state.userAuthentication,
     state.login,
+    state.logout,
   ])
 
   const handleRequestLogin = () => {
     const myWindow = window.open(
       AUTHENTICATION,
       'MyWindow',
-      'width=600,height=300',
+      'width=900,height=600',
     ) as Window
 
     myWindow.onload = async () => {
@@ -114,6 +114,11 @@ const Header = () => {
       }
       return myWindow.close()
     }
+  }
+
+  const handleLogout = () => {
+    logout()
+    close()
   }
 
   return (
@@ -300,7 +305,7 @@ const Header = () => {
           </Button>
           <Button
             size="xs"
-            onClick={close}
+            onClick={handleLogout}
             sx={{
               fontSize: theme.fontSizes.xxs,
               background: theme.colors.blue[2],

@@ -20,7 +20,7 @@ const useAuth = create(
         return response as User
       },
       logout: () => {
-        localStorage.clear()
+        localStorage.removeItem('access_token')
         set({ userAuthentication: null })
       },
     }),
