@@ -39,6 +39,9 @@ import {
 
 // hooks
 import useAuth from '@stores/useAuth'
+import { useEffect, useState } from 'react'
+import { clearInterval } from 'timers'
+import { URL } from 'url'
 
 const listPrimaryLinks = [
   {
@@ -85,12 +88,62 @@ const Header = () => {
   const { classes } = useStylesHeader()
   const theme = useMantineTheme()
   const [isOpenModal, { close, open }] = useDisclosure(false)
-
+  const [externalPopup, setExternalPopup] = useState<Window>()
+  const delay = 1
   const [userAuthentication, login, logout] = useAuth((state) => [
     state.userAuthentication,
     state.login,
     state.logout,
   ])
+
+  useEffect(() => {
+    if (!externalPopup) return
+
+    const timer = setInterval(async () => {
+      if (!externalPopup) {
+        // clearInterval(timer)
+        return
+      }
+
+      const hash = externalPopup.location.hash as string
+
+      console.log('hash', hash)
+
+      if (!hash) return
+
+      if (hash.includes('access_token')) {
+        // Parse the hash to extract the access token
+        const accessToken = new URLSearchParams(hash.substring(1)).get(
+          'access_token',
+        )
+
+        if (accessToken) {
+          await login(accessToken)
+        }
+      }
+
+      externalPopup.close()
+
+      return () => {
+        clearInterval(timer)
+      }
+    }, delay * 500)
+  }, [externalPopup])
+
+  const connectClick = () => {
+    const width = 900
+    const height = 600
+    const title = `LOGIN ANILIST`
+    const popup = window.open(
+      AUTHENTICATION,
+      title,
+      `width=${width},height=${height}`,
+    )
+
+    if (popup) {
+      setExternalPopup(popup)
+    }
+  }
 
   const handleRequestLogin = () => {
     const myWindow = window.open(
@@ -262,7 +315,7 @@ const Header = () => {
             </HoverCard>
           ) : (
             <Box className={classes.link}>
-              <Button onClick={handleRequestLogin} size="md" variant="primary">
+              <Button onClick={connectClick} size="md" variant="primary">
                 Login with AniList
               </Button>
             </Box>
