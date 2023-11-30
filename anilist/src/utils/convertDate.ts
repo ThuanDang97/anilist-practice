@@ -4,6 +4,6 @@ interface DateObj {
   day: number
 }
 
-export const ConvertDateTime = (date: DateObj) => {
-  return new Date(date.year, date.month - 1, date.day).toISOString()
+export const ConvertDateTime = (date: DateObj): string => {
+  return new Date(date.year, date.month - 1, date.day, 0, 0, 0, 0).toISOString()
 }
