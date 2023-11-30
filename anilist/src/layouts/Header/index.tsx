@@ -12,6 +12,7 @@ import {
   useMantineTheme,
 } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 // styles
@@ -85,22 +86,22 @@ const Header = () => {
   const { classes } = useStylesHeader()
   const theme = useMantineTheme()
   const [isOpenModal, { close, open }] = useDisclosure(false)
-
+  const [externalPopup, setExternalPopup] = useState<Window>()
   const [userAuthentication, login, logout] = useAuth((state) => [
     state.userAuthentication,
     state.login,
     state.logout,
   ])
 
-  const handleRequestLogin = () => {
-    const myWindow = window.open(
-      AUTHENTICATION,
-      'MyWindow',
-      'width=900,height=600',
-    ) as Window
+  useEffect(() => {
+    if (!externalPopup) return
 
-    myWindow.onload = async () => {
-      const hash = myWindow.location.hash as string
+    setInterval(async () => {
+      if (!externalPopup) return
+
+      const hash = externalPopup.location.hash as string
+
+      if (!hash) return
 
       if (hash.includes('access_token')) {
         // Parse the hash to extract the access token
@@ -110,9 +111,28 @@ const Header = () => {
 
         if (accessToken) {
           await login(accessToken)
+          setExternalPopup(undefined)
+          externalPopup.close()
+          window.location.reload()
         }
       }
-      return myWindow.close()
+    }, 500)
+
+    return
+  }, [externalPopup, login])
+
+  const handleRequestLogin = () => {
+    const width = 900
+    const height = 600
+    const title = `LOGIN ANILIST`
+    const popup = window.open(
+      AUTHENTICATION,
+      title,
+      `width=${width},height=${height}`,
+    )
+
+    if (popup) {
+      setExternalPopup(popup)
     }
   }
 
