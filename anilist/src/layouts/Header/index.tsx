@@ -123,7 +123,7 @@ const Header = () => {
     return
   }, [externalPopup, login])
 
-  const connectClick = () => {
+  const handleRequestLogin = () => {
     const width = 900
     const height = 600
     const title = `LOGIN ANILIST`
@@ -284,7 +284,7 @@ const Header = () => {
             </HoverCard>
           ) : (
             <Box className={classes.link}>
-              <Button onClick={connectClick} size="md" variant="primary">
+              <Button onClick={handleRequestLogin} size="md" variant="primary">
                 Login with AniList
               </Button>
             </Box>
