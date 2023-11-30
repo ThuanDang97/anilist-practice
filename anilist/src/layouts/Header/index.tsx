@@ -12,6 +12,7 @@ import {
   useMantineTheme,
 } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 // styles
@@ -39,9 +40,6 @@ import {
 
 // hooks
 import useAuth from '@stores/useAuth'
-import { useEffect, useState } from 'react'
-import { clearInterval } from 'timers'
-import { URL } from 'url'
 
 const listPrimaryLinks = [
   {
