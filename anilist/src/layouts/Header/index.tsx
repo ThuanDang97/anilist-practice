@@ -89,7 +89,6 @@ const Header = () => {
   const theme = useMantineTheme()
   const [isOpenModal, { close, open }] = useDisclosure(false)
   const [externalPopup, setExternalPopup] = useState<Window>()
-  const delay = 1
   const [userAuthentication, login, logout] = useAuth((state) => [
     state.userAuthentication,
     state.login,
@@ -99,15 +98,10 @@ const Header = () => {
   useEffect(() => {
     if (!externalPopup) return
 
-    const timer = setInterval(async () => {
-      if (!externalPopup) {
-        // clearInterval(timer)
-        return
-      }
+    setInterval(async () => {
+      if (!externalPopup) return
 
       const hash = externalPopup.location.hash as string
-
-      console.log('hash', hash)
 
       if (!hash) return
 
@@ -119,16 +113,15 @@ const Header = () => {
 
         if (accessToken) {
           await login(accessToken)
+          setExternalPopup(undefined)
+          externalPopup.close()
+          window.location.reload()
         }
       }
+    }, 500)
 
-      externalPopup.close()
-
-      return () => {
-        clearInterval(timer)
-      }
-    }, delay * 500)
-  }, [externalPopup])
+    return
+  }, [externalPopup, login])
 
   const connectClick = () => {
     const width = 900
@@ -142,30 +135,6 @@ const Header = () => {
 
     if (popup) {
       setExternalPopup(popup)
-    }
-  }
-
-  const handleRequestLogin = () => {
-    const myWindow = window.open(
-      AUTHENTICATION,
-      'MyWindow',
-      'width=900,height=600',
-    ) as Window
-
-    myWindow.onload = async () => {
-      const hash = myWindow.location.hash as string
-
-      if (hash.includes('access_token')) {
-        // Parse the hash to extract the access token
-        const accessToken = new URLSearchParams(hash.substring(1)).get(
-          'access_token',
-        )
-
-        if (accessToken) {
-          await login(accessToken)
-        }
-      }
-      return myWindow.close()
     }
   }
 
