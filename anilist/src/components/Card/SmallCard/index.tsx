@@ -82,6 +82,9 @@ const SmallCard = ({ anime }: AnimeItem) => {
     >
       <Popover.Target>
         <Box
+          role="tooltip"
+          onMouseEnter={onOpenPopover}
+          onMouseLeave={onClosePopover}
           sx={{
             color: theme.colors.title[0],
             ':hover': {
