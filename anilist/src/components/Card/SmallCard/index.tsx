@@ -99,7 +99,7 @@ const SmallCard = ({ anime }: AnimeItem) => {
           >
             <Image
               src={coverImage.extraLarge}
-              alt={title.userPreferred}
+              alt="Card Image"
               width={isMobile ? '115px' : '185px'}
               height={isMobile ? '165px' : '265px'}
               radius={5}

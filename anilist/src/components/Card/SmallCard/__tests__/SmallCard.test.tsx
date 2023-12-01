@@ -11,7 +11,7 @@ describe('Small Card component', () => {
   test('renders small card and show content when hover', () => {
     render(<SmallCard anime={mockAnime} />)
 
-    const coverImage = screen.getByRole('img', {
+    const coverImage = screen.getByRole('tooltip', {
       name: /Cowboy Bebop: Tengoku no Tobira/i,
     })
     const title = screen.getByText(/Cowboy Bebop: Tengoku no Tobira/i)
