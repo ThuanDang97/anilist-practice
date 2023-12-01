@@ -57,13 +57,17 @@ const Footer = () => {
   const renderList = (listLink: ListLink[]) => {
     return (
       <List>
-        {listLink.map((item) => (
-          <List.Item key={item.label} className={classes.link}>
-            <Link to={item.link} role="menuitem">
-              {item.label}
-            </Link>
-          </List.Item>
-        ))}
+        {listLink.map((item) => {
+          const { link, label } = item
+
+          return (
+            <List.Item key={label} className={classes.link}>
+              <Link to={link} role="link" aria-label="label">
+                {label}
+              </Link>
+            </List.Item>
+          )
+        })}
       </List>
     )
   }
@@ -141,6 +145,8 @@ const Footer = () => {
                       },
                     }}
                     className={classes.button}
+                    role="button"
+                    aria-label="sw"
                     onClick={() =>
                       toggleColorScheme(themeItem.type as ColorScheme)
                     }
