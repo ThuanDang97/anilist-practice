@@ -4,7 +4,7 @@ const dark: Partial<MantineThemeOverride['colors']> = {
   title: ['#748899', '#C9D7E3', '#ADC0D2'],
   background: ['#152232', '#0A1625', '#0B1622', '#152232'],
   description: ['#FBFBFBFB'],
-  subtitle: ['#8BA0B2', '#647380'],
+  subtitle: ['#8BA0B2', '#748899'],
   dark: ['#0A1625', 'RGBA(0,0,0,.4)', '#11161D'],
   light: [
     '#F0F3F6',
