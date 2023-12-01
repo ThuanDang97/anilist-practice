@@ -143,7 +143,7 @@ const Header = () => {
 
   return (
     <>
-      <Box className={classes.header} component="header">
+      <Box className={classes.header} component="header" role="banner">
         <Box className={classes.container}>
           <Link to={END_POINTS.HOMEPAGE}>
             <Image
@@ -177,7 +177,13 @@ const Header = () => {
               }}
             >
               <HoverCard.Target>
-                <Flex align="center" gap="5px">
+                <Flex
+                  align="center"
+                  gap="5px"
+                  tabIndex={0}
+                  role="button"
+                  aria-label="User Avatar Options"
+                >
                   <Avatar
                     src="https://s4.anilist.co/file/anilistcdn/user/avatar/large/default.png"
                     alt="avatar"
@@ -282,7 +288,13 @@ const Header = () => {
             </HoverCard>
           ) : (
             <Box className={classes.link}>
-              <Button onClick={handleRequestLogin} size="md" variant="primary">
+              <Button
+                onClick={handleRequestLogin}
+                size="md"
+                variant="primary"
+                role="button"
+                aria-label="Login"
+              >
                 Login with AniList
               </Button>
             </Box>

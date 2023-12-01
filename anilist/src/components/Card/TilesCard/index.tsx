@@ -10,6 +10,7 @@ import { Anime } from '@type/anime'
 // styles
 import { useStylesTilesCard } from './TilesCard.module'
 import { getIconOfScore } from '@utils/utils'
+import getContrastColor from '@utils/getContrastColor'
 
 interface AnimeItem {
   anime: Anime
@@ -62,7 +63,13 @@ const TilesCard = ({ anime }: AnimeItem) => {
           <Flex gap="5px">
             {genres.map((item) => (
               <Link key={item} to={`${END_POINTS.SEARCH_PAGE}/${item}`}>
-                <Badge bg={coverImage.color} tt="lowercase">
+                <Badge
+                  bg={coverImage.color}
+                  tt="lowercase"
+                  sx={{
+                    color: getContrastColor(coverImage.color),
+                  }}
+                >
                   {item}
                 </Badge>
               </Link>
@@ -90,7 +97,7 @@ const TilesCard = ({ anime }: AnimeItem) => {
             <Text>{episodes} episodes</Text>
           </Text>
         </Box>
-        <Box>
+        <Box fw={600}>
           <Text
             size="sm"
             tt="capitalize"

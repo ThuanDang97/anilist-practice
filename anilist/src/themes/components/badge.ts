@@ -7,7 +7,6 @@ const Badge = {
       height: '18px',
       fontSize: theme.fontSizes.xxs,
       padding: '0 10px',
-      color: '#FFF5F8',
       fontWeight: 700,
     },
   }),

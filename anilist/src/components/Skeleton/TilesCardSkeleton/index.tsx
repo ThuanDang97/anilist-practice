@@ -7,8 +7,15 @@ const TilesCardSkeleton = () => {
   const { classes } = useStylesTilesCardSkeleton()
   const theme = useMantineTheme()
   return (
-    <Flex className={classes.productCard} direction="row" align="center">
+    <Flex
+      className={classes.productCard}
+      direction="row"
+      align="center"
+      aria-hidden="true"
+    >
       <Skeleton
+        role="img"
+        aria-label="Loading Image"
         width={48}
         height={60}
         sx={{
@@ -21,6 +28,8 @@ const TilesCardSkeleton = () => {
         }}
       />
       <Skeleton
+        role="status"
+        aria-live="polite"
         width={250}
         height={20}
         ml={80}
@@ -34,6 +43,8 @@ const TilesCardSkeleton = () => {
         }}
       />
       <Skeleton
+        role="status"
+        aria-live="polite"
         width={150}
         height={20}
         ml={200}

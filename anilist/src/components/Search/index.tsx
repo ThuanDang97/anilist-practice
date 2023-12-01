@@ -12,6 +12,7 @@ const SearchComponent = () => {
         Search
       </Text>
       <Input
+        aria-label="search"
         icon={
           <Box w="13px" h="20px">
             <SearchIcon />

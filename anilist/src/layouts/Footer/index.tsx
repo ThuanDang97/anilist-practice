@@ -57,13 +57,17 @@ const Footer = () => {
   const renderList = (listLink: ListLink[]) => {
     return (
       <List>
-        {listLink.map((item) => (
-          <List.Item key={item.label} className={classes.link}>
-            <Link to={item.link} role="menuitem">
-              {item.label}
-            </Link>
-          </List.Item>
-        ))}
+        {listLink.map((item) => {
+          const { link, label } = item
+
+          return (
+            <List.Item key={label} className={classes.link}>
+              <Link to={link} role="link" aria-label={label}>
+                {label}
+              </Link>
+            </List.Item>
+          )
+        })}
       </List>
     )
   }
@@ -92,7 +96,7 @@ const Footer = () => {
                 position="top-start"
                 withArrow
                 shadow="xs"
-                aria-label="Select Site Theme"
+                aria-label="Change Theme"
                 key={themeItem.type}
                 variant="dark"
                 closeDelay={100}
@@ -141,6 +145,7 @@ const Footer = () => {
                       },
                     }}
                     className={classes.button}
+                    role="button"
                     onClick={() =>
                       toggleColorScheme(themeItem.type as ColorScheme)
                     }
