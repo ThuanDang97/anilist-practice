@@ -6,8 +6,10 @@ const SmallCardSkeleton = () => {
   const isMobile = useMediaQuery(`(max-width: 1024px)`)
 
   return (
-    <Flex direction="column">
+    <Flex direction="column" aria-hidden="true">
       <Skeleton
+        role="img"
+        aria-label="Loading Image"
         width={isMobile ? '115px' : '185px'}
         height={isMobile ? '165px' : '265px'}
         sx={{
@@ -20,6 +22,8 @@ const SmallCardSkeleton = () => {
         }}
       />
       <Skeleton
+        role="status"
+        aria-live="polite"
         height={20}
         width={isMobile ? '110px' : '150px'}
         mt={5}
