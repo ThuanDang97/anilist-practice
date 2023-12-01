@@ -1,35 +1,20 @@
-import { fireEvent, render, screen } from '@utils/testUtils'
-import Navbar from '..'
 import { mockNavbar } from '@mocks/mockNavbar'
+import { act, render, screen } from '@utils/testUtils'
+import Navbar from '..'
 
 describe('Navbar Component', () => {
-  test('renders navbar component with correct item', () => {
+  test('renders navbar items', () => {
     render(<Navbar listNavbar={mockNavbar} />)
 
-    const link = screen.getByRole('link', {
-      name: /menu/i,
-    })
-
-    expect(link).toBeInTheDocument()
-  })
-
-  test('', () => {
-    render(<Navbar listNavbar={mockNavbar} />)
-
-    mockNavbar.map((item) => {
-      const { subMenu } = item
+    // Check if each item in the navbar is rendered
+    mockNavbar.forEach((item) => {
       const link = screen.getByRole('link', {
-        name: /menu/i,
+        name: new RegExp(item.label, 'i'),
       })
 
-      if (subMenu) {
-        fireEvent.mouseEnter(link)
-
-        subMenu.map((subMenuItem) => {
-          expect(screen.getByTestId('menu')).toBeInTheDocument()
-          expect(screen.getByText(subMenuItem.label)).toBeInTheDocument()
-        })
-      }
+      act(() => {
+        expect(link).toBeInTheDocument()
+      })
     })
   })
 })

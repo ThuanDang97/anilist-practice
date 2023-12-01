@@ -9,8 +9,6 @@ import {
 import { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 
-// utils
-
 // styles
 import { useStylesNavbar } from './Navbar.module'
 
@@ -53,7 +51,7 @@ const Navbar = ({ listNavbar }: IListNavbar) => {
         position="bottom-start"
         withArrow
         shadow="md"
-        aria-label="Menu"
+        aria-label={label}
         offset={-10}
         arrowOffset={35}
         styles={{
