@@ -2,7 +2,15 @@ import { MantineThemeOverride } from '@mantine/core'
 
 import FONTS_SIZES from './fontSizes'
 
-import { Button, Badge } from './components'
+import {
+  Badge,
+  Button,
+  Input,
+  InputWrapper,
+  Modal,
+  MultiSelect,
+  Textarea,
+} from './components'
 
 export const defaultTheme: MantineThemeOverride = {
   fontFamily: 'Overpass, sans-serif;',
@@ -10,5 +18,10 @@ export const defaultTheme: MantineThemeOverride = {
   components: {
     Button,
     Badge,
+    Input,
+    Modal,
+    MultiSelect,
+    Textarea,
+    InputWrapper,
   },
 }

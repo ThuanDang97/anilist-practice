@@ -19,14 +19,6 @@ const SearchComponent = () => {
           </Box>
         }
         size="md"
-        bg={theme.colors.background[0]}
-        sx={{
-          '.mantine-Input-input': {
-            border: theme.colors.background[0],
-            background: theme.colors.background[0],
-            borderRadius: '6px',
-          },
-        }}
       />
     </Box>
   )
