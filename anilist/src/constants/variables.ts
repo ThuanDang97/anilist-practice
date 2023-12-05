@@ -42,6 +42,15 @@ enum ListStatus {
   REPEATING = 'REPEATING',
 }
 
+enum ListStatusEdit {
+  WATCHING = 'Watching',
+  PLAN_TO_WATCH = 'Plan to watch',
+  COMPLETED = 'Completed',
+  REWATCHING = 'Rewatching',
+  PAUSED = 'Paused',
+  DROPPED = 'Dropped',
+}
+
 const trending = {
   page: 1,
   type: Media.ANIME,
@@ -75,14 +84,15 @@ const top100 = {
 }
 
 export {
-  trending,
-  popularSeason,
-  upcoming,
-  popular,
-  top100,
-  Media,
   Format,
-  Status,
-  Season,
   ListStatus,
+  ListStatusEdit,
+  Media,
+  Season,
+  Status,
+  popular,
+  popularSeason,
+  top100,
+  trending,
+  upcoming,
 }

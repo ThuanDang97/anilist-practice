@@ -1,4 +1,4 @@
-import { MultiSelect, Text, useMantineTheme } from '@mantine/core'
+import { Box, MultiSelect, Text, useMantineTheme } from '@mantine/core'
 
 // types
 import { ListGenres, ListGenresGroup } from '@type/genres'
@@ -6,12 +6,13 @@ import { ListGenres, ListGenresGroup } from '@type/genres'
 type SelectType = {
   title: string
   listSelect: ListGenres[] | ListGenresGroup[] | string[]
+  placeHolder?: string
 }
 
-const Select = ({ title, listSelect }: SelectType) => {
+const Select = ({ title, listSelect, placeHolder = 'any' }: SelectType) => {
   const theme = useMantineTheme()
   return (
-    <>
+    <Box>
       <Text color={theme.colors.title[2]} fw={600}>
         {title}
       </Text>
@@ -22,24 +23,10 @@ const Select = ({ title, listSelect }: SelectType) => {
         disableSelectedItemFiltering
         data={listSelect}
         size="md"
-        placeholder="any"
-        maxDropdownHeight={280}
-        sx={{
-          '.mantine-MultiSelect-dropdown': {
-            fontSize: theme.fontSizes.sm,
-            background: theme.colors.background[0],
-            border: theme.colors.background[0],
-            color: theme.colors.title[0],
-          },
-          '.mantine-MultiSelect-input': {
-            background: theme.colors.background[0],
-            border: theme.colors.background[0],
-            boxShadow: `  ${theme.colors.background[0]} 0px 5px 15px;`,
-            borderRadius: '6px',
-          },
-        }}
+        placeholder={placeHolder}
+        maxDropdownHeight={200}
       />
-    </>
+    </Box>
   )
 }
 
