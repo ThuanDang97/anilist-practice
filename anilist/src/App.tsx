@@ -12,6 +12,7 @@ import MainLayout from './layouts/MainLayout'
 
 // pages
 import HomePage from '@pages/HomePage'
+import DetailPage from '@pages/Detail'
 
 // constants
 import { END_POINTS } from './constants'
@@ -33,6 +34,10 @@ const App = () => {
         <Routes>
           <Route path={END_POINTS.HOMEPAGE} element={<MainLayout />}>
             <Route index element={<HomePage />} />
+            <Route
+              path={`${END_POINTS.ANIME}/:id/:name`}
+              element={<DetailPage />}
+            />
           </Route>
         </Routes>
       </QueryClientProvider>
