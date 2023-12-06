@@ -42,6 +42,7 @@ import CalendarIcon from '@assets/icons/Calendar'
 // utils
 import getContrastColor from '@utils/getContrastColor'
 import { formatAiringDetails, getIconOfScore } from '@utils/utils'
+import { convertToKebabCase } from '@utils/convertToKebabCase'
 
 interface AnimeItem {
   anime: Anime
@@ -71,6 +72,8 @@ const SmallCard = ({ anime }: AnimeItem) => {
     nextAiringEpisode,
     bannerImage,
   } = anime
+
+  const slug = convertToKebabCase(title.userPreferred)
 
   const renderSeason = () => {
     return status === Status.RELEASING
@@ -199,7 +202,7 @@ const SmallCard = ({ anime }: AnimeItem) => {
           >
             {renderListButtonEditor()}
             <Link
-              to={`${END_POINTS.SEARCH_PAGE}/${title}`}
+              to={`${END_POINTS.ANIME}/${id}/${slug}`}
               onMouseEnter={onOpenPopover}
               onMouseLeave={onClosePopover}
             >
