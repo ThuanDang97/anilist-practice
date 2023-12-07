@@ -10,8 +10,7 @@ import SmallCardSkeleton from '@components/Skeleton/SmallCardSkeleton'
 import TilesCardSkeleton from '@components/Skeleton/TilesCardSkeleton'
 
 // hooks
-import useAnimeList from '@hooks/useAnimeList'
-import useGenresList from '@hooks/useGenresList'
+import useAnimeList from '@hooks/useAnime/useAnimeList'
 
 // constants
 import { TITLE_SECTIONS } from '@constants/defaultValue'
@@ -36,11 +35,16 @@ import { mockListRenderSkeleton } from '@mocks/mockAnime'
 // styles
 import { useStylesHomePage } from './HomePage.module'
 
+// hooks
+import useGenresList from '@hooks/useGenres/useGenresList'
+
+// stores
+import useAuth from '@stores/useAuth'
+
 // utils
 import GenerateYearList from '@utils/generateYearList'
 import { transformEnumToList } from '@utils/transformEnum'
 import { TransformListGenres } from '@utils/transformListGenres'
-import useAuth from '@stores/useAuth'
 
 type TRenderSectionListAnime = {
   title: string
@@ -208,15 +212,19 @@ const HomePage = () => {
           md: 0,
         }}
       >
-        {listSectionsAnime.map((anime) =>
-          renderSectionListAnime({
-            title: anime.title,
-            listAnime: anime.listAnime,
-            href: anime.href,
-            typeCard: anime.typeCard,
-            loading: anime.loading,
-          }),
-        )}
+        {listSectionsAnime.map((anime) => {
+          return (
+            <Box key={anime.title}>
+              {renderSectionListAnime({
+                title: anime.title,
+                listAnime: anime.listAnime,
+                href: anime.href,
+                typeCard: anime.typeCard,
+                loading: anime.loading,
+              })}
+            </Box>
+          )
+        })}
       </Box>
     </>
   )

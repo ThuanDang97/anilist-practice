@@ -33,16 +33,16 @@ import { ListStatusEdit, Status } from '@constants/variables'
 // components
 import Select from '@components/Select'
 
-// icons
+// assets
+import CalendarIcon from '@assets/icons/Calendar'
 import FrownIcon from '@assets/icons/FrownIcon'
 import MehIcon from '@assets/icons/MehIcon'
 import SmileIcon from '@assets/icons/SmileIcon'
-import CalendarIcon from '@assets/icons/Calendar'
 
 // utils
+import { convertToKebabCase } from '@utils/convertToKebabCase'
 import getContrastColor from '@utils/getContrastColor'
 import { formatAiringDetails, getIconOfScore } from '@utils/utils'
-import { convertToKebabCase } from '@utils/convertToKebabCase'
 
 interface AnimeItem {
   anime: Anime

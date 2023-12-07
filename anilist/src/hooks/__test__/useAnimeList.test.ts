@@ -1,7 +1,7 @@
 import { renderHook, waitFor } from '@testing-library/react'
 
 // hooks
-import useAnimeList from '@hooks/useAnimeList'
+import useAnimeList from '@hooks/useAnime/useAnimeList'
 
 // mocks
 import { mockListAnime } from '@mocks/mockAnime'

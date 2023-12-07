@@ -11,9 +11,9 @@ import { Anime } from '@type/anime'
 import { useStylesTilesCard } from './TilesCard.module'
 
 // utils
-import { getIconOfScore } from '@utils/utils'
-import getContrastColor from '@utils/getContrastColor'
 import { convertToKebabCase } from '@utils/convertToKebabCase'
+import getContrastColor from '@utils/getContrastColor'
+import { getIconOfScore } from '@utils/utils'
 
 interface AnimeItem {
   anime: Anime
