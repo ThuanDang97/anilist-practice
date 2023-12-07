@@ -5,7 +5,7 @@ const dark: Partial<MantineThemeOverride['colors']> = {
   background: ['#152232', '#0A1625', '#0B1622', '#152232'],
   description: ['#FBFBFBFB'],
   subtitle: ['#8BA0B2', '#748899'],
-  dark: ['#0A1625', 'RGBA(0,0,0,.4)', '#11161D'],
+  dark: ['#0A1625', 'RGBA(0,0,0,.4)', '#11161D', '#152232'],
   light: [
     '#F0F3F6',
     '#8BA0B2',
@@ -24,7 +24,7 @@ const light: Partial<MantineThemeOverride['colors']> = {
   background: ['#FBFBFBFB', '#748899', '#EDF1F5', '#FFF'],
   description: ['#152232'],
   subtitle: ['#647380', '#8BA0B2'],
-  dark: ['#0A1625', 'RGBA(0,0,0,.4)', '#11161D'],
+  dark: ['#0A1625', 'RGBA(0,0,0,.4)', '#11161D', '#152232'],
   light: [
     '#F0F3F6',
     '#8BA0B2',

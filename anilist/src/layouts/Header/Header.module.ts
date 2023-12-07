@@ -9,7 +9,7 @@ export const useStylesHeader = createStyles((theme: MantineTheme) => ({
     height: '100%',
   },
   header: {
-    backgroundColor: '#152232',
+    backgroundColor: theme.colors.dark[3],
     color: theme.colors.light[6],
     fontWeight: 600,
     height: '75px',
