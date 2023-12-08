@@ -1,14 +1,13 @@
 import axios from 'axios'
 
 // constants
-import { baseURL } from '@constants/urls'
-import { query } from '@constants/query'
 import { ERRORS_MESSAGE } from '@constants/errorsMsg'
+import { query } from '@constants/query'
+import { baseURL } from '@constants/urls'
+import { Media } from '@constants/variables'
 
 // types
 import { variables } from '@type/variable'
-import { Media } from '@constants/variables'
-import { ListAnime } from '@type/anime'
 
 export const getAnime = async (variables: variables) => {
   try {
@@ -23,14 +22,12 @@ export const getAnime = async (variables: variables) => {
   }
 }
 
-export const getDetailAnime = async (
-  id: string,
-): Promise<ListAnime[] | string> => {
+export const getDetailAnime = async (id: string) => {
   try {
     const variables = {
-      id: id,
-      isAdult: false,
+      id: parseFloat(id),
       type: Media.ANIME,
+      isAdult: false,
     }
 
     const response = await axios.post(baseURL as string, {
@@ -38,7 +35,7 @@ export const getDetailAnime = async (
       variables: variables,
     })
 
-    return response.data.data.Page.media
+    return response.data.data.Page.media[0]
   } catch (error) {
     return ERRORS_MESSAGE.ERROR_FETCHING
   }
