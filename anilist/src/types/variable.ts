@@ -22,6 +22,7 @@ export type MediaSeason = Season
 
 export type variables = {
   page?: number
+  perPage?: number
   id?: number
   type?: MediaType
   isAdult?: boolean
