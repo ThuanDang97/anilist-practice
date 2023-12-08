@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { END_POINTS } from '@constants/endPoints'
 
 // types
-import { Anime } from '@type/anime'
+import { Media } from '@type/anime'
 
 // styles
 import { useStylesTilesCard } from './TilesCard.module'
@@ -16,7 +16,7 @@ import getContrastColor from '@utils/getContrastColor'
 import { getIconOfScore } from '@utils/utils'
 
 interface AnimeItem {
-  anime: Anime
+  anime: Media
 }
 
 const TilesCard = ({ anime }: AnimeItem) => {

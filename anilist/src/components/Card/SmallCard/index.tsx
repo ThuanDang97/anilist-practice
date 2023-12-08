@@ -21,7 +21,7 @@ import { useDisclosure, useMediaQuery } from '@mantine/hooks'
 import { Link } from 'react-router-dom'
 
 // types
-import { Anime } from '@type/anime'
+import { Media } from '@type/anime'
 
 // styles
 import { useStylesSmallCard } from './SmallCard.module'
@@ -45,7 +45,7 @@ import getContrastColor from '@utils/getContrastColor'
 import { formatAiringDetails, getIconOfScore } from '@utils/utils'
 
 interface AnimeItem {
-  anime: Anime
+  anime: Media
 }
 
 const SmallCard = ({ anime }: AnimeItem) => {

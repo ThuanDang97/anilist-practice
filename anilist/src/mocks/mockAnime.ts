@@ -1,10 +1,7 @@
 // constants
 import { ListStatus } from '@constants/variables'
 
-// types
-import { Anime, ListAnime } from '@type/anime'
-
-export const mockAnime: Anime = {
+export const mockAnime = {
   id: 5,
   title: {
     userPreferred: 'Cowboy Bebop: Tengoku no Tobira',
@@ -64,7 +61,7 @@ export const mockAnime: Anime = {
   },
 }
 
-export const mockListAnime: ListAnime[] = [
+export const mockListAnime = [
   {
     id: 1,
     title: {

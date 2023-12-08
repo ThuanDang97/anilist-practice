@@ -1,6 +1,3 @@
-// types
-import { MediaListStatus, Studio } from '@type/variable'
-
 export interface AnimeActions {
   anime: Media[]
   setAnime: (data: Media[]) => void
