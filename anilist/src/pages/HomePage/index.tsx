@@ -27,7 +27,7 @@ import {
 } from '@constants/variables'
 
 // types
-import { ListAnime } from '@type/anime'
+import { Media } from '@type/anime'
 
 // mocks
 import { mockListRenderSkeleton } from '@mocks/mockAnime'
@@ -48,7 +48,7 @@ import { TransformListGenres } from '@utils/transformListGenres'
 
 type TRenderSectionListAnime = {
   title: string
-  listAnime: ListAnime[]
+  listAnime: Media[]
   href: string
   typeCard?: 'small' | 'tiles'
   loading: boolean
@@ -173,6 +173,7 @@ const HomePage = () => {
   ]
 
   const listYear: string[] = GenerateYearList()
+
   const listFilter = [
     {
       title: 'Genres',
@@ -195,6 +196,7 @@ const HomePage = () => {
       listSelect: transformEnumToList(Status),
     },
   ]
+
   return (
     <>
       {!userAuthentication && <LandingSection />}
