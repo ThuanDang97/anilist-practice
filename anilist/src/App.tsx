@@ -16,6 +16,8 @@ import DetailPage from '@pages/Detail'
 
 // constants
 import { END_POINTS } from './constants'
+import DetailLayout from './layouts/DetailLayout'
+import { navDetail } from '@mocks/mockNavDetail'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -34,10 +36,18 @@ const App = () => {
         <Routes>
           <Route path={END_POINTS.HOMEPAGE} element={<MainLayout />}>
             <Route index element={<HomePage />} />
-            <Route
-              path={`${END_POINTS.ANIME}/:id/:name`}
-              element={<DetailPage />}
-            />
+          </Route>
+          <Route
+            path={`${END_POINTS.ANIME}/:id/:name`}
+            element={<DetailLayout />}
+          >
+            {navDetail.map((item) => (
+              <Route
+                path={`${END_POINTS.ANIME}/:id/:name/${item.link}`}
+                element={<DetailPage />}
+                key={item.id}
+              />
+            ))}
           </Route>
         </Routes>
       </QueryClientProvider>
