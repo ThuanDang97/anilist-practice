@@ -25,7 +25,9 @@ describe('useAuth store', () => {
       await result.current.login('mockedAccessToken')
     })
 
-    expect(result.current.userAuthentication).not.toBeNull()
+    act(() => {
+      expect(result.current.userAuthentication).not.toBeNull()
+    })
   })
 
   it('should clear userAuthentication when logout is called', async () => {
@@ -40,11 +42,10 @@ describe('useAuth store', () => {
     act(() => {
       result.current.logout()
     })
-
     expect(result.current.userAuthentication).toBeNull()
   })
 
-  it('should clear userAuthentication on page reload if localStorage is cleared', () => {
+  it('should clear userAuthentication on page reload if localStorage is cleared', async () => {
     const { result } = renderHook(() => useAuth())
 
     // Mock login
@@ -58,8 +59,7 @@ describe('useAuth store', () => {
     })
 
     // Create a new instance of the hook to simulate a page reload
-    const view = renderHook(() => useAuth())
-
+    const view = await renderHook(() => useAuth())
     expect(view.result.current.userAuthentication).toBeNull()
   })
 })
