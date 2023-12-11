@@ -3,9 +3,9 @@ import { UseQueryResult, useQuery } from '@tanstack/react-query'
 import { getDetailAnime } from '@services/animeService'
 
 // types
-import { Total } from '@type/anime'
+import { Media } from '@type/anime'
 
-const useAnimeDetail = (id: string): UseQueryResult<Total> => {
+const useAnimeDetail = (id: string): UseQueryResult<Media> => {
   return useQuery({
     queryKey: ['anime', id],
     queryFn: () => getDetailAnime(id),
