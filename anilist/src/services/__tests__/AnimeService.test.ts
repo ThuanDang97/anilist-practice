@@ -5,7 +5,7 @@ import axios from 'axios'
 import { ERRORS_MESSAGE } from '@constants/errorsMsg'
 
 // mocks
-import { mockListAnime } from '@mocks/mockAnime'
+import { mockAnime } from '@mocks/mockAnime'
 
 // interfaces
 import { getAnime } from '@services/animeService'
@@ -18,7 +18,7 @@ describe('fetchApi', () => {
       data: {
         data: {
           Page: {
-            anime: mockListAnime,
+            anime: mockAnime,
           },
         },
       },
@@ -31,7 +31,7 @@ describe('fetchApi', () => {
 
     await waitFor(() => {
       // Check if the response matches the expected data
-      expect(response.anime).toEqual(mockListAnime)
+      expect(response.anime).toEqual(mockAnime)
     })
   })
 

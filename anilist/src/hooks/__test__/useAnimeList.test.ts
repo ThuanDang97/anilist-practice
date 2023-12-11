@@ -4,7 +4,7 @@ import { renderHook, waitFor } from '@testing-library/react'
 import useAnimeList from '@hooks/useAnime/useAnimeList'
 
 // mocks
-import { mockListAnime } from '@mocks/mockAnime'
+import { mockAnime } from '@mocks/mockAnime'
 
 //utils
 import { wrapper } from '@utils/testUtils'
@@ -18,7 +18,7 @@ jest.mock('@services/animeService', () => ({
 
 describe('useAnimeList', () => {
   test('useAnimeList', async () => {
-    jest.spyOn(services, 'getAnime').mockResolvedValue(mockListAnime)
+    jest.spyOn(services, 'getAnime').mockResolvedValue(mockAnime)
     const { result } = renderHook(() => useAnimeList({ id: 1 }), {
       wrapper,
     })
@@ -28,7 +28,7 @@ describe('useAnimeList', () => {
     })
 
     await waitFor(() => {
-      expect(result.current.data).toEqual(mockListAnime)
+      expect(result.current.data).toEqual(mockAnime)
     })
   })
 })
