@@ -1,5 +1,6 @@
 import { Box, Button, Flex, Title, useMantineTheme } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
+import { v4 as uuidv4 } from 'uuid'
 
 // components
 import LandingSection from '@components/Landing'
@@ -116,11 +117,11 @@ const HomePage = () => {
             gap={isCard || isMobile ? 10 : 25}
             justify={isCard || isMobile ? 'space-between' : ''}
           >
-            {mockListRenderSkeleton.map((index) =>
+            {mockListRenderSkeleton.map(() =>
               typeCard === 'small' ? (
-                <SmallCardSkeleton key={index} />
+                <SmallCardSkeleton key={uuidv4()} />
               ) : (
-                <TilesCardSkeleton key={index} />
+                <TilesCardSkeleton key={uuidv4()} />
               ),
             )}
           </Flex>
