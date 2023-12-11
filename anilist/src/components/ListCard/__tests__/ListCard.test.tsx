@@ -1,5 +1,5 @@
 // mocks
-import { mockListAnime } from '@mocks/mockAnime'
+import { mockAnime } from '@mocks/mockAnime'
 
 // utils
 import { render, screen } from '@utils/testUtils'
@@ -10,11 +10,7 @@ import ListCardComponent from '..'
 describe('List Card component', () => {
   test('should render small card type correctly', () => {
     render(
-      <ListCardComponent
-        title="Title"
-        listAnime={mockListAnime}
-        href="/link"
-      />,
+      <ListCardComponent title="Title" listAnime={mockAnime} href="/link" />,
     )
 
     expect(screen.getByText('Title')).toBeInTheDocument()
@@ -29,7 +25,7 @@ describe('List Card component', () => {
     render(
       <ListCardComponent
         title="Title"
-        listAnime={mockListAnime}
+        listAnime={mockAnime}
         href="/link"
         typeCard="tiles"
       />,

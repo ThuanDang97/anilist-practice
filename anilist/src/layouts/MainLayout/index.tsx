@@ -1,10 +1,11 @@
 import { Box, Container, useMantineTheme } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
+import { Suspense, lazy } from 'react'
 import { Outlet } from 'react-router-dom'
 
 // layouts
-import Footer from '../Footer'
 import Header from '../Header'
+const Footer = lazy(() => import('../Footer'))
 
 const MainLayout = () => {
   const theme = useMantineTheme()
@@ -32,7 +33,9 @@ const MainLayout = () => {
           <Outlet />
         </Container>
       </Box>
-      <Footer />
+      <Suspense fallback="...loading">
+        <Footer />
+      </Suspense>
     </>
   )
 }

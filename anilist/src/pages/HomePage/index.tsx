@@ -1,5 +1,6 @@
 import { Box, Button, Flex, Title, useMantineTheme } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
+import { v4 as uuidv4 } from 'uuid'
 
 // components
 import LandingSection from '@components/Landing'
@@ -10,8 +11,7 @@ import SmallCardSkeleton from '@components/Skeleton/SmallCardSkeleton'
 import TilesCardSkeleton from '@components/Skeleton/TilesCardSkeleton'
 
 // hooks
-import useAnimeList from '@hooks/useAnimeList'
-import useGenresList from '@hooks/useGenresList'
+import useAnimeList from '@hooks/useAnime/useAnimeList'
 
 // constants
 import { TITLE_SECTIONS } from '@constants/defaultValue'
@@ -28,7 +28,7 @@ import {
 } from '@constants/variables'
 
 // types
-import { ListAnime } from '@type/anime'
+import { Media } from '@type/anime'
 
 // mocks
 import { mockListRenderSkeleton } from '@mocks/mockAnime'
@@ -36,15 +36,20 @@ import { mockListRenderSkeleton } from '@mocks/mockAnime'
 // styles
 import { useStylesHomePage } from './HomePage.module'
 
+// hooks
+import useGenresList from '@hooks/useGenres/useGenresList'
+
+// stores
+import useAuth from '@stores/useAuth'
+
 // utils
 import GenerateYearList from '@utils/generateYearList'
 import { transformEnumToList } from '@utils/transformEnum'
 import { TransformListGenres } from '@utils/transformListGenres'
-import useAuth from '@stores/useAuth'
 
 type TRenderSectionListAnime = {
   title: string
-  listAnime: ListAnime[]
+  listAnime: Media[]
   href: string
   typeCard?: 'small' | 'tiles'
   loading: boolean
@@ -112,11 +117,11 @@ const HomePage = () => {
             gap={isCard || isMobile ? 10 : 25}
             justify={isCard || isMobile ? 'space-between' : ''}
           >
-            {mockListRenderSkeleton.map((index) =>
+            {mockListRenderSkeleton.map(() =>
               typeCard === 'small' ? (
-                <SmallCardSkeleton key={index} />
+                <SmallCardSkeleton key={uuidv4()} />
               ) : (
-                <TilesCardSkeleton key={index} />
+                <TilesCardSkeleton key={uuidv4()} />
               ),
             )}
           </Flex>
@@ -169,6 +174,7 @@ const HomePage = () => {
   ]
 
   const listYear: string[] = GenerateYearList()
+
   const listFilter = [
     {
       title: 'Genres',
@@ -191,6 +197,7 @@ const HomePage = () => {
       listSelect: transformEnumToList(Status),
     },
   ]
+
   return (
     <>
       {!userAuthentication && <LandingSection />}
@@ -208,15 +215,19 @@ const HomePage = () => {
           md: 0,
         }}
       >
-        {listSectionsAnime.map((anime) =>
-          renderSectionListAnime({
-            title: anime.title,
-            listAnime: anime.listAnime,
-            href: anime.href,
-            typeCard: anime.typeCard,
-            loading: anime.loading,
-          }),
-        )}
+        {listSectionsAnime.map((anime) => {
+          return (
+            <Box key={anime.title}>
+              {renderSectionListAnime({
+                title: anime.title,
+                listAnime: anime.listAnime,
+                href: anime.href,
+                typeCard: anime.typeCard,
+                loading: anime.loading,
+              })}
+            </Box>
+          )
+        })}
       </Box>
     </>
   )

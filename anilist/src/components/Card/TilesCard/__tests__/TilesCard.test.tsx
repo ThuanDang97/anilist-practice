@@ -9,12 +9,12 @@ import { mockAnime } from '@mocks/mockAnime'
 
 describe('Tiles Card component', () => {
   test('renders tiles card and show correct content', () => {
-    render(<TilesCard anime={mockAnime} />)
+    render(<TilesCard anime={mockAnime[0]} />)
 
     const coverImage = screen.getByRole('img', {
-      name: /Cowboy Bebop: Tengoku no Tobira/i,
+      name: /Sousou no Frieren/i,
     })
-    const title = screen.getByText(/Cowboy Bebop: Tengoku no Tobira/i)
+    const title = screen.getByText(/Sousou no Frieren/i)
 
     expect(coverImage).toBeInTheDocument()
     expect(title).toBeInTheDocument()
