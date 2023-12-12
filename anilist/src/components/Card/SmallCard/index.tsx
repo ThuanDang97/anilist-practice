@@ -168,7 +168,7 @@ const SmallCard = ({ anime }: AnimeItem) => {
             sx={{
               color: theme.colors.title[0],
               ':hover': {
-                color: coverImage.color,
+                color: coverImage.color || theme.colors.blue[2],
               },
             }}
           >
@@ -227,7 +227,7 @@ const SmallCard = ({ anime }: AnimeItem) => {
             <Text
               className={classes.studios}
               sx={{
-                color: coverImage.color,
+                color: coverImage.color || theme.colors.blue[2],
               }}
             >
               {studios.edges[0]?.node.name}
@@ -255,10 +255,12 @@ const SmallCard = ({ anime }: AnimeItem) => {
                   to={`${END_POINTS.SEARCH_PAGE}/${item}`}
                 >
                   <Badge
-                    bg={coverImage.color}
+                    bg={coverImage.color || theme.colors.blue[2]}
                     tt="lowercase"
                     sx={{
-                      color: getContrastColor(coverImage.color),
+                      color: getContrastColor(
+                        coverImage.color || theme.colors.blue[2],
+                      ),
                     }}
                   >
                     {item}
