@@ -5,6 +5,7 @@ import HeartIcon from './HeartIcon'
 import SettingIcon from './SettingIcon'
 import SignOutIcon from './SignOutIcon'
 import UserIcon from './UserIcon'
+export * from './StarIcon'
 
 export {
   AppStoreIcon,
