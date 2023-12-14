@@ -22,3 +22,5 @@ export const END_POINTS = {
 }
 
 export const AUTHENTICATION = `https://anilist.co/api/v2/oauth/authorize?client_id=${process.env.CLIENT_ID}&response_type=token`
+
+export const YOUTUBE_EMBED = 'https://www.youtube.com/embed/'
