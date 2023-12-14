@@ -51,6 +51,8 @@ export interface Media {
   rankings: Ranking[]
   tags: Tag[]
   stats: Stats
+  source: string
+  hashtag: string
 }
 
 export interface MediaTitle {

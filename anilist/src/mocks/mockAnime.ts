@@ -43,6 +43,8 @@ export const mockAnime: Media[] = [
     isAdult: false,
     averageScore: 89,
     popularity: 97058,
+    source: 'MANGA',
+    hashtag: '#フリーレン #frieren',
     nextAiringEpisode: {
       airingAt: 1702648800,
       timeUntilAiring: 388944,
