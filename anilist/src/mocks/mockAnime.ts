@@ -22,9 +22,9 @@ export const mockAnime: Media[] = [
       day: 29,
     },
     endDate: {
-      year: '',
-      month: '',
-      day: '',
+      year: 0,
+      month: 0,
+      day: 0,
     },
     bannerImage:
       'https://s4.anilist.co/file/anilistcdn/media/anime/banner/154587-ivXNJ23SM1xB.jpg',
@@ -37,8 +37,8 @@ export const mockAnime: Media[] = [
     status: 'RELEASING',
     episodes: 28,
     duration: 24,
-    chapters: '',
-    volumes: '',
+    chapters: 0,
+    volumes: 0,
     genres: ['Adventure', 'Drama', 'Fantasy'],
     isAdult: false,
     averageScore: 89,
