@@ -9,7 +9,7 @@ import { useStylesLanding } from './Landing.module'
 import { ChevronRightIcon } from '@assets/icons/ChevronRightIcon'
 
 // constants
-import { END_POINTS } from '@constants/endPoints'
+import { AUTHENTICATION } from '@constants/endPoints'
 
 // mocks
 import { mockFeatureCards } from '@mocks/mockFeatureCards'
@@ -73,7 +73,7 @@ const LandingSection = () => {
         ))}
       </Flex>
       <Link
-        to={END_POINTS.SIGNUP}
+        to={AUTHENTICATION}
         className={classes.joinBtn}
         aria-label="Join AniList"
         style={{
