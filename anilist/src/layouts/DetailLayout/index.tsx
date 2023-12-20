@@ -65,8 +65,6 @@ const DetailLayout = () => {
     setTitleButton(value)
   }
 
-  console.log('data', data)
-
   return (
     <>
       {!isMobile && <Header />}
