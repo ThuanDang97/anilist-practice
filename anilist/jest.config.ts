@@ -17,6 +17,8 @@ const jestConfig: JestConfigWithTsJest = {
   },
   collectCoverageFrom: [
     'src/**/*.{ts,tsx}',
+    '!src/**/*.module.{ts,tsx}',
+    '!src/hooks/**/index.ts',
     '!src/main.tsx',
     '!src/**/*.stories.tsx',
     '!src/vite-env.d.ts',

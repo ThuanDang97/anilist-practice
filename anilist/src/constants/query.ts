@@ -131,6 +131,8 @@ export const query = `
         isAdult
         averageScore
         popularity
+        source
+        hashtag
         nextAiringEpisode {
           airingAt
           timeUntilAiring

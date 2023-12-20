@@ -4,15 +4,17 @@ import {
   Button,
   Container,
   Flex,
+  Grid,
   Image,
   Select,
   Text,
+  ThemeIcon,
   Title,
   useMantineTheme,
 } from '@mantine/core'
-import { Link, Outlet, useParams } from 'react-router-dom'
-import { Suspense, lazy, useState } from 'react'
 import { useDisclosure, useMediaQuery } from '@mantine/hooks'
+import { Suspense, lazy, useState } from 'react'
+import { Link, Outlet, useParams } from 'react-router-dom'
 
 // constants
 import { END_POINTS } from '@constants/endPoints'
@@ -33,14 +35,20 @@ import { convertToKebabCase } from '@utils/convertToKebabCase'
 import ModalEdit from '@components/ModalEdit'
 
 // Layouts
+import SideBar from '@components/SideBar'
 import Header from '../Header'
 const Footer = lazy(() => import('../Footer'))
+
+// assets
+import { HeartIcon } from '@assets/icons'
 
 const DetailLayout = () => {
   const theme = useMantineTheme()
   const isMobile = useMediaQuery(`(max-width: 1024px)`)
+
   const { id: idParams } = useParams() as { id: string }
   const { data, isLoading } = useAnimeDetail(idParams)
+
   const [titleButton, setTitleButton] = useState<string>('Add to List')
   const [isOpenedModal, { open: onOpenModal, close: onCloseModal }] =
     useDisclosure(false)
@@ -60,8 +68,9 @@ const DetailLayout = () => {
   return (
     <>
       {!isMobile && <Header />}
-      <Box bg={theme.colors.background[2]}>
-        <BackgroundImage src={bannerImage} w="100%" h="400px" />
+      <BackgroundImage src={bannerImage} w="100%" h="400px" />
+      {/* Banner */}
+      <Box bg={theme.colors.background[0]}>
         <Container size="lg">
           <Flex>
             <Box>
@@ -77,7 +86,11 @@ const DetailLayout = () => {
                     onChange={handleChangePlanning}
                   />
                 </Flex>
-                <Button>123</Button>
+                <Button>
+                  <ThemeIcon size="xs" color="red">
+                    <HeartIcon />
+                  </ThemeIcon>
+                </Button>
               </Flex>
             </Box>
             <Box>
@@ -107,10 +120,20 @@ const DetailLayout = () => {
               </Container>
             </Box>
           </Flex>
+        </Container>
+      </Box>
 
-          <Box>
-            <Outlet />
-          </Box>
+      {/* Sidebar */}
+      <Box bg={theme.colors.background[2]}>
+        <Container size="lg">
+          <Grid>
+            <Grid.Col span={3}>
+              <SideBar information={data as Media} />
+            </Grid.Col>
+            <Grid.Col span={9}>
+              <Outlet />
+            </Grid.Col>
+          </Grid>
         </Container>
       </Box>
       <Suspense fallback="...loading">

@@ -28,7 +28,6 @@ describe('useAnimeDetail', () => {
     })
 
     await waitFor(() => {
-      console.log('result', result.current.data)
       expect(result.current.data).toEqual(mockAnime[0])
     })
   })

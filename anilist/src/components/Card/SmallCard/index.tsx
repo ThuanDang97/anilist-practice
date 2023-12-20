@@ -69,8 +69,8 @@ const SmallCard = ({ anime }: AnimeItem) => {
   const renderSeason = () => {
     return status === Status.RELEASING
       ? formatAiringDetails({
-          episode: nextAiringEpisode.episode,
-          timeUntilAiring: nextAiringEpisode.timeUntilAiring,
+          episode: nextAiringEpisode?.episode,
+          timeUntilAiring: nextAiringEpisode?.timeUntilAiring,
         })
       : `${season} ${seasonYear}`
   }

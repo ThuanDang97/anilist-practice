@@ -31,8 +31,8 @@ export interface Media {
   status: string
   episodes: number
   duration: number
-  chapters: any
-  volumes: any
+  chapters: number
+  volumes: number
   genres: string[]
   isAdult: boolean
   averageScore: number
@@ -51,6 +51,8 @@ export interface Media {
   rankings: Ranking[]
   tags: Tag[]
   stats: Stats
+  source: string
+  hashtag: string
 }
 
 export interface MediaTitle {
@@ -70,9 +72,9 @@ export interface MediaStartDate {
 }
 
 export interface MediaEndDate {
-  year: any
-  month: any
-  day: any
+  year: number
+  month: number
+  day: number
 }
 
 export interface NextAiringEpisode {
@@ -130,7 +132,7 @@ export interface CharacterPreview {
 export interface CharacterEdge {
   id: number
   role: string
-  name: any
+  name: string
   voiceActors: VoiceActor[]
   node: CharacterNode
 }
