@@ -1,6 +1,10 @@
 import { NextAiringEpisode } from '@type/anime'
 
-const convertToFormattedString = (episodeInfo: NextAiringEpisode): string => {
+const convertToFormattedString = (
+  episodeInfo: NextAiringEpisode,
+): string | null => {
+  if (!episodeInfo) return null
+
   const { episode, timeUntilAiring } = episodeInfo
 
   const days = Math.floor(timeUntilAiring / 86400)
