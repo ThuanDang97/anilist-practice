@@ -18,17 +18,14 @@ import TilesCard from '@components/Card/TilesCard'
 import { END_POINTS } from '@constants/endPoints'
 
 // types
-import { ListAnime } from '@type/anime'
+import { Media } from '@type/anime'
 
 // styles
 import { useStylesListCards } from './ListCard.module'
 
-// utils
-import { TransformerData } from '@utils/transformData'
-
 interface IListCard {
   title: string
-  listAnime: ListAnime[]
+  listAnime: Media[]
   typeCard?: 'small' | 'tiles'
   href: string
 }
@@ -41,7 +38,6 @@ const ListCardComponent = ({
 }: IListCard) => {
   const { classes } = useStylesListCards()
   const theme = useMantineTheme()
-  const listAnimeTransformer = TransformerData(listAnime)
   const isMobile = useMediaQuery(`(max-width: 1024px)`)
   const isCard = typeCard === 'small'
 
@@ -88,7 +84,7 @@ const ListCardComponent = ({
         }}
         columns={2}
       >
-        {listAnimeTransformer.map((anime, index) => (
+        {listAnime.map((anime, index) => (
           <Flex justify="center" align="center" pos="relative" key={anime.id}>
             {isCard ? (
               <SmallCard anime={anime} />

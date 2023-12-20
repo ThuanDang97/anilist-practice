@@ -6,6 +6,12 @@ import { render, screen } from '@utils/testUtils'
 
 // components
 import LandingSection from '..'
+import { useMediaQuery } from '@mantine/hooks'
+
+jest.mock('@mantine/hooks', () => ({
+  ...jest.requireActual('@mantine/hooks'),
+  useMediaQuery: jest.fn(),
+}))
 
 describe('Landing Section', () => {
   test('renders landing section with feature cards and join button', () => {
@@ -31,5 +37,14 @@ describe('Landing Section', () => {
     const joinButton = screen.getByLabelText('Join AniList')
     expect(joinButton).toBeInTheDocument()
     expect(joinButton).toHaveTextContent('Join Now')
+  })
+
+  test('renders correctly for mobile', () => {
+    // Mock useMediaQuery to return true for mobile
+    ;(useMediaQuery as jest.Mock).mockReturnValue(true)
+
+    const { container } = render(<LandingSection />)
+
+    expect(container).toBeTruthy()
   })
 })

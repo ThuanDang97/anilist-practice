@@ -5,20 +5,24 @@ import { Link } from 'react-router-dom'
 import { END_POINTS } from '@constants/endPoints'
 
 // types
-import { Anime } from '@type/anime'
+import { Media } from '@type/anime'
 
 // styles
 import { useStylesTilesCard } from './TilesCard.module'
-import { getIconOfScore } from '@utils/utils'
+
+// utils
+import { convertToKebabCase } from '@utils/convertToKebabCase'
 import getContrastColor from '@utils/getContrastColor'
+import { getIconOfScore } from '@utils/utils'
 
 interface AnimeItem {
-  anime: Anime
+  anime: Media
 }
 
 const TilesCard = ({ anime }: AnimeItem) => {
   const { classes } = useStylesTilesCard()
   const {
+    id,
     title,
     season,
     seasonYear,
@@ -31,6 +35,8 @@ const TilesCard = ({ anime }: AnimeItem) => {
     status,
   } = anime
 
+  const slug = convertToKebabCase(title.userPreferred)
+
   const theme = useMantineTheme()
   return (
     <Flex
@@ -38,7 +44,7 @@ const TilesCard = ({ anime }: AnimeItem) => {
       className={classes.productCard}
       data-testid="tiles-card"
     >
-      <Link to={`${END_POINTS.SEARCH_PAGE}/${title}`}>
+      <Link to={`${END_POINTS.ANIME}/${id}/${slug}`}>
         <Image
           src={coverImage.large}
           alt={title.userPreferred}
@@ -48,7 +54,7 @@ const TilesCard = ({ anime }: AnimeItem) => {
       </Link>
       <Box className={classes.content}>
         <Box fw={600}>
-          <Link to={`${END_POINTS.SEARCH_PAGE}/${title}`}>
+          <Link to={`${END_POINTS.ANIME}/${id}/${slug}`}>
             <Text
               sx={{
                 ':hover': {

@@ -149,8 +149,8 @@ const Header = () => {
             <Image
               src="https://anilist.co/img/icons/icon.svg"
               alt="logo"
-              width="50"
-              height="50"
+              width="50px"
+              height="50px"
             />
           </Link>
           <Box className={classes.container}>
@@ -330,7 +330,6 @@ const Header = () => {
               fontSize: theme.fontSizes.xxs,
               background: theme.colors.dark[0],
               fontWeight: 500,
-              padding: '9px 15px',
             }}
           >
             Cancel
@@ -342,7 +341,6 @@ const Header = () => {
               fontSize: theme.fontSizes.xxs,
               background: theme.colors.blue[2],
               fontWeight: 500,
-              padding: '9px 15px',
             }}
           >
             Yes, Logout

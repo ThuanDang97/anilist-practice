@@ -9,22 +9,22 @@ import { mockAnime } from '@mocks/mockAnime'
 
 describe('Small Card component', () => {
   test('renders small card and show content when hover', () => {
-    render(<SmallCard anime={mockAnime} />)
+    render(<SmallCard anime={mockAnime[0]} />)
 
     const coverImage = screen.getByRole('tooltip', {
-      name: /Cowboy Bebop: Tengoku no Tobira/i,
+      name: /Sousou no Frieren/i,
     })
-    const title = screen.getByText(/Cowboy Bebop: Tengoku no Tobira/i)
+    const title = screen.getByText(/Sousou no Frieren/i)
 
     expect(coverImage).toBeInTheDocument()
     expect(title).toBeInTheDocument()
 
     fireEvent.mouseEnter(coverImage)
     const dropdownCard = screen.getByTestId('dropdown-card')
-    const titleDropdown = screen.getByText(/summer 2001/i)
-    const studios = screen.getByText(/bones/i)
-    const info = screen.getByText(/MOVIE/i)
-    const episodes = screen.getByText(/1 episodes/i)
+    const titleDropdown = screen.getByText(/Ep 15 airing in 4 days/i)
+    const studios = screen.getByText(/MADHOUSE/i)
+    const info = screen.getByText(/TV/i)
+    const episodes = screen.getByText(/28 episodes/i)
 
     expect(dropdownCard).toBeInTheDocument()
     expect(titleDropdown).toBeInTheDocument()

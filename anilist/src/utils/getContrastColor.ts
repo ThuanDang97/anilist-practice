@@ -5,6 +5,8 @@ interface RGB {
 }
 
 const hexToRgb = (hex: string): RGB => {
+  if (!hex) return { r: 0, g: 0, b: 0 }
+
   hex = hex.replace(/^#/, '')
   const bigint = parseInt(hex, 16)
   const r = (bigint >> 16) & 255

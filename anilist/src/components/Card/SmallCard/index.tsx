@@ -1,50 +1,42 @@
-import PlayIcon from '@assets/icons/PlayIcon'
 import {
   ActionIcon,
   Badge,
   Box,
   Button,
-  Checkbox,
   Flex,
-  Grid,
   HoverCard,
   Image,
-  Modal,
-  NumberInput,
   Popover,
   Text,
-  TextInput,
-  Textarea,
   useMantineTheme,
 } from '@mantine/core'
 import { useDisclosure, useMediaQuery } from '@mantine/hooks'
 import { Link } from 'react-router-dom'
 
 // types
-import { Anime } from '@type/anime'
+import { Media } from '@type/anime'
 
 // styles
 import { useStylesSmallCard } from './SmallCard.module'
 
 // constants
 import { END_POINTS } from '@constants/endPoints'
-import { ListStatusEdit, Status } from '@constants/variables'
+import { Status } from '@constants/variables'
 
 // components
-import Select from '@components/Select'
+import ModalEdit from '@components/ModalEdit'
 
-// icons
-import FrownIcon from '@assets/icons/FrownIcon'
-import MehIcon from '@assets/icons/MehIcon'
-import SmileIcon from '@assets/icons/SmileIcon'
+// assets
 import CalendarIcon from '@assets/icons/Calendar'
+import PlayIcon from '@assets/icons/PlayIcon'
 
 // utils
+import { convertToKebabCase } from '@utils/convertToKebabCase'
 import getContrastColor from '@utils/getContrastColor'
 import { formatAiringDetails, getIconOfScore } from '@utils/utils'
 
 interface AnimeItem {
-  anime: Anime
+  anime: Media
 }
 
 const SmallCard = ({ anime }: AnimeItem) => {
@@ -72,32 +64,15 @@ const SmallCard = ({ anime }: AnimeItem) => {
     bannerImage,
   } = anime
 
+  const slug = convertToKebabCase(title.userPreferred)
+
   const renderSeason = () => {
     return status === Status.RELEASING
       ? formatAiringDetails({
-          episode: nextAiringEpisode.episode,
-          timeUntilAiring: nextAiringEpisode.timeUntilAiring,
+          episode: nextAiringEpisode?.episode,
+          timeUntilAiring: nextAiringEpisode?.timeUntilAiring,
         })
       : `${season} ${seasonYear}`
-  }
-
-  const renderTitleModal = () => {
-    return (
-      <Box w="100%">
-        <Flex direction="row" w="100%" align="center">
-          <Image src={coverImage.large} w="100px" height="150px" mb="-30px" />
-          <Text
-            p="20px"
-            color={theme.colors.light[0]}
-            sx={{
-              textWrap: 'nowrap',
-            }}
-          >
-            {title.userPreferred}
-          </Text>
-        </Flex>
-      </Box>
-    )
   }
 
   const renderListButtonEditor = () => {
@@ -193,13 +168,13 @@ const SmallCard = ({ anime }: AnimeItem) => {
             sx={{
               color: theme.colors.title[0],
               ':hover': {
-                color: coverImage.color,
+                color: coverImage.color || theme.colors.blue[2],
               },
             }}
           >
             {renderListButtonEditor()}
             <Link
-              to={`${END_POINTS.SEARCH_PAGE}/${title}`}
+              to={`${END_POINTS.ANIME}/${id}/${slug}`}
               onMouseEnter={onOpenPopover}
               onMouseLeave={onClosePopover}
             >
@@ -252,7 +227,7 @@ const SmallCard = ({ anime }: AnimeItem) => {
             <Text
               className={classes.studios}
               sx={{
-                color: coverImage.color,
+                color: coverImage.color || theme.colors.blue[2],
               }}
             >
               {studios.edges[0]?.node.name}
@@ -274,13 +249,18 @@ const SmallCard = ({ anime }: AnimeItem) => {
               )}
             </Flex>
             <Flex wrap="wrap" gap="10x" className={classes.genres}>
-              {genres.slice(0, 3).map((item) => (
-                <Link key={item} to={`${END_POINTS.SEARCH_PAGE}/${item}`}>
+              {genres.slice(0, 3).map((item, index) => (
+                <Link
+                  key={`${item}-${index}`}
+                  to={`${END_POINTS.SEARCH_PAGE}/${item}`}
+                >
                   <Badge
-                    bg={coverImage.color}
+                    bg={coverImage.color || theme.colors.blue[2]}
                     tt="lowercase"
                     sx={{
-                      color: getContrastColor(coverImage.color),
+                      color: getContrastColor(
+                        coverImage.color || theme.colors.blue[2],
+                      ),
                     }}
                   >
                     {item}
@@ -291,154 +271,13 @@ const SmallCard = ({ anime }: AnimeItem) => {
           </Box>
         </Popover.Dropdown>
       </Popover>
-      <Modal
-        data-testid="modal-edit"
-        opened={isOpenedModal}
+      <ModalEdit
+        isOpen={isOpenedModal}
         onClose={onCloseModal}
-        title={renderTitleModal()}
-        centered
-        size="1000px"
-        h="100%"
-        styles={{
-          header: {
-            backgroundImage: `linear-gradient(45deg, rgba(17,22,29,0.7) 100%, rgba(237,241,245,1) 100%), url(${bannerImage})`,
-            backgroundSize: 'cover',
-          },
-          close: {
-            position: 'absolute',
-            right: 10,
-            top: 10,
-          },
-        }}
-      >
-        <Flex
-          p="70px"
-          pt="70px"
-          justify="flex-end"
-          direction="column"
-          bg={theme.colors.background[1]}
-        >
-          <form>
-            <Flex>
-              <Flex gap="30px" direction="column" maw="80%">
-                <Grid>
-                  <Grid.Col span="auto">
-                    <Select
-                      title="Status"
-                      listSelect={Object.values(ListStatusEdit)}
-                      placeHolder={ListStatusEdit.PLAN_TO_WATCH}
-                    />
-                  </Grid.Col>
-                  <Grid.Col span="auto">
-                    <Text color={theme.colors.title[2]} fw={600}>
-                      Score
-                    </Text>
-                    <Flex
-                      w="100%"
-                      justify="space-around"
-                      align="center"
-                      gap="50px"
-                      p="11px"
-                      mt="5px"
-                      bg={theme.colors.background[0]}
-                      sx={{
-                        borderRadius: '5px',
-                      }}
-                    >
-                      <ActionIcon
-                        variant="transparent"
-                        size="md"
-                        aria-label="smile"
-                      >
-                        <SmileIcon />
-                      </ActionIcon>
-                      <ActionIcon
-                        variant="transparent"
-                        size="md"
-                        aria-label="meh"
-                      >
-                        <MehIcon />
-                      </ActionIcon>
-                      <ActionIcon
-                        variant="transparent"
-                        size="md"
-                        aria-label="frown"
-                      >
-                        <FrownIcon />
-                      </ActionIcon>
-                    </Flex>
-                  </Grid.Col>
-                  <Grid.Col span="auto">
-                    <NumberInput label="Episode Progress" />
-                  </Grid.Col>
-                </Grid>
-                <Grid>
-                  <Grid.Col span="auto">
-                    <TextInput
-                      label="Start Date"
-                      type="date"
-                      size="lg"
-                      width="100%"
-                    />
-                  </Grid.Col>
-                  <Grid.Col span="auto">
-                    <TextInput
-                      label="Finish Date"
-                      type="date"
-                      size="lg"
-                      width="100%"
-                    />
-                  </Grid.Col>
-                  <Grid.Col span="auto">
-                    <NumberInput label="Total Rewatches" size="lg" />
-                  </Grid.Col>
-                </Grid>
-                <Textarea label="Notes" />
-              </Flex>
-              <Flex
-                direction="column"
-                justify="space-between"
-                align="flex-end"
-                w="30%"
-              >
-                <Box>
-                  <TextInput
-                    label="Custom Lists"
-                    placeholder="No custom anime lists"
-                    styles={{
-                      input: {
-                        borderRadius: 0,
-                        background: 'transparent',
-                        borderBottom: '1px solid',
-                      },
-                    }}
-                  />
-                  <Checkbox
-                    label="Private"
-                    mt="30px"
-                    color="indigo"
-                    styles={{
-                      label: {
-                        color: theme.colors.title[1],
-                      },
-                    }}
-                  />
-                </Box>
-                <Button
-                  variant="outline"
-                  sx={{
-                    fontSize: theme.fontSizes.xxs,
-                    fontWeight: 500,
-                  }}
-                  mt="200px"
-                >
-                  Delete
-                </Button>
-              </Flex>
-            </Flex>
-          </form>
-        </Flex>
-      </Modal>
+        title={title}
+        coverImage={coverImage}
+        bannerImage={bannerImage}
+      />
     </>
   )
 }
