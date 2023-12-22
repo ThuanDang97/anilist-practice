@@ -36,6 +36,10 @@ const App = () => {
         <Routes>
           <Route path={END_POINTS.HOMEPAGE} element={<MainLayout />}>
             <Route index element={<HomePage />} />
+            <Route
+              path={`${END_POINTS.SEARCH_PAGE}/:type`}
+              element={<HomePage />}
+            />
           </Route>
           <Route
             path={`${END_POINTS.ANIME}/:id/:name`}
