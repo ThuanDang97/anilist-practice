@@ -40,3 +40,25 @@ export const getDetailAnime = async (id: string) => {
     return ERRORS_MESSAGE.ERROR_FETCHING
   }
 }
+
+export const fetchPaginatedAnime = async (
+  variables: variables,
+  pageParam: number,
+) => {
+  try {
+    const paginateVariable: variables = {
+      ...variables,
+      page: pageParam,
+      perPage: 10,
+    }
+
+    const response = await axios.post(baseURL as string, {
+      query: query,
+      variables: paginateVariable,
+    })
+
+    return response.data.data.Page
+  } catch (error) {
+    return ERRORS_MESSAGE.ERROR_FETCHING
+  }
+}
