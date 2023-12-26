@@ -10,6 +10,7 @@ import {
   Modal,
   MultiSelect,
   Textarea,
+  Text,
 } from './components'
 
 export const defaultTheme: MantineThemeOverride = {
@@ -23,5 +24,6 @@ export const defaultTheme: MantineThemeOverride = {
     MultiSelect,
     Textarea,
     InputWrapper,
+    Text,
   },
 }
