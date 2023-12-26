@@ -52,13 +52,11 @@ enum ListStatusEdit {
 }
 
 const trending = {
-  page: 1,
   type: Media.ANIME,
   sort: [SORT_BY.TRENDING_DESC, SORT_BY.POPULARITY_DESC],
 }
 
 const popularSeason = {
-  page: 1,
   type: Media.ANIME,
   season: Season.FALL,
   seasonYear: 2023,

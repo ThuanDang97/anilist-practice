@@ -1,8 +1,8 @@
-import '../styles/reset.css'
-import '../styles/global.css'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Route, Routes } from 'react-router-dom'
+import '../styles/global.css'
+import '../styles/reset.css'
 
 //  themes
 import ThemeProvider from './theme'
@@ -11,13 +11,18 @@ import ThemeProvider from './theme'
 import MainLayout from './layouts/MainLayout'
 
 // pages
+import DetailPage from '@pages/DetailPage'
 import HomePage from '@pages/HomePage'
-import DetailPage from '@pages/Detail'
+import SearchPage from '@pages/SearchPage'
 
 // constants
 import { END_POINTS } from './constants'
-import DetailLayout from './layouts/DetailLayout'
+
+// mocks
 import { navDetail } from '@mocks/mockNavDetail'
+
+// layouts
+import DetailLayout from './layouts/DetailLayout'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -38,7 +43,7 @@ const App = () => {
             <Route index element={<HomePage />} />
             <Route
               path={`${END_POINTS.SEARCH_PAGE}/:type`}
-              element={<HomePage />}
+              element={<SearchPage />}
             />
           </Route>
           <Route
