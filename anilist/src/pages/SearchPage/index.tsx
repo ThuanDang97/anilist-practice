@@ -1,9 +1,9 @@
 import { Box, Button, Flex, Title, useMantineTheme } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
-
 import { useMemo } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { v4 as uuidv4 } from 'uuid'
+import { useParams } from 'react-router-dom'
 
 // components
 import ListCardComponent from '@components/ListCard'
@@ -23,6 +23,7 @@ import {
   trending,
   upcoming,
 } from '@constants/variables'
+import { END_POINTS_SECTIONS } from '@constants/endPoints'
 
 // hooks
 import useInfiniteAnimeList from '@hooks/useAnime/useInfiniteAnimeList'
@@ -33,14 +34,12 @@ import { mockListRenderSkeleton } from '@mocks/mockAnime'
 
 // types
 import { Media } from '@type/anime'
+import { variables } from '@type/variable'
 
 // utils
 import GenerateYearList from '@utils/generateYearList'
 import { transformEnumToList } from '@utils/transformEnum'
 import { TransformListGenres } from '@utils/transformListGenres'
-import { useParams } from 'react-router-dom'
-import { END_POINTS_SECTIONS } from '@constants/endPoints'
-import { variables } from '@type/variable'
 
 type TRenderSectionListAnime = {
   title: string
