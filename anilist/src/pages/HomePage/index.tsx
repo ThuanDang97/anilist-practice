@@ -15,7 +15,7 @@ import useAnimeList from '@hooks/useAnime/useAnimeList'
 
 // constants
 import { TITLE_SECTIONS } from '@constants/defaultValue'
-import { END_POINTS } from '@constants/endPoints'
+import { END_POINTS_SECTIONS } from '@constants/endPoints'
 import {
   Format,
   Season,
@@ -143,31 +143,31 @@ const HomePage = () => {
     {
       title: TITLE_SECTIONS.TRENDING,
       listAnime: listTrending?.media || [],
-      href: END_POINTS.TRENDING,
+      href: END_POINTS_SECTIONS.TRENDING,
       loading: isLoadingTrending,
     },
     {
       title: TITLE_SECTIONS.POPULAR,
       listAnime: listPopularSeason?.media || [],
-      href: END_POINTS.THIS_SEASON,
+      href: END_POINTS_SECTIONS.THIS_SEASON,
       loading: isLoadingPopularSeason,
     },
     {
       title: TITLE_SECTIONS.UPCOMING,
       listAnime: listUpComing?.media || [],
-      href: END_POINTS.NEXT_SEASON,
+      href: END_POINTS_SECTIONS.NEXT_SEASON,
       loading: isLoadingUpComing,
     },
     {
       title: TITLE_SECTIONS.ALL_TIME,
       listAnime: listPopular?.media || [],
-      href: END_POINTS.POPULAR,
+      href: END_POINTS_SECTIONS.POPULAR,
       loading: isLoadingPopular,
     },
     {
       title: TITLE_SECTIONS.TOP_100,
       listAnime: listTop100?.media || [],
-      href: END_POINTS.TOP_100,
+      href: END_POINTS_SECTIONS.TOP_100,
       typeCard: 'tiles',
       loading: isLoadingTop100,
     },

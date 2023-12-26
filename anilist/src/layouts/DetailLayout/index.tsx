@@ -71,14 +71,24 @@ const DetailLayout = () => {
       <BackgroundImage src={bannerImage} w="100%" h="400px" />
       {/* Banner */}
       <Box bg={theme.colors.background[0]}>
-        <Container size="lg">
-          <Flex>
+        <Container size="xl">
+          <Flex gap="35px">
             <Box>
-              <Image src={coverImage.extraLarge} />
+              <Image
+                src={coverImage.extraLarge}
+                width="215px"
+                sx={{
+                  marginTop: '-125px',
+                }}
+              />
               <Flex>
                 <Flex>
                   <Button onClick={onOpenModal}>{titleButton}</Button>
                   <Select
+                    sx={{
+                      width: '15px',
+                      height: '15px',
+                    }}
                     data={[
                       { value: 'Watching', label: 'Set as Watching' },
                       { value: 'Planning', label: 'Set as Planning' },
@@ -93,13 +103,13 @@ const DetailLayout = () => {
                 </Button>
               </Flex>
             </Box>
-            <Box>
+            <Box w="100%" mt="30px" mb="20px">
               <Title color={theme.colors.title[1]}>{title.userPreferred}</Title>
               <Text
                 color={theme.colors.title[1]}
                 dangerouslySetInnerHTML={{ __html: description }}
               />
-              <Container size="sm">
+              <Container size="xl" mt="50px">
                 <Flex justify="space-between">
                   {navDetail.map((item, index) => (
                     <Text
@@ -125,9 +135,9 @@ const DetailLayout = () => {
 
       {/* Sidebar */}
       <Box bg={theme.colors.background[2]}>
-        <Container size="lg">
+        <Container size="xl" py="20px">
           <Grid>
-            <Grid.Col span={3}>
+            <Grid.Col span={2}>
               <SideBar information={data as Media} />
             </Grid.Col>
             <Grid.Col span={9}>

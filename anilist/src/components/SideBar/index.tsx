@@ -51,7 +51,7 @@ const SideBar = ({ information }: SideBarProps) => {
   const informationAnime = [
     {
       title: 'Airing',
-      data: convertToFormattedString(nextAiringEpisode),
+      data: convertToFormattedString(nextAiringEpisode || {}),
     },
     {
       title: 'Format',
