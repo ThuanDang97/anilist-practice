@@ -34,6 +34,8 @@ import PlayIcon from '@assets/icons/PlayIcon'
 import { convertToKebabCase } from '@utils/convertToKebabCase'
 import getContrastColor from '@utils/getContrastColor'
 import { formatAiringDetails, getIconOfScore } from '@utils/utils'
+
+// stores
 import useAuth from '@stores/useAuth'
 
 interface AnimeItem {

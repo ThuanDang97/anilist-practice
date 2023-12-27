@@ -72,6 +72,8 @@ const DetailLayout = () => {
     setTitleButton(value)
   }
 
+  const handleAddFavorites = () => {}
+
   return (
     <>
       {!isMobile && <Header />}
@@ -128,9 +130,11 @@ const DetailLayout = () => {
                     </Menu.Dropdown>
                   </Menu>
                 </Flex>
-                <Button>
+                <Button onClick={handleAddFavorites}>
                   <ThemeIcon w="36px" h="36px" color="red">
-                    <HeartIcon />
+                    <Box w="15px" h="15px">
+                      <HeartIcon />
+                    </Box>
                   </ThemeIcon>
                 </Button>
               </Flex>
