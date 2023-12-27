@@ -62,6 +62,7 @@ export interface MediaTitle {
 export interface MediaCoverImage {
   extraLarge: string
   large: string
+  medium: string
   color: string
 }
 

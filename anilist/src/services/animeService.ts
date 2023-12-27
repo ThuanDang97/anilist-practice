@@ -49,7 +49,7 @@ export const fetchPaginatedAnime = async (
     const paginateVariable: variables = {
       ...variables,
       page: pageParam,
-      perPage: 10,
+      perPage: 20,
     }
 
     const response = await axios.post(baseURL as string, {

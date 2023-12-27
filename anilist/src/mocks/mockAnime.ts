@@ -14,6 +14,8 @@ export const mockAnime: Media[] = [
         'https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx154587-n1fmjRv4JQUd.jpg',
       large:
         'https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx154587-n1fmjRv4JQUd.jpg',
+      medium:
+        'https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx154587-n1fmjRv4JQUd.jpg',
       color: '#d6f1c9',
     },
     startDate: {
