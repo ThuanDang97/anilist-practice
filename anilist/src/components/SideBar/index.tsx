@@ -221,30 +221,34 @@ const SideBar = ({ information }: SideBarProps) => {
   return (
     <Flex direction="column" gap="5px" data-testid="sidebar">
       {renderListRanking}
-
       {renderListInformation}
       {renderListTags}
-      <Flex direction="column" gap="5px">
-        <Button>Write Review</Button>
-        <Button>Edit</Button>
+      <Flex direction="column" gap="5px" mt="15px">
+        <Button variant="secondary">Write Review</Button>
+        <Button variant="secondary">Edit</Button>
       </Flex>
-      <Box>
-        <Text>External & Streaming links</Text>
-        <Flex direction="column">
+      <Box mt="15px">
+        <Text color={theme.colors.title[1]}>External & Streaming links</Text>
+        <Flex direction="column" gap="10px">
           {externalLinks.map((item) => {
-            const { id, color, icon, site, url } = item
+            const { id, color, icon, site } = item
             return (
-              <Box key={item.id} bg={theme.colors.background[0]}>
+              <Flex key={id} bg={theme.colors.background[0]} gap="15px" p="5px">
                 <Box
-                  w={15}
-                  h={15}
+                  w="20px"
+                  h="20px"
                   color={theme.colors.light[0]}
                   bg={color ? color : theme.colors.blue[2]}
+                  sx={{
+                    borderRadius: '5px',
+                  }}
                 >
                   {icon ? <Image src={icon} /> : <LinkIcon />}
                 </Box>
-                {site}
-              </Box>
+                <Text color={theme.colors.title[1]} fw={600}>
+                  {site}
+                </Text>
+              </Flex>
             )
           })}
         </Flex>
