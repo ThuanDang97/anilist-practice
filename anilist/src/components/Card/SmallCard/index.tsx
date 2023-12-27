@@ -34,6 +34,7 @@ import PlayIcon from '@assets/icons/PlayIcon'
 import { convertToKebabCase } from '@utils/convertToKebabCase'
 import getContrastColor from '@utils/getContrastColor'
 import { formatAiringDetails, getIconOfScore } from '@utils/utils'
+import useAuth from '@stores/useAuth'
 
 interface AnimeItem {
   anime: Media
@@ -44,6 +45,7 @@ const SmallCard = ({ anime }: AnimeItem) => {
     useDisclosure(false)
   const [isOpenedModal, { open: onOpenModal, close: onCloseModal }] =
     useDisclosure(false)
+  const [userAuthentication] = useAuth((state) => [state.userAuthentication])
   const { classes } = useStylesSmallCard()
   const theme = useMantineTheme()
   const isMobile = useMediaQuery(`(max-width: 1024px)`)
@@ -172,7 +174,7 @@ const SmallCard = ({ anime }: AnimeItem) => {
               },
             }}
           >
-            {renderListButtonEditor()}
+            {userAuthentication && renderListButtonEditor()}
             <Link
               to={`${END_POINTS.ANIME}/${id}/${slug}`}
               onMouseEnter={onOpenPopover}
