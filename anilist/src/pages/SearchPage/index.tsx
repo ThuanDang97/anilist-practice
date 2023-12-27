@@ -1,18 +1,18 @@
-import { Box, Button, Flex, Title, useMantineTheme } from '@mantine/core'
+import { Box, Flex, Grid, Title, useMantineTheme } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
 import { useMemo } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import { v4 as uuidv4 } from 'uuid'
 import { useParams } from 'react-router-dom'
+import { v4 as uuidv4 } from 'uuid'
 
 // components
-import ListCardComponent from '@components/ListCard'
 import SearchComponent from '@components/Search'
 import Select from '@components/Select'
 import SmallCardSkeleton from '@components/Skeleton/SmallCardSkeleton'
-import TilesCardSkeleton from '@components/Skeleton/TilesCardSkeleton'
+import SmallCard from '@components/Card/SmallCard'
 
 // constants
+import { END_POINTS_SECTIONS } from '@constants/endPoints'
 import {
   Format,
   Season,
@@ -23,7 +23,6 @@ import {
   trending,
   upcoming,
 } from '@constants/variables'
-import { END_POINTS_SECTIONS } from '@constants/endPoints'
 
 // hooks
 import useInfiniteAnimeList from '@hooks/useAnime/useInfiniteAnimeList'
@@ -42,49 +41,66 @@ import { transformEnumToList } from '@utils/transformEnum'
 import { TransformListGenres } from '@utils/transformListGenres'
 
 type TRenderSectionListAnime = {
-  title: string
   listAnime: Media[]
-  href: string
-  typeCard?: 'small' | 'tiles'
   loading: boolean
 }
 
-const SearchPage = () => {
-  const theme = useMantineTheme()
+type VariablesSectionInfo = {
+  title: string
+  variable: variables
+}
 
+const SearchPage = () => {
   const { data: listGenres } = useGenresList()
   const isMobile = useMediaQuery(`(max-width: 1024px)`)
   const listYear: string[] = GenerateYearList()
   const { type } = useParams()
 
-  const variablesSections = (): variables => {
-    const typeParams = `/${type}`
+  const typeParams = `/${type}`
 
+  const getVariablesSectionInfo = (): VariablesSectionInfo => {
     switch (typeParams) {
       case END_POINTS_SECTIONS.TRENDING:
-        return trending
+        return {
+          title: 'Trending Anime',
+          variable: trending,
+        }
       case END_POINTS_SECTIONS.THIS_SEASON:
-        return popularSeason
+        return {
+          title: 'Fall 2023 Anime',
+          variable: popularSeason,
+        }
       case END_POINTS_SECTIONS.NEXT_SEASON:
-        return upcoming
+        return {
+          title: 'Anime Next Season - Airing Winter 2024',
+          variable: upcoming,
+        }
       case END_POINTS_SECTIONS.POPULAR:
-        return popular
+        return {
+          title: 'All-Time Popular Anime',
+          variable: popular,
+        }
       case END_POINTS_SECTIONS.TOP_100:
-        return top100
+        return {
+          title: 'Top 100 Anime',
+          variable: top100,
+        }
       default:
-        return {}
+        return {
+          title: '',
+          variable: {},
+        }
     }
   }
 
-  const variableQuery: variables = variablesSections()
+  const variableSectionsInfo = getVariablesSectionInfo()
 
   const {
-    status,
     data: infiniteData,
     isFetching,
     fetchNextPage,
     hasNextPage,
-  } = useInfiniteAnimeList(variableQuery)
+  } = useInfiniteAnimeList(variableSectionsInfo.variable)
 
   const listTransformed: Media[] = useMemo(
     () => infiniteData?.pages.flatMap((item) => item.media) as Media[],
@@ -115,72 +131,52 @@ const SearchPage = () => {
   ]
 
   const renderSectionListAnime = ({
-    title,
     listAnime,
-    href,
-    typeCard = 'small',
     loading,
   }: TRenderSectionListAnime) => {
-    const isCard = typeCard === 'small'
     if (loading) {
       return (
         <Box>
-          <Box>
-            <Title
-              order={3}
-              size={16}
-              sx={{
-                color: theme.colors.title[2],
-                ':hover': {
-                  color: theme.colors.title[1],
-                },
-              }}
-            >
-              {title}
-            </Title>
-            <Button
-              sx={{
-                ':hover': {
-                  color: theme.colors.title[1],
-                },
-              }}
-            >
-              View All
-            </Button>
-          </Box>
           <Flex
-            direction={{ base: 'row', lg: isCard ? 'row' : 'column' }}
+            direction={{ base: 'row', lg: 'row' }}
             sx={{
               flexFlow: 'row wrap',
             }}
-            gap={isCard || isMobile ? 10 : 25}
-            justify={isCard || isMobile ? 'space-between' : ''}
+            gap={isMobile ? 10 : 25}
+            justify={isMobile ? 'space-between' : ''}
           >
-            {mockListRenderSkeleton.map(() =>
-              typeCard === 'small' ? (
-                <SmallCardSkeleton key={uuidv4()} />
-              ) : (
-                <TilesCardSkeleton key={uuidv4()} />
-              ),
-            )}
+            {mockListRenderSkeleton.map(() => (
+              <SmallCardSkeleton key={uuidv4()} />
+            ))}
           </Flex>
         </Box>
       )
     }
 
     return (
-      <ListCardComponent
-        title={title}
-        listAnime={listAnime}
-        href={href}
-        typeCard={typeCard}
-      />
+      <Grid
+        sx={{
+          gridTemplateColumns: isMobile
+            ? 'repeat(auto-fill,minmax(110px,1fr))'
+            : 'repeat(auto-fill,200px)',
+          gap: '25px 5px',
+        }}
+        columns={2}
+      >
+        {listAnime.map((anime) => (
+          <Grid.Col span="auto" key={anime.id}>
+            <SmallCard anime={anime} />)
+          </Grid.Col>
+        ))}
+      </Grid>
     )
   }
 
   return (
     <Box>
-      <Flex gap="15px" mb="80px">
+      <Title variant="primary">{variableSectionsInfo.title}</Title>
+
+      <Flex gap="15px" mb="80px" mt="30px">
         <SearchComponent />
         {listFilter.map((item) => (
           <Box key={item.title}>
@@ -201,10 +197,7 @@ const SearchPage = () => {
           dataLength={listTransformed?.length ?? 0}
         >
           {renderSectionListAnime({
-            title: '',
             listAnime: listTransformed,
-            href: '',
-            typeCard: 'small',
             loading: isFetching,
           })}
         </InfiniteScroll>
