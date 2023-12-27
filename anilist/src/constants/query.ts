@@ -104,6 +104,7 @@ export const query = `
         coverImage {
           extraLarge
           large
+          medium
           color
         }
         startDate {

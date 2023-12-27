@@ -183,7 +183,7 @@ const SmallCard = ({ anime }: AnimeItem) => {
               onMouseLeave={onClosePopover}
             >
               <Image
-                src={coverImage.extraLarge}
+                src={coverImage.medium}
                 alt="Card Image"
                 width={isMobile ? '115px' : '185px'}
                 height={isMobile ? '165px' : '265px'}
