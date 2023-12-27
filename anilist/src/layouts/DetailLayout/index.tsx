@@ -1,4 +1,5 @@
 import {
+  ActionIcon,
   BackgroundImage,
   Box,
   Button,
@@ -6,7 +7,7 @@ import {
   Flex,
   Grid,
   Image,
-  Select,
+  Menu,
   Text,
   ThemeIcon,
   Title,
@@ -40,7 +41,13 @@ import Header from '../Header'
 const Footer = lazy(() => import('../Footer'))
 
 // assets
-import { HeartIcon } from '@assets/icons'
+import { ArrowDownIcon, HeartIcon } from '@assets/icons'
+import MehIcon from '@assets/icons/MehIcon'
+
+const menuItems = [
+  { value: 'Watching', label: 'Set as Watching' },
+  { value: 'Planning', label: 'Set as Planning' },
+]
 
 const DetailLayout = () => {
   const theme = useMantineTheme()
@@ -78,26 +85,51 @@ const DetailLayout = () => {
                 src={coverImage.extraLarge}
                 width="215px"
                 sx={{
-                  marginTop: '-125px',
+                  marginTop: '-55px',
                 }}
               />
-              <Flex>
+              <Flex mt="25px">
                 <Flex>
-                  <Button onClick={onOpenModal}>{titleButton}</Button>
-                  <Select
+                  <Button
+                    variant="secondary"
+                    onClick={onOpenModal}
                     sx={{
-                      width: '15px',
-                      height: '15px',
+                      borderTopRightRadius: '0',
+                      borderBottomRightRadius: '0',
                     }}
-                    data={[
-                      { value: 'Watching', label: 'Set as Watching' },
-                      { value: 'Planning', label: 'Set as Planning' },
-                    ]}
-                    onChange={handleChangePlanning}
-                  />
+                    fw={500}
+                  >
+                    {titleButton}
+                  </Button>
+                  <Menu position="bottom-end" offset={15} withArrow>
+                    <Menu.Target>
+                      <ActionIcon
+                        w="36px"
+                        h="36px"
+                        bg={theme.colors.blue[0]}
+                        sx={{
+                          ':hover': {
+                            backgroundColor: theme.colors.blue[0],
+                          },
+                          borderTopLeftRadius: '0',
+                          borderBottomLeftRadius: '0',
+                        }}
+                      >
+                        <ArrowDownIcon />
+                      </ActionIcon>
+                    </Menu.Target>
+
+                    <Menu.Dropdown>
+                      {menuItems.map((item) => {
+                        const { value, label } = item
+
+                        return <Menu.Item key={value}>{label}</Menu.Item>
+                      })}
+                    </Menu.Dropdown>
+                  </Menu>
                 </Flex>
                 <Button>
-                  <ThemeIcon size="xs" color="red">
+                  <ThemeIcon w="36px" h="36px" color="red">
                     <HeartIcon />
                   </ThemeIcon>
                 </Button>

@@ -22,6 +22,11 @@ const ButtonTheme = {
         },
       },
     }),
+    secondary: (theme: MantineTheme) => ({
+      root: {
+        background: theme.colors.blue[2],
+      },
+    }),
     subtle: (theme: MantineTheme) => ({
       root: {
         zIndex: 1,
