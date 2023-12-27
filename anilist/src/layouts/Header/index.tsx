@@ -309,9 +309,12 @@ const Header = () => {
         styles={{
           content: {
             backgroundColor: theme.colors.background[3],
+            padding: '15px',
           },
           header: {
             backgroundColor: theme.colors.background[3],
+            padding: 0,
+            paddingBottom: '15px',
           },
           title: {
             color: theme.colors.title[2],
