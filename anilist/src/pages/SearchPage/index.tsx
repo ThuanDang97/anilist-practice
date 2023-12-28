@@ -1,4 +1,4 @@
-import { Box, Flex, Grid, Title, useMantineTheme } from '@mantine/core'
+import { Box, Flex, Grid, Title } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
 import { useMemo } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
@@ -6,10 +6,10 @@ import { useParams } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid'
 
 // components
+import SmallCard from '@components/Card/SmallCard'
 import SearchComponent from '@components/Search'
 import Select from '@components/Select'
 import SmallCardSkeleton from '@components/Skeleton/SmallCardSkeleton'
-import SmallCard from '@components/Card/SmallCard'
 
 // constants
 import { END_POINTS_SECTIONS } from '@constants/endPoints'
@@ -97,9 +97,9 @@ const SearchPage = () => {
 
   const {
     data: infiniteData,
-    isFetching,
     fetchNextPage,
     hasNextPage,
+    isLoading,
   } = useInfiniteAnimeList(variableSectionsInfo.variable)
 
   const listTransformed: Media[] = useMemo(
@@ -193,12 +193,25 @@ const SearchPage = () => {
         <InfiniteScroll
           next={() => fetchNextPage()}
           hasMore={hasNextPage ?? false}
-          loader={'...loading'}
+          loader={
+            <Flex
+              direction={{ base: 'row', lg: 'row' }}
+              sx={{
+                flexFlow: 'row wrap',
+              }}
+              gap={isMobile ? 10 : 25}
+              justify={isMobile ? 'space-between' : ''}
+            >
+              {mockListRenderSkeleton.map(() => (
+                <SmallCardSkeleton key={uuidv4()} />
+              ))}
+            </Flex>
+          }
           dataLength={listTransformed?.length ?? 0}
         >
           {renderSectionListAnime({
             listAnime: listTransformed,
-            loading: isFetching,
+            loading: isLoading,
           })}
         </InfiniteScroll>
       </Box>
