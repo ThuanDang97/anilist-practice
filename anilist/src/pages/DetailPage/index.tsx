@@ -97,7 +97,7 @@ const DetailPage = () => {
                       justify="space-between"
                       align="flex-end"
                     >
-                      <Text variant="primary">
+                      <Text variant="primary" align="end">
                         {voiceActors[0].name.userPreferred}
                       </Text>
                       <Text variant="primary">{voiceActors[0].language}</Text>
