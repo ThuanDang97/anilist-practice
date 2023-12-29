@@ -5,8 +5,6 @@ import { v4 as uuidv4 } from 'uuid'
 // components
 import LandingSection from '@components/Landing'
 import ListCardComponent from '@components/ListCard'
-import SearchComponent from '@components/Search'
-import Select from '@components/Select'
 import SmallCardSkeleton from '@components/Skeleton/SmallCardSkeleton'
 import TilesCardSkeleton from '@components/Skeleton/TilesCardSkeleton'
 
@@ -17,9 +15,6 @@ import useAnimeList from '@hooks/useAnime/useAnimeList'
 import { TITLE_SECTIONS } from '@constants/defaultValue'
 import { END_POINTS_SECTIONS } from '@constants/endPoints'
 import {
-  Format,
-  Season,
-  Status,
   popular,
   popularSeason,
   top100,
@@ -43,9 +38,7 @@ import useGenresList from '@hooks/useGenres/useGenresList'
 import useAuth from '@stores/useAuth'
 
 // utils
-import GenerateYearList from '@utils/generateYearList'
-import { transformEnumToList } from '@utils/transformEnum'
-import { TransformListGenres } from '@utils/transformListGenres'
+import ListFilter from '@components/ListFilter'
 
 type TRenderSectionListAnime = {
   title: string
@@ -173,42 +166,10 @@ const HomePage = () => {
     },
   ]
 
-  const listYear: string[] = GenerateYearList()
-
-  const listFilter = [
-    {
-      title: 'Genres',
-      listSelect: TransformListGenres(listGenres?.genres, listGenres?.tags),
-    },
-    {
-      title: 'Year',
-      listSelect: listYear,
-    },
-    {
-      title: 'Season',
-      listSelect: transformEnumToList(Season),
-    },
-    {
-      title: 'Format',
-      listSelect: transformEnumToList(Format),
-    },
-    {
-      title: 'Airing Status',
-      listSelect: transformEnumToList(Status),
-    },
-  ]
-
   return (
     <>
       {!userAuthentication && <LandingSection />}
-      <Flex gap="15px" mb="80px">
-        <SearchComponent />
-        {listFilter.map((item) => (
-          <Box key={item.title}>
-            <Select title={item.title} listSelect={item.listSelect} />
-          </Box>
-        ))}
-      </Flex>
+      {listGenres && <ListFilter listGenres={listGenres} />}
       <Box
         p={{
           base: 16,

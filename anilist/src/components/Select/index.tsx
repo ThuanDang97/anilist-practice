@@ -17,6 +17,7 @@ const Select = ({ title, listSelect, placeHolder = 'any' }: SelectType) => {
         {title}
       </Text>
       <MultiSelect
+        maw="210px"
         aria-label="My select"
         searchable
         clearable
@@ -25,6 +26,7 @@ const Select = ({ title, listSelect, placeHolder = 'any' }: SelectType) => {
         size="md"
         placeholder={placeHolder}
         maxDropdownHeight={200}
+        hoverOnSearchChange
       />
     </Box>
   )

@@ -7,16 +7,11 @@ import { v4 as uuidv4 } from 'uuid'
 
 // components
 import SmallCard from '@components/Card/SmallCard'
-import SearchComponent from '@components/Search'
-import Select from '@components/Select'
 import SmallCardSkeleton from '@components/Skeleton/SmallCardSkeleton'
 
 // constants
 import { END_POINTS_SECTIONS } from '@constants/endPoints'
 import {
-  Format,
-  Season,
-  Status,
   popular,
   popularSeason,
   top100,
@@ -36,9 +31,7 @@ import { Media } from '@type/anime'
 import { variables } from '@type/variable'
 
 // utils
-import GenerateYearList from '@utils/generateYearList'
-import { transformEnumToList } from '@utils/transformEnum'
-import { TransformListGenres } from '@utils/transformListGenres'
+import ListFilter from '@components/ListFilter'
 
 type TRenderSectionListAnime = {
   listAnime: Media[]
@@ -53,11 +46,9 @@ type VariablesSectionInfo = {
 const SearchPage = () => {
   const { data: listGenres } = useGenresList()
   const isMobile = useMediaQuery(`(max-width: 1024px)`)
-  const listYear: string[] = GenerateYearList()
   const { type } = useParams()
 
   const typeParams = `/${type}`
-
   const getVariablesSectionInfo = (): VariablesSectionInfo => {
     switch (typeParams) {
       case END_POINTS_SECTIONS.TRENDING:
@@ -107,29 +98,6 @@ const SearchPage = () => {
     [infiniteData?.pages],
   )
 
-  const listFilter = [
-    {
-      title: 'Genres',
-      listSelect: TransformListGenres(listGenres?.genres, listGenres?.tags),
-    },
-    {
-      title: 'Year',
-      listSelect: listYear,
-    },
-    {
-      title: 'Season',
-      listSelect: transformEnumToList(Season),
-    },
-    {
-      title: 'Format',
-      listSelect: transformEnumToList(Format),
-    },
-    {
-      title: 'Airing Status',
-      listSelect: transformEnumToList(Status),
-    },
-  ]
-
   const renderSectionListAnime = ({
     listAnime,
     loading,
@@ -155,6 +123,7 @@ const SearchPage = () => {
 
     return (
       <Grid
+        display="grid"
         sx={{
           gridTemplateColumns: isMobile
             ? 'repeat(auto-fill,minmax(110px,1fr))'
@@ -176,14 +145,8 @@ const SearchPage = () => {
     <Box>
       <Title variant="primary">{variableSectionsInfo.title}</Title>
 
-      <Flex gap="15px" mb="80px" mt="30px">
-        <SearchComponent />
-        {listFilter.map((item) => (
-          <Box key={item.title}>
-            <Select title={item.title} listSelect={item.listSelect} />
-          </Box>
-        ))}
-      </Flex>
+      {listGenres && <ListFilter listGenres={listGenres} />}
+
       <Box
         p={{
           base: 16,
