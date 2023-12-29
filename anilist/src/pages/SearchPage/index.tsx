@@ -111,7 +111,7 @@ const SearchPage = () => {
               flexFlow: 'row wrap',
             }}
             gap={isMobile ? 10 : 25}
-            justify={isMobile ? 'space-between' : ''}
+            justify="space-between"
           >
             {mockListRenderSkeleton.map(() => (
               <SmallCardSkeleton key={uuidv4()} />
@@ -130,6 +130,7 @@ const SearchPage = () => {
             : 'repeat(auto-fill,200px)',
           gap: '25px 5px',
         }}
+        justify="space-between"
         columns={2}
       >
         {listAnime.map((anime) => (
